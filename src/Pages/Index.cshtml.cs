@@ -11,6 +11,8 @@ namespace ContosoCrafts.WebSite.Pages
     /// <summary>
     /// Mike Koenig
     /// TAEKIL OH
+    /// Yash Modi 
+    /// Gayathri Gandham
     /// </summary>
     public class IndexModel : PageModel
     {
