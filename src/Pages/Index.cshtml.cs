@@ -5,7 +5,7 @@ using Microsoft.Extensions.Logging;
 
 using ContosoCrafts.WebSite.Models;
 using ContosoCrafts.WebSite.Services;
-// THis is a commit by Yash
+//This comment is by Zhou
 namespace ContosoCrafts.WebSite.Pages
 {
     /// <summary>
@@ -13,6 +13,7 @@ namespace ContosoCrafts.WebSite.Pages
     /// TAEKIL OH
     /// Yash Modi 
     /// Gayathri Gandham
+    /// Zhou Liu
     /// </summary>
     public class IndexModel : PageModel
     {
