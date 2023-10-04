@@ -11,7 +11,7 @@ namespace ContosoCrafts.WebSite.Pages
     /// <summary>
     /// Mike Koenig
     /// TAEKIL OH
-    /// Yash Modi 
+    /// YASH MODI
     /// Gayathri Gandham
     /// Zhou Liu
     /// </summary>
