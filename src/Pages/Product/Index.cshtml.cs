@@ -8,6 +8,7 @@ using ContosoCrafts.WebSite.Services;
 namespace ContosoCrafts.WebSite.Pages.Product
 {
     /// <summary>
+    /// Gayathri
     /// Index Page will return all the data to show
     /// </summary>
     public class IndexModel : PageModel
