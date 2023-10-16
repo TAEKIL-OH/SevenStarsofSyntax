@@ -4,7 +4,6 @@
 @{
     ViewData["Title"] = "Pawfect";
 }
-//Create a title for home page
 <h1>Find the perfect match for your paw friends!</h1>
 @(await Html.RenderComponentAsync<ProductList>(RenderMode.ServerPrerendered))
 
