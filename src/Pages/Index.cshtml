@@ -2,9 +2,10 @@
 @using ContosoCrafts.WebSite.Components
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Home Page";
 }
-<h1>SEVEN STARS OF SYNTAX</h1>
+//Create a title for home page
+<h1>Find the perfect match for your paw friends!</h1>
 @(await Html.RenderComponentAsync<ProductList>(RenderMode.ServerPrerendered))
 
 <script src="_framework/blazor.server.js"></script>
