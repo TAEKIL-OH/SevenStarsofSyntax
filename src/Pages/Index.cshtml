@@ -2,7 +2,7 @@
 @using ContosoCrafts.WebSite.Components
 @model IndexModel
 @{
-    ViewData["Title"] = "Pawfect";
+    ViewData["Title"] = "Pawfect - Home Page";
 }
 <h1>Find the perfect match for your paw friends!</h1>
 @(await Html.RenderComponentAsync<ProductList>(RenderMode.ServerPrerendered))
