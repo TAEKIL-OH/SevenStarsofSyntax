@@ -115,8 +115,9 @@ html {
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background-image: url(https://t4.ftcdn.net/jpg/01/74/28/81/360_F_174288196_QdBasTB1TYt8CbcgB8Baont2GvyRgSEx.jpg);
 }
 p {
     font-family: 'Nunito', sans-serif;

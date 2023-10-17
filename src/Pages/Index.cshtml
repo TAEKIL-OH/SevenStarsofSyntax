@@ -4,7 +4,11 @@
 @{
     ViewData["Title"] = "Pawfect - Home Page";
 }
-<h1>Find the perfect match for your paw friends!</h1>
+<div class="card my-5">
+    <div class="card-body">
+        <h5>Find the perfect match for your paw friends!</h5>
+    </div>
+</div>
 @(await Html.RenderComponentAsync<PawList>(RenderMode.ServerPrerendered))
 
 <script src="_framework/blazor.server.js"></script>
