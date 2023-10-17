@@ -18,6 +18,12 @@
             <small class="text-muted"><button @onclick="(e => SelectPaw(paw.Id))" 
               data-toggle="modal" data-target="#productModal" class="btn btn-primary">More Info</button>
             </small>
+            <small class="text-muted">
+                <button @onclick="(e => SelectOwner(paw.Id))"
+                        data-toggle="modal" data-target="#ownerModal" class="btn btn-primary">
+                    Owner Info
+                </button>
+            </small>
         </div>
     </div>
 }
@@ -48,6 +54,39 @@
     </div>
   </div>
 }
+@if (selectedOwner != null)
+{
+    <div class="modal fade" id="ownerModal" tabindex="-1" role="dialog" aria-labelledby="ownerName" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productTitle">Owner Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="card-text">
+                                Owner Name :- @selectedOwner.Owner.Name
+                            </p>
+                            <p class="card-text">
+                                Owner Address :- @selectedOwner.Owner.Address
+                            </p>
+                            <p class="card-text">
+                                Owner Email :- @selectedOwner.Owner.Email
+                            </p>
+                            <p class="card-text">
+                                Owner Phone :- @selectedOwner.Owner.Phone
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -55,12 +94,17 @@
 @code 
 {
     //ProductModel selectedProduct;
-    PawModel selectedPaw;
+    PawModel selectedPaw, selectedOwner;
     string selectedPawId;
 
     void SelectPaw(string pawId)
     {
         selectedPawId = pawId;
         selectedPaw = PawService.GetPaws().First(x => x.Id == pawId);
+    }
+    void SelectOwner(string pawId)
+    {
+        selectedPawId = pawId;
+        selectedOwner = PawService.GetPaws().First(x => x.Id == pawId);
     }
 }
