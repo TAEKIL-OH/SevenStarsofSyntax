@@ -16,7 +16,7 @@
         </div>
         <div class="card-footer">
             <small class="text-muted"><button @onclick="(e => SelectPaw(paw.Id))" 
-              data-toggle="modal" data-target="#productModal" class="btn btn-primary">More Info</button>
+              data-toggle="modal" data-target="#pawModal" class="btn btn-primary">More Info</button>
             </small>
             <small class="text-muted">
                 <button @onclick="(e => SelectOwner(paw.Id))"
@@ -32,11 +32,11 @@
 //The selected paw information will be rendered in a popup
 @if(selectedPaw != null)
 {
-  <div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="productTitle" aria-hidden="true">
+    <div class="modal fade" id="pawModal" tabindex="-1" role="dialog" aria-labelledby="pawName" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="productTitle">@selectedPaw.Paw.Name</h5>
+          <h5 class="modal-title" id="pawName">@selectedPaw.Paw.Name</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -60,7 +60,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="productTitle">Owner Details</h5>
+                    <h5 class="modal-title" id="ownerDetails">Owner Details</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
