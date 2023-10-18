@@ -7,13 +7,27 @@
     ViewData["Title"] = "Read page";
 }
 
-<h1>Read</h1>
+<h1>Information</h1>
 
 <div class="content">
-    <h5 class="title" id="productTitle">@Model.Product.Title</h5>
-
-    <img class="card-img" src='@Model.Product.Image' alt='Image for @Model.Product.Title'>
-
-    <p class="card-text">@Model.Product.Description</p>
+    <div class="card my-5">
+        <div class="card-header">
+            <h5>@Model.Paw.Paw.Name</h5>
+        </div>
+        <div class="card-body">
+            <img class="card-img" src='@Model.Paw.Paw.Image' height="800" width="500" alt='Image for @Model.Paw.Paw.Name'>
+            <h5 class="card-text">Information about @Model.Paw.Paw.Name</h5>
+            <p class="card-text">@Model.Paw.Paw.Description</p>
+            <p class="card-text">@Model.Paw.Paw.Name belongs to @Model.Paw.Paw.Breed breed</p>
+            <p class="card-text">@Model.Paw.Paw.Name belongs is @Model.Paw.Paw.Age old</p>
+        </div>
+        <div class="card-footer">
+            <h5 class="card-text">Information about @Model.Paw.Paw.Name owner</h5>
+            <p class="card-text"> Name :- @Model.Paw.Owner.Name</p>
+            <p class="card-text"> Address :- @Model.Paw.Owner.Address </p>
+            <p class="card-text"> Email :- @Model.Paw.Owner.Email </p>
+            <p class="card-text"> Phone :- @Model.Paw.Owner.Phone </p>
+        </div>
+    </div>
 
 </div>
