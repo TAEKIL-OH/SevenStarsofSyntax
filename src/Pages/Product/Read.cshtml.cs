@@ -16,7 +16,7 @@ namespace ContosoCrafts.WebSite.Pages.Product
         /// Defualt Construtor
         /// </summary>
         /// <param name="logger"></param>
-        /// <param name="productService"></param>
+        /// <param name="pawService"></param>
         public ReadModel(JsonFilePawService pawService)
         {
             PawService = pawService;
