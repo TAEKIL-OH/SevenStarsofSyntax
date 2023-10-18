@@ -29,35 +29,38 @@
 }
 </div>
 
-//The selected paw information will be rendered in a popup
-@if(selectedPaw != null)
-{
-    <div class="modal fade" id="pawModal" tabindex="-1" role="dialog" aria-labelledby="pawName" aria-hidden="true">
+<!-- The selected paw information will be rendered in a popup -->
+<div class="modal fade" id="pawModal" tabindex="-1" role="dialog" aria-labelledby="pawName" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="pawName">@selectedPaw.Paw.Name</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="card">
-            <div class="card-img" style="background-image: url('@selectedPaw.Paw.Image');">
+        <!-- change the location of if statement to slove button error -->
+        @if (selectedPaw != null)
+        {
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="pawName">@selectedPaw.Paw.Name</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
-            <div class="card-body">
-                <p class="card-text">@selectedPaw.Paw.Description</p>
+            <div class="modal-body">
+              <div class="card">
+                <div class="card-img" style="background-image: url('@selectedPaw.Paw.Image');">
+                </div>
+                <div class="card-body">
+                    <p class="card-text">@selectedPaw.Paw.Description</p>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
 }
-@if (selectedOwner != null)
-{
-    <div class="modal fade" id="ownerModal" tabindex="-1" role="dialog" aria-labelledby="ownerName" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+    </div>
+</div>
+
+<div class="modal fade" id="ownerModal" tabindex="-1" role="dialog" aria-labelledby="ownerName" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <!-- change the location of if statement to slove button error -->
+        @if (selectedOwner != null)
+        {
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="ownerDetails">Owner Details</h5>
@@ -84,13 +87,13 @@
                     </div>
                 </div>
             </div>
+        }
         </div>
-    </div>
-}
+</div>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-//This function starts working when any user selects a paw and its information is being rendered
+<!-- This function starts working when any user selects a paw and its information is being rendered --!>
 @code 
 {
     //ProductModel selectedProduct;
