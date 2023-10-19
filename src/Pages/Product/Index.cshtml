@@ -23,8 +23,11 @@
                 <td>@Paw.Paw.Name</td>
                 <td>@Paw.Paw.Breed</td>
                 <td>@Paw.Paw.Age</td>
-                <td><a asp-page="Read" asp-route-id="@Paw.Id">Read</a></td>
-            </tr>
+                <td>
+                    <a asp-page="Read" asp-route-id="@Paw.Id">Read</a>
+                    <a asp-page="Update" asp-route-id="@Paw.Id">Update</a>
+                </td>
+                </tr>
             }
         </tbody>
     </table>
