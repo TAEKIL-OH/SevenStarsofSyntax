@@ -61,11 +61,11 @@ namespace UnitTests.Pages.Product.Index
             mockWebHostEnvironment.Setup(m => m.ContentRootPath).Returns("./data/");
 
             var MockLoggerDirect = Mock.Of<ILogger<IndexModel>>();
-            JsonFileProductService productService;
+            JsonFilePawService pawService;
 
-            productService = new JsonFileProductService(mockWebHostEnvironment.Object);
+            pawService = new JsonFilePawService(mockWebHostEnvironment.Object);
 
-            pageModel = new IndexModel(productService)
+            pageModel = new IndexModel(pawService)
             {
             };
         }
@@ -74,7 +74,7 @@ namespace UnitTests.Pages.Product.Index
 
         #region OnGet
         [Test]
-        public void OnGet_Valid_Should_Return_Products()
+        public void OnGet_Valid_Should_Return_Paws()
         {
             // Arrange
 
@@ -83,7 +83,7 @@ namespace UnitTests.Pages.Product.Index
 
             // Assert
             Assert.AreEqual(true, pageModel.ModelState.IsValid);
-            Assert.AreEqual(15, pageModel.Products.ToList().Count);
+            Assert.AreEqual(20, pageModel.Paws.ToList().Count);
         }
         #endregion OnGet
     }
