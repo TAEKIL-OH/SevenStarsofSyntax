@@ -60,11 +60,11 @@ namespace UnitTests.Pages.Product.Read
             mockWebHostEnvironment.Setup(m => m.ContentRootPath).Returns("./data/");
 
             var MockLoggerDirect = Mock.Of<ILogger<IndexModel>>();
-            JsonFileProductService productService;
+            JsonFilePawService pawService;
 
-            productService = new JsonFileProductService(mockWebHostEnvironment.Object);
+            pawService = new JsonFilePawService(mockWebHostEnvironment.Object);
 
-            pageModel = new ReadModel(productService)
+            pageModel = new ReadModel(pawService)
             {
             };
         }
@@ -73,16 +73,16 @@ namespace UnitTests.Pages.Product.Read
 
         #region OnGet
         [Test]
-        public void OnGet_Valid_Should_Return_Products()
+        public void OnGet_Valid_Should_Return_Requested_Paw()
         {
             // Arrange
 
             // Act
-            pageModel.OnGet("jenlooper-cactus");
+            pageModel.OnGet("5425261635");
 
             // Assert
             Assert.AreEqual(true, pageModel.ModelState.IsValid);
-            Assert.AreEqual("The Quantified Cactus: An Easy Plant Soil Moisture Sensor", pageModel.Product.Title);
+            Assert.AreEqual("Amy", pageModel.Paw.Paw.Name);
         }
         #endregion OnGet
     }
