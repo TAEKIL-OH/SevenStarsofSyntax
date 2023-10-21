@@ -16,46 +16,83 @@
                 @Html.HiddenFor(p => p.Paw.Id)
 
                 <h5 class="card-text">Paw Information</h5>
-                <label asp-for="Paw.Paw.Name" class="form-label"> Name </label>
-                <input asp-for="Paw.Paw.Name" type="text" class="form-control-sm" id="name"> <br />
-                <label asp-for="Paw.Paw.Breed" class="form-label"> Breed </label>
-                <input asp-for="Paw.Paw.Breed" type="text" class="form-control-sm" id="breed"> <br />
-                <label asp-for="Paw.Paw.Gender" class="form-label"> Gender </label> <br />
-                <div class="form-check">
-                    <input class="form-check-input" asp-for="Paw.Paw.Gender" type="radio" value="Male" id="male">
-                    <label class="form-check-label" for="male">
-                        Male 
-                    </label>
+                <div class="form-group">
+                    <label asp-for="Paw.Paw.Name" class="form-label"> Name </label>
+                    <input asp-for="Paw.Paw.Name" type="text" class="form-control-sm" id="name">
+                    <span asp-validation-for="Paw.Paw.Name" class="text-danger"></span>
                 </div>
-                <div class="form-check">
-                    <input class="form-check-input" asp-for="Paw.Paw.Gender" type="radio" value="Female" id="female">
-                    <label class="form-check-label" for="female">
-                        Female
-                    </label>
-                </div> 
-                <label asp-for="Paw.Paw.Age" class="form-label"> Age </label>
-                <input asp-for="Paw.Paw.Age" type="text" class="form-control-sm" id="age"> <br />
-                <label asp-for="Paw.Paw.Size" class="form-label"> Size </label>
-                <input asp-for="Paw.Paw.Size" type="text" class="form-control-sm" id="size"> <br />
-                <label asp-for="Paw.Paw.Description" class="form-label"> Description </label>
-                <textarea asp-for="Paw.Paw.Description" class="form-control" id="description"></textarea> <br />
-                <label for="image" class="form-label"> Image </label>
-                <input asp-for="Paw.Paw.Image" type="text" class="form-control-sm" id="image"> <br />
-                <br />
+                <div class="form-group">
+                    <label asp-for="Paw.Paw.Breed" class="form-label"> Breed </label>
+                    <input asp-for="Paw.Paw.Breed" type="text" class="form-control-sm" id="breed">
+                    <span asp-validation-for="Paw.Paw.Breed" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Paw.Paw.Gender" class="form-label"> Gender </label> <br />
+                    <div class="form-check">
+                        <input class="form-check-input" asp-for="Paw.Paw.Gender" type="radio" value="Male" id="male">
+                        <label class="form-check-label" for="male">
+                            Male
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" asp-for="Paw.Paw.Gender" type="radio" value="Female" id="female">
+                        <label class="form-check-label" for="female">
+                            Female
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Paw.Paw.Age" class="form-label"> Age </label>
+                    <input asp-for="Paw.Paw.Age" type="text" class="form-control-sm" id="age">
+                    <span asp-validation-for="Paw.Paw.Age" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Paw.Paw.Size" class="form-label"> Size </label>
+                    <input asp-for="Paw.Paw.Size" type="text" class="form-control-sm" id="size">
+                    <span asp-validation-for="Paw.Paw.Size" class="text-danger"></span>
+                </div>    
+                <div class="form-group">
+                    <label asp-for="Paw.Paw.Description" class="form-label"> Description </label>
+                    <textarea asp-for="Paw.Paw.Description" class="form-control" id="description"></textarea>
+                    <span asp-validation-for="Paw.Paw.Description" class="text-danger"></span>
 
+                </div>
+                <div class="form-group">
+                    <label asp-for="Paw.Paw.Image" class="form-label"> Image </label>
+                    <input asp-for="Paw.Paw.Image" type="text" class="form-control-sm" id="image">
+                    <span asp-validation-for="Paw.Paw.Image" class="text-danger"></span>
+                </div>
                 <h5 class="card-text">Owner Information</h5>
-                <label asp-for="Paw.Owner.Name" class="form-label"> Name </label>
-                <input asp-for="Paw.Owner.Name" type="text" class="form-control-sm" id="name"> <br />
-                <label asp-for="Paw.Owner.Address" class="form-label"> Address </label>
-                <textarea asp-for="Paw.Owner.Address" class="form-control" id="address"></textarea> <br />
-                <label asp-for="Paw.Owner.City" class="form-label"> City </label>
-                <input asp-for="Paw.Owner.City" type="text" class="form-control-sm" id="city"> <br />
-                <label asp-for="Paw.Owner.Zipcode" for="onwer_zipcode" class="form-label"> Zipcode </label>
-                <input asp-for="Paw.Owner.Zipcode" type="text" class="form-control-sm" id="zipcode"> <br />
-                <label asp-for="Paw.Owner.Email" for="onwer_email" class="form-label"> Email </label>
-                <input asp-for="Paw.Owner.Email" type="email" class="form-control-sm" id="email"> <br />
-                <label asp-for="Paw.Owner.Phone" for="onwer_email" class="form-label"> Phone </label>
-                <input asp-for="Paw.Owner.Phone" type="text" class="form-control-sm" id="email"> <br />
+                <div class="form-group">
+                    <label asp-for="Paw.Owner.Name" class="form-label"> Name </label>
+                    <input asp-for="Paw.Owner.Name" type="text" class="form-control-sm" id="name">
+                    <span asp-validation-for="Paw.Owner.Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Paw.Owner.Address" class="form-label"> Address </label>
+                    <textarea asp-for="Paw.Owner.Address" class="form-control" id="address"></textarea>
+                    <span asp-validation-for="Paw.Owner.Address" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Paw.Owner.City" class="form-label"> City </label>
+                    <input asp-for="Paw.Owner.City" type="text" class="form-control-sm" id="city">
+                    <span asp-validation-for="Paw.Owner.City" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Paw.Owner.Zipcode" for="onwer_zipcode" class="form-label"> Zipcode </label>
+                    <input asp-for="Paw.Owner.Zipcode" type="text" class="form-control-sm" id="zipcode">
+                    <span asp-validation-for="Paw.Owner.Zipcode" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Paw.Owner.Email" for="onwer_email" class="form-label"> Email </label>
+                    <input asp-for="Paw.Owner.Email" type="email" class="form-control-sm" id="email">
+                    <span asp-validation-for="Paw.Owner.Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Paw.Owner.Phone" for="onwer_email" class="form-label"> Phone </label>
+                    <input asp-for="Paw.Owner.Phone" type="text" class="form-control-sm" id="phone">
+                    <span asp-validation-for="Paw.Owner.Phone" class="text-danger"></span>
+                </div> 
             </div>
             <div class="card-footer">
                 <input type="submit" class="btn btn-primary" value="Submit"/>
