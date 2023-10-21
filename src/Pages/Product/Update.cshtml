@@ -40,7 +40,8 @@
                 <label asp-for="Paw.Paw.Description" class="form-label"> Description </label>
                 <textarea asp-for="Paw.Paw.Description" class="form-control" id="description"></textarea> <br />
                 <label for="image" class="form-label"> Image </label>
-                <input class="form-control" type="file" id="image">  <br />
+                <input asp-for="Paw.Paw.Image" type="text" class="form-control-sm" id="image"> <br />
+                <br />
 
                 <h5 class="card-text">Owner Information</h5>
                 <label asp-for="Paw.Owner.Name" class="form-label"> Name </label>
