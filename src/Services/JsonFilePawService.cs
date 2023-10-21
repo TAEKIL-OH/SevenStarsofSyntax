@@ -52,6 +52,7 @@ namespace ContosoCrafts.WebSite.Services
                 PawToUpdate.Paw.Size = Paw.Paw.Size;
                 PawToUpdate.Paw.Gender = Paw.Paw.Gender;
                 PawToUpdate.Paw.Description = Paw.Paw.Description;
+                PawToUpdate.Paw.Image = Paw.Paw.Image;
                 SavePawsToJsonFile(PawsData);
             }
             return PawsData;
