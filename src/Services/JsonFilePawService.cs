@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
@@ -35,6 +36,35 @@ namespace ContosoCrafts.WebSite.Services
                         PropertyNameCaseInsensitive = true
                     });
             }
+        }
+
+        public IEnumerable<PawModel> UpdatePaw(PawModel Paw)
+        {
+            var PawsData = GetPaws();
+            var PawToUpdate = PawsData.FirstOrDefault(P => P.Id.Equals(Paw.Id));
+
+            if (PawToUpdate != null)
+            {
+                PawToUpdate.Paw.Name = Paw.Paw.Name;
+                PawToUpdate.Paw.Breed = Paw.Paw.Breed;
+                PawToUpdate.Paw.Gender = Paw.Paw.Gender;
+                PawToUpdate.Paw.Age = Paw.Paw.Age;
+                PawToUpdate.Paw.Size = Paw.Paw.Size;
+                PawToUpdate.Paw.Gender = Paw.Paw.Gender;
+                PawToUpdate.Paw.Description = Paw.Paw.Description;
+                SavePawsToJsonFile(PawsData);
+            }
+            return PawToUpdate;
+        }
+
+        public void SavePawsToJsonFile(IEnumerable<PawModel> paws)
+        {
+            var json = JsonSerializer.Serialize(paws, new JsonSerializerOptions
+            {
+                WriteIndented = true
+            });
+
+            File.WriteAllText(JsonFileName, json);
         }
     }
 }
