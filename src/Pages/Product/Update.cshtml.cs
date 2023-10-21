@@ -2,6 +2,7 @@ using ContosoCrafts.WebSite.Models;
 using ContosoCrafts.WebSite.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System.Linq;
 
 namespace ContosoCrafts.WebSite.Pages.Product
 {
@@ -19,8 +20,9 @@ namespace ContosoCrafts.WebSite.Pages.Product
         // The data to show
         [BindProperty]
         public PawModel Paw { get; set; }
-        public void OnGet()
+        public void OnGet(string id)
         {
+            Paw = PawService.GetPaws().FirstOrDefault(m => m.Id.Equals(id));
         }
 
         public IActionResult OnPost()
