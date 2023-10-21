@@ -54,7 +54,7 @@ namespace ContosoCrafts.WebSite.Services
                 PawToUpdate.Paw.Description = Paw.Paw.Description;
                 SavePawsToJsonFile(PawsData);
             }
-            return PawToUpdate;
+            return PawsData;
         }
 
         public void SavePawsToJsonFile(IEnumerable<PawModel> paws)
