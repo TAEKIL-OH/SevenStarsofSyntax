@@ -42,19 +42,21 @@ namespace ContosoCrafts.WebSite.Services
         {
             var PawsData = GetPaws();
             var PawToUpdate = PawsData.FirstOrDefault(P => P.Id.Equals(Paw.Id));
-
-            if (PawToUpdate != null)
+            if (PawToUpdate == null)
             {
-                PawToUpdate.Paw.Name = Paw.Paw.Name;
-                PawToUpdate.Paw.Breed = Paw.Paw.Breed;
-                PawToUpdate.Paw.Gender = Paw.Paw.Gender;
-                PawToUpdate.Paw.Age = Paw.Paw.Age;
-                PawToUpdate.Paw.Size = Paw.Paw.Size;
-                PawToUpdate.Paw.Gender = Paw.Paw.Gender;
-                PawToUpdate.Paw.Description = Paw.Paw.Description;
-                PawToUpdate.Paw.Image = Paw.Paw.Image;
-                SavePawsDataToJsonFile(PawsData);
+                return PawsData;
             }
+            
+            PawToUpdate.Paw.Name = Paw.Paw.Name;
+            PawToUpdate.Paw.Breed = Paw.Paw.Breed;
+            PawToUpdate.Paw.Gender = Paw.Paw.Gender;
+            PawToUpdate.Paw.Age = Paw.Paw.Age;
+            PawToUpdate.Paw.Size = Paw.Paw.Size;
+            PawToUpdate.Paw.Gender = Paw.Paw.Gender;
+            PawToUpdate.Paw.Description = Paw.Paw.Description;
+            PawToUpdate.Paw.Image = Paw.Paw.Image;
+            SavePawsDataToJsonFile(PawsData);
+            
             return PawsData;
         }
 
