@@ -46,7 +46,6 @@ namespace ContosoCrafts.WebSite.Services
             {
                 return PawsData;
             }
-            
             PawToUpdate.Paw.Name = Paw.Paw.Name;
             PawToUpdate.Paw.Breed = Paw.Paw.Breed;
             PawToUpdate.Paw.Gender = Paw.Paw.Gender;
