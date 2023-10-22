@@ -42,6 +42,7 @@ namespace ContosoCrafts.WebSite.Services
         {
             var PawsData = GetPaws();
             var PawToUpdate = PawsData.FirstOrDefault(P => P.Id.Equals(Paw.Id));
+            ///If the paw data is null it will return as it was null
             if (PawToUpdate == null)
             {
                 return PawsData;
@@ -55,7 +56,6 @@ namespace ContosoCrafts.WebSite.Services
             PawToUpdate.Paw.Description = Paw.Paw.Description;
             PawToUpdate.Paw.Image = Paw.Paw.Image;
             SavePawsDataToJsonFile(PawsData);
-            
             return PawsData;
         }
 
