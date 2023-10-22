@@ -15,6 +15,8 @@ using NUnit.Framework;
 
 using ContosoCrafts.WebSite.Pages.Product;
 using ContosoCrafts.WebSite.Services;
+using ContosoCrafts.WebSite.Models;
+using System.Reflection;
 
 namespace UnitTests.Pages.Product.Update
 {
@@ -66,6 +68,7 @@ namespace UnitTests.Pages.Product.Update
 
             pageModel = new UpdateModel(pawService)
             {
+                
             };
         }
 
@@ -85,5 +88,24 @@ namespace UnitTests.Pages.Product.Update
             Assert.AreEqual("Amy", pageModel.Paw.Paw.Name);
         }
         #endregion OnGet
+
+        #region OnPost
+        [Test]
+        public void OnPost_InValid_Model_State_Should_Return_Page()
+        {
+            // Arrange
+            pageModel.ModelState.AddModelError("ModelOnly", "Something went wrong");
+
+            // Act
+            var result = pageModel.OnPost();
+
+            // Assert
+            Assert.IsInstanceOf<PageResult>(result);
+            Assert.IsFalse(pageModel.ModelState.IsValid);
+            // Check for the specific error message in the model state.
+            Assert.IsTrue(pageModel.ModelState.ContainsKey("ModelOnly"));
+        }
+        
+        #endregion OnPost
     }
 }
