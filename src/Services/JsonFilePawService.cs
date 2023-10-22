@@ -53,12 +53,12 @@ namespace ContosoCrafts.WebSite.Services
                 PawToUpdate.Paw.Gender = Paw.Paw.Gender;
                 PawToUpdate.Paw.Description = Paw.Paw.Description;
                 PawToUpdate.Paw.Image = Paw.Paw.Image;
-                SavePawsToJsonFile(PawsData);
+                SavePawsDataToJsonFile(PawsData);
             }
             return PawsData;
         }
 
-        public void SavePawsToJsonFile(IEnumerable<PawModel> paws)
+        public void SavePawsDataToJsonFile(IEnumerable<PawModel> paws)
         {
             var json = JsonSerializer.Serialize(paws, new JsonSerializerOptions
             {
