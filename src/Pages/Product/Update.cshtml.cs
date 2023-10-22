@@ -29,6 +29,7 @@ namespace ContosoCrafts.WebSite.Pages.Product
         {
             if (!ModelState.IsValid)
             {
+                ModelState.AddModelError("ModelOnly", "Something went wrong");
                 return Page();
             }
 
