@@ -6,7 +6,7 @@ using NUnit.Framework;
 
 using ContosoCrafts.WebSite.Models;
 
-namespace UnitTests.Pages.Product.AddRating
+namespace UnitTests.Pages.Product.UpdatePaw
 {
     public class JsonFileProductServiceTests
     {
@@ -18,24 +18,6 @@ namespace UnitTests.Pages.Product.AddRating
         }
 
         #endregion TestSetup
-
-        #region AddRating
-        //[Test]
-        //public void AddRating_InValid_....()
-        //{
-        //    // Arrange
-
-        //    // Act
-        //    //var result = TestHelper.ProductService.AddRating(null, 1);
-
-        //    // Assert
-        //    //Assert.AreEqual(false, result);
-        //}
-
-        // ....
-
-        /// Test Case for Null product
-        #endregion AddRating
 
         #region UpdatePaw
         [Test]
