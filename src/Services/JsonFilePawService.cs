@@ -38,14 +38,14 @@ namespace ContosoCrafts.WebSite.Services
             }
         }
 
-        public IEnumerable<PawModel> UpdatePaw(PawModel Paw)
+        public bool UpdatePaw(PawModel Paw)
         {
             var PawsData = GetPaws();
             var PawToUpdate = PawsData.FirstOrDefault(P => P.Id.Equals(Paw.Id));
             ///If the paw data is null it will return as it was null
             if (PawToUpdate == null)
             {
-                return PawsData;
+                return false;
             }
             PawToUpdate.Paw.Name = Paw.Paw.Name;
             PawToUpdate.Paw.Breed = Paw.Paw.Breed;
@@ -56,7 +56,7 @@ namespace ContosoCrafts.WebSite.Services
             PawToUpdate.Paw.Description = Paw.Paw.Description;
             PawToUpdate.Paw.Image = Paw.Paw.Image;
             SavePawsDataToJsonFile(PawsData);
-            return PawsData;
+            return true;
         }
 
         public void SavePawsDataToJsonFile(IEnumerable<PawModel> paws)
