@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="wwwroot\data\products.json">
+    <Content Update="wwwroot\data\paws.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Update="Properties\launchSettings.json">
