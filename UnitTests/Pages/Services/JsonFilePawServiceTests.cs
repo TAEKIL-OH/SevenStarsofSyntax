@@ -6,7 +6,7 @@ using NUnit.Framework;
 
 using ContosoCrafts.WebSite.Models;
 
-namespace UnitTests.Pages.Service.AddRating
+namespace UnitTests.Pages.Service.JsonFilePawService
 {
     public class JsonFilePawServiceTests
     {
