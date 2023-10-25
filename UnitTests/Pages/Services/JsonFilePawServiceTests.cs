@@ -6,9 +6,9 @@ using NUnit.Framework;
 
 using ContosoCrafts.WebSite.Models;
 
-namespace UnitTests.Pages.Product.AddRating
+namespace UnitTests.Pages.Service.AddRating
 {
-    public class JsonFileProductServiceTests
+    public class JsonFilePawServiceTests
     {
         #region TestSetup
 
