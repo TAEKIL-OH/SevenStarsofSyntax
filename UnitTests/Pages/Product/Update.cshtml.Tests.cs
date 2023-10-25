@@ -218,7 +218,7 @@ namespace UnitTests.Pages.Product.Update
         /// 
         /// </summary>
         [Test]
-        public void OnPost_invalid_breed_empty_Should_Return_Page()
+        public void OnPost_InValid_Breed_Empty_Should_Return_Page()
         {
             // Arrange
             pageModel.Paw = new PawModel
