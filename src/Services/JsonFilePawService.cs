@@ -59,6 +59,20 @@ namespace ContosoCrafts.WebSite.Services
             return true;
         }
 
+        public bool DeletePaw(String id)
+        {
+            var PawsData = GetPaws();
+            var PawToDelete = PawsData.FirstOrDefault(P => P.Id.Equals(id));
+            ///If the paw data is null it will return as it was null
+            if (PawToDelete == null)
+            {
+                return false;
+            }
+            var UpdatedPawData = GetPaws().Where(m => m.Id.Equals(PawToDelete.Id) == false);
+            SavePawsDataToJsonFile(UpdatedPawData);
+            return true;
+        }
+
         public void SavePawsDataToJsonFile(IEnumerable<PawModel> paws)
         {
             var json = JsonSerializer.Serialize(paws, new JsonSerializerOptions
