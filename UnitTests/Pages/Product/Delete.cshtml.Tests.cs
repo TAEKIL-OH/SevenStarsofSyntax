@@ -17,6 +17,7 @@ using ContosoCrafts.WebSite.Pages.Product;
 using ContosoCrafts.WebSite.Services;
 using ContosoCrafts.WebSite.Models;
 using System.Reflection;
+using System.Runtime.InteropServices;
 
 namespace UnitTests.Pages.Product.Delete
 {
@@ -88,6 +89,63 @@ namespace UnitTests.Pages.Product.Delete
             Assert.AreEqual("5425261635", pageModel.Paw.Id);
         }
         #endregion OnGet
-        
+
+        #region OnPost
+        [Test]
+        public void OnPost_InValid_Model_State_Should_Return_Page()
+        {
+            // Arrange
+            pageModel.ModelState.AddModelError("ModelOnly", "Something went wrong");
+
+            // Act
+            var result = pageModel.OnPost();
+
+            // Assert
+            Assert.IsInstanceOf<PageResult>(result);
+            Assert.IsFalse(pageModel.ModelState.IsValid);
+
+            // Check for the specific error message in the model state.
+
+            Assert.IsTrue(pageModel.ModelState.ContainsKey("ModelOnly"));
+        }
+
+        [Test]
+        public void OnPost_InValid_Paw_Data_Should_Return_Page()
+        {
+            pageModel.ModelState.AddModelError("ModelOnly", "Cannot find this paw");
+            pageModel.Paw = new PawModel
+            {
+                Id = "542526163512",
+            };
+
+            // Act
+            var result = pageModel.OnPost() as PageResult;
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.False(pageModel.ModelState.IsValid);
+            Assert.IsTrue(pageModel.ModelState.ContainsKey("ModelOnly"));
+        }
+
+        [Test]
+        public void OnPost_Valid_Paw_Data_Should_Return_Page()
+        {
+            var InitialPaws = pageModel.PawService.GetPaws();
+            pageModel.Paw = new PawModel
+            {
+                Id = "5425261635",
+            };
+
+            // Act
+            var result = pageModel.OnPost();
+
+            // Assert
+            Assert.True(pageModel.ModelState.IsValid);
+
+            //Reset
+            pageModel.PawService.SavePawsDataToJsonFile(InitialPaws);
+        }
+        #endregion OnPost
+
     }
 }
