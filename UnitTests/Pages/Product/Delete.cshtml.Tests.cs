@@ -73,5 +73,21 @@ namespace UnitTests.Pages.Product.Delete
         }
 
         #endregion TestSetup
+
+        #region OnGet
+        [Test]
+        public void OnGet_Valid_Should_Return_Requested_Paw()
+        {
+            // Arrange
+
+            // Act
+            pageModel.OnGet("5425261635");
+
+            // Assert
+            Assert.AreEqual(true, pageModel.ModelState.IsValid);
+            Assert.AreEqual("5425261635", pageModel.Paw.Id);
+        }
+        #endregion OnGet
+        
     }
 }
