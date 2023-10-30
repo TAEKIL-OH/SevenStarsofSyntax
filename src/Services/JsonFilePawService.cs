@@ -38,6 +38,38 @@ namespace ContosoCrafts.WebSite.Services
             }
         }
 
+        public bool CreatePaw(PawModel paw)
+        {
+            var newPaw = new PawModel()
+            {
+                Id = paw.Id,
+                Paw = new Paw
+                {
+                    Name = paw.Paw.Name,
+                    Breed = paw.Paw.Breed,
+                    Gender = paw.Paw.Gender,
+                    Age = paw.Paw.Age,
+                    Size = paw.Paw.Size,
+                    Description = paw.Paw.Description,
+                    Image = paw.Paw.Image,
+                },
+                Owner = new Owner
+                {
+                    Name = paw.Owner.Name,
+                    Address = paw.Owner.Address,
+                    City = paw.Owner.City,
+                    Zipcode = paw.Owner.Zipcode,
+                    Email = paw.Owner.Email,
+                    Phone = paw.Owner.Phone
+                }
+            };
+            var PawsData = GetPaws();
+            PawsData = PawsData.Append(newPaw);
+            SavePawsDataToJsonFile(PawsData);
+            return true;
+        }
+        
+
         public bool UpdatePaw(PawModel Paw)
         {
             var PawsData = GetPaws();
