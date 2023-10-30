@@ -89,5 +89,42 @@ namespace UnitTests.Pages.Service.JsonFilePawService
             Assert.IsTrue(result);
         }
         #endregion UpdatePaw
+
+        #region DeletePaw
+        [Test]
+        public void DeletePaw_Invalid_Paw_Id_Should_Return_False()
+        {
+            //Arrange
+            var testpaw = new PawModel
+            {
+                Id = "542526163512",
+            };
+
+            //Act
+            var result = TestHelper.PawService.DeletePaw(testpaw.Id);
+
+            //Assert
+            Assert.IsFalse(result);
+        }
+        [Test]
+        public void DeletePaw_Invalid_Paw_Id_Should_Return_True()
+        {
+            //Arrange
+            var InitialPaws = TestHelper.PawService.GetPaws();
+            var testpaw = new PawModel
+            {
+                Id = "5425261635",
+            };
+
+            //Act
+            var result = TestHelper.PawService.DeletePaw(testpaw.Id);
+
+            //Assert
+            Assert.IsTrue(result);
+
+            //Reset
+            TestHelper.PawService.SavePawsDataToJsonFile(InitialPaws);
+        }
+        #endregion DeletePaw
     }
 }
