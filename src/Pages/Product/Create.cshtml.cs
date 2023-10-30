@@ -2,23 +2,28 @@ using ContosoCrafts.WebSite.Models;
 using ContosoCrafts.WebSite.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Runtime.InteropServices;
+
 namespace ContosoCrafts.WebSite.Pages.Product
 {
     public class CreateModel : PageModel
     {
         public JsonFilePawService PawService { get; }
+
         public CreateModel(JsonFilePawService pawService)
         {
             PawService = pawService;
         }
+
+
+
         // The data to show
         [BindProperty]
         public PawModel Paw { get; set; }
         public void OnGet()
         {
         }
-public IActionResult OnPost()
+
+        public IActionResult OnPost()
         {
             if (!ModelState.IsValid)
             {
@@ -55,14 +60,9 @@ public IActionResult OnPost()
                 ModelState.AddModelError("Paw.Paw.Breed", "Please donot keep this field empty");
                 return Page();
             }
-            if (Paw.Paw.Age == null)
+            if (Paw.Paw.Age < 0.1)
             {
-                ModelState.AddModelError("Paw.Paw.Age", "Please donot keep this field empty");
-                return Page();
-            }
-            if (Paw.Paw.Age == "")
-            {
-                ModelState.AddModelError("Paw.Paw.Age", "Please donot keep this field empty");
+                ModelState.AddModelError("Paw.Paw.Age", "Please have the age lager than 0");
                 return Page();
             }
             if (Paw.Paw.Size == null)
@@ -155,7 +155,9 @@ public IActionResult OnPost()
                 ModelState.AddModelError("Paw.Owner.Phone", "Please donot keep this field empty");
                 return Page();
             }
+
             PawService.CreatePaw(Paw);
+
             return RedirectToPage("./Index");
         }
     }
