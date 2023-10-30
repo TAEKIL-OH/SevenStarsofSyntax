@@ -1,4 +1,33 @@
-﻿@page
+﻿@page "{id}"
+@using ContosoCrafts.WebSite.Services
+@inject JsonFilePawService PawService
 @model ContosoCrafts.WebSite.Pages.Product.DeleteModel
 @{
+    ViewData["Title"] = "Pawfect - Update Paw";
 }
+<div class="content">
+    <div class="card my-5">
+        <div class="card-header">
+            <h5 class="card-text"> Delete Information </h5>
+        </div>
+        <form method="post">
+            <div class="card-body">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <img class="card-img" src='@Model.Paw.Paw.Image' height="800" width="500" alt='Image for @Model.Paw.Paw.Name'>
+                <h5 class="card-text">Information about @Model.Paw.Paw.Name</h5>
+                <p class="card-text">@Model.Paw.Paw.Description</p>
+                <p class="card-text">@Model.Paw.Paw.Name belongs to @Model.Paw.Paw.Breed breed</p>
+                <p class="card-text">@Model.Paw.Paw.Name belongs is @Model.Paw.Paw.Age old</p>
+                <p class="card-text"> Name :- @Model.Paw.Owner.Name</p>
+                <p class="card-text"> Address :- @Model.Paw.Owner.Address </p>
+                <p class="card-text"> Email :- @Model.Paw.Owner.Email </p>
+                <p class="card-text"> Phone :- @Model.Paw.Owner.Phone </p>
+            </div>
+            <h5> Are you sure you want to delete this information </h5>
+            <div class="card-footer">
+                <input type="submit" class="btn btn-danger" value="Delete" />
+                 <a class="btn btn-primary" asp-page="Index">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
