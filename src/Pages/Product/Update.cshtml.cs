@@ -53,14 +53,9 @@ namespace ContosoCrafts.WebSite.Pages.Product
                 ModelState.AddModelError("Paw.Paw.Breed", "Please donot keep this field empty");
                 return Page();
             }
-            if (Paw.Paw.Age == null)
+            if (Paw.Paw.Age < 0.1)
             {
-                ModelState.AddModelError("Paw.Paw.Age", "Please donot keep this field empty");
-                return Page();
-            }
-            if (Paw.Paw.Age == "")
-            {
-                ModelState.AddModelError("Paw.Paw.Age", "Please donot keep this field empty");
+                ModelState.AddModelError("Paw.Paw.Age", "Please have the age lager than 0");
                 return Page();
             }
             if (Paw.Paw.Size == null)
