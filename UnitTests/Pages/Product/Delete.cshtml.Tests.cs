@@ -112,7 +112,6 @@ namespace UnitTests.Pages.Product.Delete
         [Test]
         public void OnPost_InValid_Paw_Data_Should_Return_Page()
         {
-            pageModel.ModelState.AddModelError("ModelOnly", "Cannot find this paw");
             pageModel.Paw = new PawModel
             {
                 Id = "542526163512",
