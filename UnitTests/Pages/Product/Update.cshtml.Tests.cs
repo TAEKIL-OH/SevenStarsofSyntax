@@ -68,7 +68,7 @@ namespace UnitTests.Pages.Product.Update
 
             pageModel = new UpdateModel(pawService)
             {
-                
+
             };
         }
 
@@ -118,7 +118,7 @@ namespace UnitTests.Pages.Product.Update
                     Name = null,
                     Breed = "Breed",
                     Gender = "Gender",
-                    Age = "Age",
+                    Age = 1,
                     Size = "Size",
                     Description = "Description",
                     Image = "Image"
@@ -154,7 +154,7 @@ namespace UnitTests.Pages.Product.Update
                     Name = "",
                     Breed = "Breed",
                     Gender = "Gender",
-                    Age = "Age",
+                    Age = 1,
                     Size = "Size",
                     Description = "Description",
                     Image = "Image"
@@ -190,7 +190,7 @@ namespace UnitTests.Pages.Product.Update
                     Name = "Name",
                     Breed = null,
                     Gender = "Gender",
-                    Age = "Age",
+                    Age = 1,
                     Size = "Size",
                     Description = "Description",
                     Image = "Image"
@@ -229,7 +229,7 @@ namespace UnitTests.Pages.Product.Update
                     Name = "Name",
                     Breed = "",
                     Gender = "Gender",
-                    Age = "Age",
+                    Age = 1,
                     Size = "Size",
                     Description = "Description",
                     Image = "Image"
@@ -254,7 +254,7 @@ namespace UnitTests.Pages.Product.Update
         }
 
         [Test]
-        public void OnPost_Invalid_Age_Null_Should_Return_Page()
+        public void OnPost_Invalid_Age_Less_Than_One_Month_Should_Return_Page()
         {
             // Arrange
             pageModel.Paw = new PawModel
@@ -265,7 +265,7 @@ namespace UnitTests.Pages.Product.Update
                     Name = "Name",
                     Breed = "Breed",
                     Gender = "Gender",
-                    Age = null,
+                    Age = 0,
                     Size = "Size",
                     Description = "Description",
                     Image = "Image"
@@ -277,42 +277,6 @@ namespace UnitTests.Pages.Product.Update
                     City = "City",
                     Zipcode = "Zipcode",
                     Email = "Email",
-                    Phone = "Phone"
-                }
-
-            };
-
-            // act
-            var result = pageModel.OnPost() as RedirectToPageResult;
-
-            // Assert
-            Assert.False(pageModel.ModelState.IsValid);
-        }
-
-        [Test]
-        public void OnPost_Invalid_Age_Empty_Should_Return_Page()
-        {
-            // Arrange
-            pageModel.Paw = new PawModel
-            {
-                Id = "id",
-                Paw = new Paw
-                {
-                    Name = "Name",
-                    Breed = "Breed",
-                    Gender = "Gender",
-                    Age = "",
-                    Size = "Size",
-                    Description = "Description",
-                    Image = "Image"
-                },
-                Owner = new Owner
-                {
-                    Name = "Name",
-                    Address = "Address",
-                    City = "City",
-                    Zipcode = "Zipcode",
-                    Email = "",
                     Phone = "Phone"
                 }
 
@@ -337,7 +301,7 @@ namespace UnitTests.Pages.Product.Update
                     Name = "Name",
                     Breed = "Breed",
                     Gender = "Gender",
-                    Age = "Age",
+                    Age = 1,
                     Size = null,
                     Description = "Description",
                     Image = "Image"
@@ -373,7 +337,7 @@ namespace UnitTests.Pages.Product.Update
                     Name = "Name",
                     Breed = "Breed",
                     Gender = "Gender",
-                    Age = "Age",
+                    Age = 1,
                     Size = "",
                     Description = "Description",
                     Image = "Image"
@@ -409,7 +373,7 @@ namespace UnitTests.Pages.Product.Update
                     Name = "Name",
                     Breed = "Breed",
                     Gender = "Gender",
-                    Age = "Age",
+                    Age = 1,
                     Size = "Size",
                     Description = null,
                     Image = "Image"
@@ -445,7 +409,7 @@ namespace UnitTests.Pages.Product.Update
                     Name = "Name",
                     Breed = "Breed",
                     Gender = "Gender",
-                    Age = "Age",
+                    Age = 1,
                     Size = "Size",
                     Description = "",
                     Image = "Image"
@@ -481,7 +445,7 @@ namespace UnitTests.Pages.Product.Update
                     Name = "Name",
                     Breed = "Breed",
                     Gender = "Gender",
-                    Age = "Age",
+                    Age = 1,
                     Size = "Size",
                     Description = "Description",
                     Image = null
@@ -517,7 +481,7 @@ namespace UnitTests.Pages.Product.Update
                     Name = "Name",
                     Breed = "Breed",
                     Gender = "Gender",
-                    Age = "Age",
+                    Age = 1,
                     Size = "Size",
                     Description = "Description",
                     Image = ""
@@ -553,7 +517,7 @@ namespace UnitTests.Pages.Product.Update
                     Name = "Name",
                     Breed = "Breed",
                     Gender = "Gender",
-                    Age = "Age",
+                    Age = 1,
                     Size = "Size",
                     Description = "Description",
                     Image = "Image"
@@ -589,7 +553,7 @@ namespace UnitTests.Pages.Product.Update
                     Name = "Name",
                     Breed = "Breed",
                     Gender = "Gender",
-                    Age = "Age",
+                    Age = 1,
                     Size = "Size",
                     Description = "Description",
                     Image = "Image"
@@ -625,7 +589,7 @@ namespace UnitTests.Pages.Product.Update
                     Name = "Name",
                     Breed = "Breed",
                     Gender = "Gender",
-                    Age = "Age",
+                    Age = 1,
                     Size = "Size",
                     Description = "Description",
                     Image = "Image"
@@ -661,7 +625,7 @@ namespace UnitTests.Pages.Product.Update
                     Name = "Name",
                     Breed = "Breed",
                     Gender = "Gender",
-                    Age = "Age",
+                    Age = 1,
                     Size = "Size",
                     Description = "Description",
                     Image = "Image"
@@ -697,7 +661,7 @@ namespace UnitTests.Pages.Product.Update
                     Name = "Name",
                     Breed = "Breed",
                     Gender = "Gender",
-                    Age = "Age",
+                    Age = 1,
                     Size = "Size",
                     Description = "Description",
                     Image = "Image"
@@ -733,7 +697,7 @@ namespace UnitTests.Pages.Product.Update
                     Name = "Name",
                     Breed = "Breed",
                     Gender = "Gender",
-                    Age = "Age",
+                    Age = 1,
                     Size = "Size",
                     Description = "Description",
                     Image = "Image"
@@ -769,7 +733,7 @@ namespace UnitTests.Pages.Product.Update
                     Name = "Name",
                     Breed = "Breed",
                     Gender = "Gender",
-                    Age = "Age",
+                    Age = 1,
                     Size = "Size",
                     Description = "Description",
                     Image = "Image"
@@ -805,7 +769,7 @@ namespace UnitTests.Pages.Product.Update
                     Name = "Name",
                     Breed = "Breed",
                     Gender = "Gender",
-                    Age = "Age",
+                    Age = 1,
                     Size = "Size",
                     Description = "Description",
                     Image = "Image"
@@ -841,7 +805,7 @@ namespace UnitTests.Pages.Product.Update
                     Name = "Name",
                     Breed = "Breed",
                     Gender = "Gender",
-                    Age = "Age",
+                    Age = 1,
                     Size = "Size",
                     Description = "Description",
                     Image = "Image"
@@ -877,7 +841,7 @@ namespace UnitTests.Pages.Product.Update
                     Name = "Name",
                     Breed = "Breed",
                     Gender = "Gender",
-                    Age = "Age",
+                    Age = 1,
                     Size = "Size",
                     Description = "Description",
                     Image = "Image"
@@ -913,7 +877,7 @@ namespace UnitTests.Pages.Product.Update
                     Name = "Name",
                     Breed = "Breed",
                     Gender = "Gender",
-                    Age = "Age",
+                    Age = 1,
                     Size = "Size",
                     Description = "Description",
                     Image = "Image"
@@ -949,7 +913,7 @@ namespace UnitTests.Pages.Product.Update
                     Name = "Name",
                     Breed = "Breed",
                     Gender = "Gender",
-                    Age = "Age",
+                    Age = 1,
                     Size = "Size",
                     Description = "Description",
                     Image = "Image"
@@ -977,6 +941,8 @@ namespace UnitTests.Pages.Product.Update
         public void OnPost_Valid_Input_Should_Return_Page()
         {
             // Arrange
+            var InitialPaws = pageModel.PawService.GetPaws();
+
             pageModel.Paw = new PawModel
             {
                 Id = "id",
@@ -985,7 +951,7 @@ namespace UnitTests.Pages.Product.Update
                     Name = "Name",
                     Breed = "Breed",
                     Gender = "Gender",
-                    Age = "Age",
+                    Age = 1,
                     Size = "Size",
                     Description = "Description",
                     Image = "Image"
@@ -1007,6 +973,10 @@ namespace UnitTests.Pages.Product.Update
 
             // Assert
             Assert.True(pageModel.ModelState.IsValid);
+
+            //Reset
+            pageModel.PawService.SavePawsDataToJsonFile(InitialPaws);
+
         }
         #endregion OnPost
     }
