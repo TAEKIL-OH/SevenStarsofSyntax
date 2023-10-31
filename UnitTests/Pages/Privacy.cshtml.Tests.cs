@@ -64,9 +64,9 @@ namespace UnitTests.Pages.Privacy
             mockWebHostEnvironment.Setup(m => m.ContentRootPath).Returns("./data/");
 
             var MockLoggerDirect = Mock.Of<ILogger<PrivacyModel>>();
-            JsonFilePawService pawService;
+            JsonFileProductService productService;
 
-            pawService = new JsonFilePawService(mockWebHostEnvironment.Object);
+            productService = new JsonFileProductService(mockWebHostEnvironment.Object);
 
             pageModel = new PrivacyModel(MockLoggerDirect)
             {
