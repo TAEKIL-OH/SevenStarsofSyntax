@@ -64,9 +64,9 @@ namespace UnitTests.Pages.Error
             mockWebHostEnvironment.Setup(m => m.ContentRootPath).Returns("./data/");
 
             var MockLoggerDirect = Mock.Of<ILogger<ErrorModel>>();
-            JsonFileProductService productService;
+            JsonFilePawService pawService;
 
-            productService = new JsonFileProductService(mockWebHostEnvironment.Object);
+            pawService = new JsonFilePawService(mockWebHostEnvironment.Object);
 
             pageModel = new ErrorModel(MockLoggerDirect)
             {
