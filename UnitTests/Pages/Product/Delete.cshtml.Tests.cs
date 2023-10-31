@@ -21,9 +21,15 @@ using System.Runtime.InteropServices;
 
 namespace UnitTests.Pages.Product.Delete
 {
+    /// <summary>
+    /// Unit testing for Deleting a existing paw data
+    /// </summary>
     public class DeleteTests
     {
         #region TestSetup
+        /// <summary>
+        /// Variales to be used while testing
+        /// </summary>
         public static IUrlHelperFactory urlHelperFactory;
         public static DefaultHttpContext httpContextDefault;
         public static IWebHostEnvironment webHostEnvironment;
@@ -37,6 +43,9 @@ namespace UnitTests.Pages.Product.Delete
         public static DeleteModel pageModel;
 
         [SetUp]
+        /// <summary>
+        /// Initializes mock Delete page model for testing.
+        /// </summary>
         public void TestInitialize()
         {
             httpContextDefault = new DefaultHttpContext()
@@ -69,7 +78,7 @@ namespace UnitTests.Pages.Product.Delete
 
             pageModel = new DeleteModel(pawService)
             {
-                
+
             };
         }
 
@@ -77,6 +86,9 @@ namespace UnitTests.Pages.Product.Delete
 
         #region OnGet
         [Test]
+        /// <summary>
+        /// Test case for requesting valid paw value should return the paw
+        /// </summary>
         public void OnGet_Valid_Should_Return_Requested_Paw()
         {
             // Arrange
@@ -92,6 +104,9 @@ namespace UnitTests.Pages.Product.Delete
 
         #region OnPost
         [Test]
+        /// <summary>
+        /// Test case for  invalid model state should return the page 
+        /// </summary>
         public void OnPost_InValid_Model_State_Should_Return_Page()
         {
             // Arrange
@@ -110,6 +125,9 @@ namespace UnitTests.Pages.Product.Delete
         }
 
         [Test]
+        /// <summary>
+        /// Test case for delete invalid paw value should return the page 
+        /// </summary>
         public void OnPost_InValid_Paw_Data_Should_Return_Page()
         {
             pageModel.Paw = new PawModel
@@ -127,6 +145,9 @@ namespace UnitTests.Pages.Product.Delete
         }
 
         [Test]
+        /// <summary>
+        /// Test case for delete valid paw value should delete the paw and reset the paw data after passing the test case 
+        /// </summary>
         public void OnPost_Valid_Paw_Data_Should_Return_Page()
         {
             var InitialPaws = pageModel.PawService.GetPaws();
