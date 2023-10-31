@@ -67,7 +67,7 @@ namespace UnitTests.Pages.Product.Read
             mockWebHostEnvironment.Setup(m => m.WebRootPath).Returns("../../../../src/bin/Debug/net7.0/wwwroot");
             mockWebHostEnvironment.Setup(m => m.ContentRootPath).Returns("./data/");
 
-            var MockLoggerDirect = Mock.Of<ILogger<IndexModel>>();
+            var MockLoggerDirect = Mock.Of<ILogger<ReadModel>>();
             JsonFilePawService pawService;
 
             pawService = new JsonFilePawService(mockWebHostEnvironment.Object);
