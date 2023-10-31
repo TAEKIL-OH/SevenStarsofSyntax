@@ -14,14 +14,20 @@ using Moq;
 
 using NUnit.Framework;
 
-using ContosoCrafts.WebSite.Pages.Product;
+using ContosoCrafts.WebSite.Pages;
 using ContosoCrafts.WebSite.Services;
 
-namespace UnitTests.Pages.Product.Index
+namespace UnitTests.Pages.Index
 {
+    /// <summary>
+    /// Unit testing for Index (Home) page tests
+    /// </summary>
     public class IndexTests
     {
         #region TestSetup
+        /// <summary>
+        /// Variales to be used while testing
+        /// </summary>
         public static IUrlHelperFactory urlHelperFactory;
         public static DefaultHttpContext httpContextDefault;
         public static IWebHostEnvironment webHostEnvironment;
@@ -35,6 +41,9 @@ namespace UnitTests.Pages.Product.Index
         public static IndexModel pageModel;
 
         [SetUp]
+        /// <summary>
+        /// Initializes mock Index (Home) page model for testing.
+        /// </summary>
         public void TestInitialize()
         {
             httpContextDefault = new DefaultHttpContext()
@@ -65,7 +74,7 @@ namespace UnitTests.Pages.Product.Index
 
             pawService = new JsonFilePawService(mockWebHostEnvironment.Object);
 
-            pageModel = new IndexModel(pawService)
+            pageModel = new IndexModel(MockLoggerDirect, pawService)
             {
             };
         }
@@ -73,6 +82,9 @@ namespace UnitTests.Pages.Product.Index
         #endregion TestSetup
 
         #region OnGet
+        /// <summary>
+        /// Test case for getting the paws from a valid request
+        /// </summary>
         [Test]
         public void OnGet_Valid_Should_Return_Paws()
         {
