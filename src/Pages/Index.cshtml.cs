@@ -5,30 +5,35 @@ using Microsoft.Extensions.Logging;
 
 using ContosoCrafts.WebSite.Models;
 using ContosoCrafts.WebSite.Services;
-//This comment is by Zhou
+
 namespace ContosoCrafts.WebSite.Pages
 {
     /// <summary>
-    /// Mike Koenig
-    /// TAEKIL OH
-    /// YASH MODI
-    /// Gayathri Gandham
-    /// Zhou Liu
+    /// IndexModel is the main class for displaying the Index Page (Home)
     /// </summary>
     public class IndexModel : PageModel
     {
+        // Logger variable used for logging
         private readonly ILogger<IndexModel> _logger;
 
+        /// <summary>
+        /// Constructor for IndexModel
+        /// </summary>
+        /// <param name="logger"></param>
+        /// <param name="pawService"></param>
         public IndexModel(ILogger<IndexModel> logger,
             JsonFilePawService pawService)
         {
             _logger = logger;
             PawService = pawService;
         }
-
+        // Getter for PaswServices
         public JsonFilePawService PawService { get; }
+
+        //Getter and Private Setter for Paws
         public IEnumerable<PawModel> Paws { get; private set; }
 
+        // OnGet will get all the Data and render it in the Razor Page
         public void OnGet()
         {
             Paws = PawService.GetPaws();
