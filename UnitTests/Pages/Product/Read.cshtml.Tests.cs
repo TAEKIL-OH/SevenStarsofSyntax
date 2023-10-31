@@ -1,4 +1,3 @@
-
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Routing;
@@ -18,9 +17,15 @@ using ContosoCrafts.WebSite.Services;
 
 namespace UnitTests.Pages.Product.Read
 {
+    /// <summary>
+    /// Unit testing for Read page tests
+    /// </summary>
     public class ReadTests
     {
         #region TestSetup
+        /// <summary>
+        /// Variales to be used while testing
+        /// </summary>
         public static IUrlHelperFactory urlHelperFactory;
         public static DefaultHttpContext httpContextDefault;
         public static IWebHostEnvironment webHostEnvironment;
@@ -34,6 +39,9 @@ namespace UnitTests.Pages.Product.Read
         public static ReadModel pageModel;
 
         [SetUp]
+        /// <summary>
+        /// Initializes mock Read page model for testing.
+        /// </summary>
         public void TestInitialize()
         {
             httpContextDefault = new DefaultHttpContext()
@@ -72,6 +80,9 @@ namespace UnitTests.Pages.Product.Read
         #endregion TestSetup
 
         #region OnGet
+        /// <summary>
+        /// Test case - Get valid paw data from a valid request
+        /// </summary>
         [Test]
         public void OnGet_Valid_Should_Return_Requested_Paw()
         {
