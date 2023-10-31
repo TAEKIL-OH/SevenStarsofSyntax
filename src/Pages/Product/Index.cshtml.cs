@@ -10,13 +10,13 @@ namespace ContosoCrafts.WebSite.Pages.Product
     /// <summary>
     /// This IndexModel is the class for displaying the list of paws data in the tabular manner
     /// </summary
-    public class IndexModel : PageModel
+    public class PawIndexModel : PageModel
     {
         /// <summary>
         /// Constructor for Index Model
         /// </summary>
         /// <param name="productService"></param>
-        public IndexModel(JsonFilePawService pawService)
+        public PawIndexModel(JsonFilePawService pawService)
         {
             PawService = pawService;
         }
