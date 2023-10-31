@@ -21,8 +21,13 @@ namespace UnitTests.Pages.Service.JsonFilePawService
         #endregion TestSetup
 
         #region UpdatePaw
+        /// <summary>
+        /// REST Initialize an invalid paw id
+        /// Test the invalid paw data
+        /// The result should be false
+        /// </summary>
         [Test]
-        public void UpdatePaw_Invalid_Paw_Id_Should_Return_Null()
+        public void UpdatePaw_Invalid_Paw_Id_Should_Return_False()
         {
             //Arrange
             var testpaw = new PawModel
@@ -33,7 +38,7 @@ namespace UnitTests.Pages.Service.JsonFilePawService
                     Name = "Paw",
                     Breed = "Breed",
                     Gender = "Gender",
-                    Age = "Age",
+                    Age = 1.0,
                     Size = "Size",
                     Description = "Description",
                     Image = "Image"
@@ -55,6 +60,11 @@ namespace UnitTests.Pages.Service.JsonFilePawService
             //Assert
             Assert.IsFalse(result);
         }
+        /// <summary>
+        /// REST Initialize an valid paw id
+        /// Test the valid paw data
+        /// The result should be true
+        /// </summary>
         [Test]
         public void UpdatePaw_Valid_Paw_Id_Should_Return_True()
         {
@@ -92,6 +102,11 @@ namespace UnitTests.Pages.Service.JsonFilePawService
         #endregion UpdatePaw
 
         #region DeletePaw
+        /// <summary>
+        /// REST Initialize an invalid paw id
+        /// Test the invalid paw data
+        /// The result should be false
+        /// </summary>
         [Test]
         public void DeletePaw_Invalid_Paw_Id_Should_Return_False()
         {
@@ -107,6 +122,12 @@ namespace UnitTests.Pages.Service.JsonFilePawService
             //Assert
             Assert.IsFalse(result);
         }
+        /// <summary>
+        /// REST Initialize an valid paw id
+        /// Test the valid paw data
+        /// The result should be true
+        /// After the test the json file is to be reset with original data
+        /// </summary>
         [Test]
         public void DeletePaw_Invalid_Paw_Id_Should_Return_True()
         {
@@ -129,77 +150,50 @@ namespace UnitTests.Pages.Service.JsonFilePawService
         #endregion DeletePaw
 
         #region CreatePaw
-
+        /// <summary>
+        /// REST Initialize an paw data
+        /// Test the paw data
+        /// The result should be true
+        /// </summary>
         [Test]
-
         public void CreatePaw_Valid_Paw_Detail_Should_Return_True()
 
         {
-
             //Arrange
-
             var InitialPaws = TestHelper.PawService.GetPaws();
-
             var testpaw = new PawModel
-
             {
-
                 Id = "5425251635",
-
                 Paw = new Paw
-
                 {
-
                     Name = "Test",
-
                     Breed = "Breed",
-
                     Gender = "Gender",
-
                     Age = 1.0,
-
                     Size = "Size",
-
                     Description = "Description",
-
                     Image = "Image"
-
                 },
-
                 Owner = new Owner
-
                 {
-
                     Name = "Name",
-
                     Address = "Address",
-
                     City = "City",
-
                     Zipcode = "Zipcode",
-
                     Email = "paw@paw.com",
-
                     Phone = "Phone"
-
                 }
-
             };
 
             //Act
-
             var result = TestHelper.PawService.CreatePaw(testpaw);
 
             //Assert
-
             Assert.IsTrue(result);
 
             //Reset
-
             TestHelper.PawService.SavePawsDataToJsonFile(InitialPaws);
-
         }
-
         #endregion CreatePaw
 
 
