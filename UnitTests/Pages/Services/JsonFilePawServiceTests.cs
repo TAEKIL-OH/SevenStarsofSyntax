@@ -77,7 +77,7 @@ namespace UnitTests.Pages.Service.JsonFilePawService
                     Name = "Paw",
                     Breed = "Breed",
                     Gender = "Gender",
-                    Age = "Age",
+                    Age = 1.1,
                     Size = "Size",
                     Description = "Description",
                     Image = "Image"
