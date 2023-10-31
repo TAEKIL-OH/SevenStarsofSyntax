@@ -25,7 +25,7 @@ namespace ContosoCrafts.WebSite.Controllers
         /// <summary>
         /// varaiable of IEnumerable of PawModel Type
         /// </summary>
-        /// <returns></returns>
+        /// <returns> GetPaws -> Paws Data </returns>
         [HttpGet]
         public IEnumerable<PawModel> Get()
         {
