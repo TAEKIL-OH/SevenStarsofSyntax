@@ -19,9 +19,15 @@ using ContosoCrafts.WebSite.Services;
 
 namespace UnitTests.Pages.Index
 {
+    /// <summary>
+    /// Unit testing for Index (Home) page tests
+    /// </summary>
     public class IndexTests
     {
         #region TestSetup
+        /// <summary>
+        /// Variales to be used while testing
+        /// </summary>
         public static IUrlHelperFactory urlHelperFactory;
         public static DefaultHttpContext httpContextDefault;
         public static IWebHostEnvironment webHostEnvironment;
@@ -35,6 +41,9 @@ namespace UnitTests.Pages.Index
         public static IndexModel pageModel;
 
         [SetUp]
+        /// <summary>
+        /// Initializes mock Index (Home) page model for testing.
+        /// </summary>
         public void TestInitialize()
         {
             httpContextDefault = new DefaultHttpContext()
@@ -73,6 +82,9 @@ namespace UnitTests.Pages.Index
         #endregion TestSetup
 
         #region OnGet
+        /// <summary>
+        /// Test case for getting the paws from a valid request
+        /// </summary>
         [Test]
         public void OnGet_Valid_Should_Return_Paws()
         {
