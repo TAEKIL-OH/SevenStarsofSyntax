@@ -7,31 +7,33 @@ using ContosoCrafts.WebSite.Services;
 
 namespace ContosoCrafts.WebSite.Pages.Product
 {
+    /// <summary>
+    /// ReadModel is the main class for displaying the information of selected paw 
+    /// </summary>
     public class ReadModel : PageModel
     {
-        // Data middletier
-        public JsonFilePawService PawService { get; }
-
         /// <summary>
-        /// Defualt Construtor
+        /// COnstructor for Read Model
         /// </summary>
-        /// <param name="logger"></param>
         /// <param name="pawService"></param>
         public ReadModel(JsonFilePawService pawService)
         {
             PawService = pawService;
         }
 
-        // The data to show
+        //Getter for PawServices
+        public JsonFilePawService PawService { get; }
+
+        // Paw data to show
         public PawModel Paw;
 
         /// <summary>
-        /// REST Get request
+        /// REST Get request for the particular paw
         /// </summary>
         /// <param name="id"></param>
         public void OnGet(string id)
         {
-            Paw  = PawService.GetPaws().FirstOrDefault(m => m.Id.Equals(id));
+            Paw = PawService.GetPaws().FirstOrDefault(m => m.Id.Equals(id));
         }
     }
 }
