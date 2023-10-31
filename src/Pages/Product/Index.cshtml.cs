@@ -8,13 +8,12 @@ using ContosoCrafts.WebSite.Services;
 namespace ContosoCrafts.WebSite.Pages.Product
 {
     /// <summary>
-    /// Gayathri Gandham
-    /// Index Page will return all the data to show
-    /// </summary>
+    /// This IndexModel is the class for displaying the list of paws data in the tabular manner
+    /// </summary
     public class IndexModel : PageModel
     {
         /// <summary>
-        /// Default Constructor
+        /// Constructor for Index Model
         /// </summary>
         /// <param name="productService"></param>
         public IndexModel(JsonFilePawService pawService)
@@ -22,10 +21,10 @@ namespace ContosoCrafts.WebSite.Pages.Product
             PawService = pawService;
         }
 
-        // Data Service
+        // Getter for PaswServices
         public JsonFilePawService PawService { get; }
-        
-        // Collection of the Data
+
+        //Getter and Private Setter for Paws
         public IEnumerable<PawModel> Paws { get; private set; }
 
         /// <summary>
