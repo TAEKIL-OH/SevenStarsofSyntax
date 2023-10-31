@@ -104,6 +104,24 @@ namespace UnitTests.Pages.Product.Update
         #region OnPost
         [Test]
         /// <summary>
+        /// Test case for invalid model state that should return a page
+        /// </summary>
+        public void OnPost_InValid_Model_State_Should_Return_Page()
+        {
+            // Arrange
+            pageModel.ModelState.AddModelError("ModelOnly", "Something went wrong");
+
+            // Act
+            var result = pageModel.OnPost();
+
+            // Assert
+            Assert.IsInstanceOf<PageResult>(result);
+            Assert.IsFalse(pageModel.ModelState.IsValid);
+            // Check for the specific error message in the model state.
+            Assert.IsTrue(pageModel.ModelState.ContainsKey("ModelOnly"));
+        }
+        [Test]
+        /// <summary>
         /// Test case for null name field value should return a page with invalid state
         /// </summary>
         public void OnPost_Invalid_Name_Null_Should_Return_Page()
