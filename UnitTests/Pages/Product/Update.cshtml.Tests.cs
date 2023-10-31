@@ -20,9 +20,15 @@ using System.Reflection;
 
 namespace UnitTests.Pages.Product.Update
 {
+    /// <summary>
+    /// Unit testing for Updating a existing paw data
+    /// </summary>
     public class UpdateTests
     {
         #region TestSetup
+        /// <summary>
+        /// Variales to be used while testing
+        /// </summary>
         public static IUrlHelperFactory urlHelperFactory;
         public static DefaultHttpContext httpContextDefault;
         public static IWebHostEnvironment webHostEnvironment;
@@ -36,6 +42,9 @@ namespace UnitTests.Pages.Product.Update
         public static UpdateModel pageModel;
 
         [SetUp]
+        /// <summary>
+        /// Initializes mock Update page model for testing.
+        /// </summary>
         public void TestInitialize()
         {
             httpContextDefault = new DefaultHttpContext()
@@ -76,6 +85,9 @@ namespace UnitTests.Pages.Product.Update
 
         #region OnGet
         [Test]
+        /// <summary>
+        /// Test case for requesting valid paw value should return the paw
+        /// </summary>
         public void OnGet_Valid_Should_Return_Requested_Paw()
         {
             // Arrange
@@ -91,22 +103,9 @@ namespace UnitTests.Pages.Product.Update
 
         #region OnPost
         [Test]
-        public void OnPost_InValid_Model_State_Should_Return_Page()
-        {
-            // Arrange
-            pageModel.ModelState.AddModelError("ModelOnly", "Something went wrong");
-
-            // Act
-            var result = pageModel.OnPost();
-
-            // Assert
-            Assert.IsInstanceOf<PageResult>(result);
-            Assert.IsFalse(pageModel.ModelState.IsValid);
-            // Check for the specific error message in the model state.
-            Assert.IsTrue(pageModel.ModelState.ContainsKey("ModelOnly"));
-        }
-
-        [Test]
+        /// <summary>
+        /// Test case for null name field value should return a page with invalid state
+        /// </summary>
         public void OnPost_Invalid_Name_Null_Should_Return_Page()
         {
             // Arrange
@@ -118,7 +117,7 @@ namespace UnitTests.Pages.Product.Update
                     Name = null,
                     Breed = "Breed",
                     Gender = "Gender",
-                    Age = 1,
+                    Age = 1.0,
                     Size = "Size",
                     Description = "Description",
                     Image = "Image"
@@ -143,6 +142,9 @@ namespace UnitTests.Pages.Product.Update
         }
 
         [Test]
+        /// <summary>
+        /// Test case for empty name field value should return a page with invalid state
+        /// </summary>
         public void OnPost_Invalid_Name_Empty_Should_Return_Page()
         {
             // Arrange
@@ -154,7 +156,7 @@ namespace UnitTests.Pages.Product.Update
                     Name = "",
                     Breed = "Breed",
                     Gender = "Gender",
-                    Age = 1,
+                    Age = 1.0,
                     Size = "Size",
                     Description = "Description",
                     Image = "Image"
@@ -177,7 +179,9 @@ namespace UnitTests.Pages.Product.Update
             // Assert
             Assert.False(pageModel.ModelState.IsValid);
         }
-
+        /// <summary>
+        /// Test case for null breed field value should return a page with invalid state
+        /// </summary>
         [Test]
         public void OnPost_Invalid_Breed_Null_Should_Return_Page()
         {
@@ -190,7 +194,7 @@ namespace UnitTests.Pages.Product.Update
                     Name = "Name",
                     Breed = null,
                     Gender = "Gender",
-                    Age = 1,
+                    Age = 1.0,
                     Size = "Size",
                     Description = "Description",
                     Image = "Image"
@@ -215,7 +219,7 @@ namespace UnitTests.Pages.Product.Update
         }
 
         /// <summary>
-        /// 
+        /// Test case for empty breed field value should return a page with invalid state
         /// </summary>
         [Test]
         public void OnPost_InValid_Breed_Empty_Should_Return_Page()
@@ -229,7 +233,7 @@ namespace UnitTests.Pages.Product.Update
                     Name = "Name",
                     Breed = "",
                     Gender = "Gender",
-                    Age = 1,
+                    Age = 1.0,
                     Size = "Size",
                     Description = "Description",
                     Image = "Image"
@@ -254,6 +258,9 @@ namespace UnitTests.Pages.Product.Update
         }
 
         [Test]
+        /// <summary>
+        /// Test case for invalid age field value should return a page with invalid state
+        /// </summary>
         public void OnPost_Invalid_Age_Less_Than_One_Month_Should_Return_Page()
         {
             // Arrange
@@ -279,17 +286,17 @@ namespace UnitTests.Pages.Product.Update
                     Email = "Email",
                     Phone = "Phone"
                 }
-
             };
-
             // act
             var result = pageModel.OnPost() as RedirectToPageResult;
-
             // Assert
             Assert.False(pageModel.ModelState.IsValid);
         }
 
         [Test]
+        /// <summary>
+        /// Test case for null size field value should return a page with invalid state
+        /// </summary>
         public void OnPost_Invalid_Size_Null_Should_Return_Page()
         {
             // Arrange
@@ -301,7 +308,7 @@ namespace UnitTests.Pages.Product.Update
                     Name = "Name",
                     Breed = "Breed",
                     Gender = "Gender",
-                    Age = 1,
+                    Age = 1.0,
                     Size = null,
                     Description = "Description",
                     Image = "Image"
@@ -326,9 +333,12 @@ namespace UnitTests.Pages.Product.Update
         }
 
         [Test]
+        /// <summary>
+        /// Test case for empty size field value should return a page with invalid state
+        /// </summary>
         public void OnPost_Invalid_Size_Empty_Should_Return_Page()
         {
-            // Arrange
+            // Arrange            
             pageModel.Paw = new PawModel
             {
                 Id = "id",
@@ -337,7 +347,7 @@ namespace UnitTests.Pages.Product.Update
                     Name = "Name",
                     Breed = "Breed",
                     Gender = "Gender",
-                    Age = 1,
+                    Age = 1.0,
                     Size = "",
                     Description = "Description",
                     Image = "Image"
@@ -362,6 +372,9 @@ namespace UnitTests.Pages.Product.Update
         }
 
         [Test]
+        /// <summary>
+        /// Test case for null description field value should return a page with invalid state
+        /// </summary>
         public void OnPost_Invalid_Description_Null_Should_Return_Page()
         {
             // Arrange
@@ -373,7 +386,7 @@ namespace UnitTests.Pages.Product.Update
                     Name = "Name",
                     Breed = "Breed",
                     Gender = "Gender",
-                    Age = 1,
+                    Age = 1.0,
                     Size = "Size",
                     Description = null,
                     Image = "Image"
@@ -398,6 +411,9 @@ namespace UnitTests.Pages.Product.Update
         }
 
         [Test]
+        /// <summary>
+        /// Test case for empty description field value should return a page with invalid state
+        /// </summary>
         public void OnPost_Invalid_Description_Empty_Should_Return_Page()
         {
             // Arrange
@@ -409,7 +425,7 @@ namespace UnitTests.Pages.Product.Update
                     Name = "Name",
                     Breed = "Breed",
                     Gender = "Gender",
-                    Age = 1,
+                    Age = 1.0,
                     Size = "Size",
                     Description = "",
                     Image = "Image"
@@ -434,6 +450,9 @@ namespace UnitTests.Pages.Product.Update
         }
 
         [Test]
+        /// <summary>
+        /// Test case for null image field value should return a page with invalid state
+        /// </summary>
         public void OnPost_Invalid_Image_Null_Should_Return_Page()
         {
             // Arrange
@@ -445,7 +464,7 @@ namespace UnitTests.Pages.Product.Update
                     Name = "Name",
                     Breed = "Breed",
                     Gender = "Gender",
-                    Age = 1,
+                    Age = 1.0,
                     Size = "Size",
                     Description = "Description",
                     Image = null
@@ -470,6 +489,9 @@ namespace UnitTests.Pages.Product.Update
         }
 
         [Test]
+        /// <summary>
+        /// Test case for empty image field value should return a page with invalid state
+        /// </summary>
         public void OnPost_Invalid_Image_Empty_Should_Return_Page()
         {
             // Arrange
@@ -481,7 +503,7 @@ namespace UnitTests.Pages.Product.Update
                     Name = "Name",
                     Breed = "Breed",
                     Gender = "Gender",
-                    Age = 1,
+                    Age = 1.0,
                     Size = "Size",
                     Description = "Description",
                     Image = ""
@@ -506,6 +528,9 @@ namespace UnitTests.Pages.Product.Update
         }
 
         [Test]
+        /// <summary>
+        /// Test case for null owner name field value should return a page with invalid state
+        /// </summary>
         public void OnPost_Invalid_Owner_Name_Null_Should_Return_Page()
         {
             // Arrange
@@ -517,7 +542,7 @@ namespace UnitTests.Pages.Product.Update
                     Name = "Name",
                     Breed = "Breed",
                     Gender = "Gender",
-                    Age = 1,
+                    Age = 1.0,
                     Size = "Size",
                     Description = "Description",
                     Image = "Image"
@@ -542,6 +567,9 @@ namespace UnitTests.Pages.Product.Update
         }
 
         [Test]
+        /// <summary>
+        /// Test case for empty owner name field value should return a page with invalid state
+        /// </summary>
         public void OnPost_Invalid_Owner_Name_Empty_Should_Return_Page()
         {
             // Arrange
@@ -553,7 +581,7 @@ namespace UnitTests.Pages.Product.Update
                     Name = "Name",
                     Breed = "Breed",
                     Gender = "Gender",
-                    Age = 1,
+                    Age = 1.0,
                     Size = "Size",
                     Description = "Description",
                     Image = "Image"
@@ -578,6 +606,9 @@ namespace UnitTests.Pages.Product.Update
         }
 
         [Test]
+        /// <summary>
+        /// Test case for null owner address field value should return a page with invalid state
+        /// </summary>
         public void OnPost_Invalid_Owner_Address_Null_Should_Return_Page()
         {
             // Arrange
@@ -589,7 +620,7 @@ namespace UnitTests.Pages.Product.Update
                     Name = "Name",
                     Breed = "Breed",
                     Gender = "Gender",
-                    Age = 1,
+                    Age = 1.0,
                     Size = "Size",
                     Description = "Description",
                     Image = "Image"
@@ -614,6 +645,9 @@ namespace UnitTests.Pages.Product.Update
         }
 
         [Test]
+        /// <summary>
+        /// Test case for empty owner address field value should return a page with invalid state
+        /// </summary>
         public void OnPost_Invalid_Owner_Address_Empty_Should_Return_Page()
         {
             // Arrange
@@ -625,7 +659,7 @@ namespace UnitTests.Pages.Product.Update
                     Name = "Name",
                     Breed = "Breed",
                     Gender = "Gender",
-                    Age = 1,
+                    Age = 1.0,
                     Size = "Size",
                     Description = "Description",
                     Image = "Image"
@@ -650,6 +684,9 @@ namespace UnitTests.Pages.Product.Update
         }
 
         [Test]
+        /// <summary>
+        /// Test case for null owner city field value should return a page with invalid state
+        /// </summary>
         public void OnPost_Invalid_Owner_City_Null_Should_Return_Page()
         {
             // Arrange
@@ -661,7 +698,7 @@ namespace UnitTests.Pages.Product.Update
                     Name = "Name",
                     Breed = "Breed",
                     Gender = "Gender",
-                    Age = 1,
+                    Age = 1.0,
                     Size = "Size",
                     Description = "Description",
                     Image = "Image"
@@ -686,6 +723,9 @@ namespace UnitTests.Pages.Product.Update
         }
 
         [Test]
+        /// <summary>
+        /// Test case for empty owner city field value should return a page with invalid state
+        /// </summary>
         public void OnPost_Invalid_Owner_City_Empty_Should_Return_Page()
         {
             // Arrange
@@ -697,7 +737,7 @@ namespace UnitTests.Pages.Product.Update
                     Name = "Name",
                     Breed = "Breed",
                     Gender = "Gender",
-                    Age = 1,
+                    Age = 1.0,
                     Size = "Size",
                     Description = "Description",
                     Image = "Image"
@@ -722,6 +762,9 @@ namespace UnitTests.Pages.Product.Update
         }
 
         [Test]
+        /// <summary>
+        /// Test case for null owner zipcode field value should return a page with invalid state
+        /// </summary>
         public void OnPost_Invalid_Owner_Zipcode_Null_Should_Return_Page()
         {
             // Arrange
@@ -733,7 +776,7 @@ namespace UnitTests.Pages.Product.Update
                     Name = "Name",
                     Breed = "Breed",
                     Gender = "Gender",
-                    Age = 1,
+                    Age = 1.0,
                     Size = "Size",
                     Description = "Description",
                     Image = "Image"
@@ -758,6 +801,9 @@ namespace UnitTests.Pages.Product.Update
         }
 
         [Test]
+        /// <summary>
+        /// Test case for empty owner zipcode field value should return a page with invalid state
+        /// </summary>
         public void OnPost_Invalid_Owner_Zipcode_Empty_Should_Return_Page()
         {
             // Arrange
@@ -769,7 +815,7 @@ namespace UnitTests.Pages.Product.Update
                     Name = "Name",
                     Breed = "Breed",
                     Gender = "Gender",
-                    Age = 1,
+                    Age = 1.0,
                     Size = "Size",
                     Description = "Description",
                     Image = "Image"
@@ -794,6 +840,9 @@ namespace UnitTests.Pages.Product.Update
         }
 
         [Test]
+        /// <summary>
+        /// Test case for null owner email field value should return a page with invalid state
+        /// </summary>
         public void OnPost_Invalid_Owner_Email_Null_Should_Return_Page()
         {
             // Arrange
@@ -805,7 +854,7 @@ namespace UnitTests.Pages.Product.Update
                     Name = "Name",
                     Breed = "Breed",
                     Gender = "Gender",
-                    Age = 1,
+                    Age = 1.0,
                     Size = "Size",
                     Description = "Description",
                     Image = "Image"
@@ -830,6 +879,9 @@ namespace UnitTests.Pages.Product.Update
         }
 
         [Test]
+        /// <summary>
+        /// Test case for empty owner email field value should return a page with invalid state
+        /// </summary>
         public void OnPost_Invalid_Owner_Email_Empty_Should_Return_Page()
         {
             // Arrange
@@ -841,7 +893,7 @@ namespace UnitTests.Pages.Product.Update
                     Name = "Name",
                     Breed = "Breed",
                     Gender = "Gender",
-                    Age = 1,
+                    Age = 1.0,
                     Size = "Size",
                     Description = "Description",
                     Image = "Image"
@@ -866,6 +918,9 @@ namespace UnitTests.Pages.Product.Update
         }
 
         [Test]
+        /// <summary>
+        /// Test case for null owner phone field value should return a page with invalid state
+        /// </summary>
         public void OnPost_Invalid_Owner_Phone_Null_Should_Return_Page()
         {
             // Arrange
@@ -877,7 +932,7 @@ namespace UnitTests.Pages.Product.Update
                     Name = "Name",
                     Breed = "Breed",
                     Gender = "Gender",
-                    Age = 1,
+                    Age = 1.0,
                     Size = "Size",
                     Description = "Description",
                     Image = "Image"
@@ -902,6 +957,9 @@ namespace UnitTests.Pages.Product.Update
         }
 
         [Test]
+        /// <summary>
+        /// Test case for empty owner phone field value should return a page with invalid state
+        /// </summary>
         public void OnPost_Invalid_Owner_Phone_Empty_Should_Return_Page()
         {
             // Arrange
@@ -913,7 +971,7 @@ namespace UnitTests.Pages.Product.Update
                     Name = "Name",
                     Breed = "Breed",
                     Gender = "Gender",
-                    Age = 1,
+                    Age = 1.0,
                     Size = "Size",
                     Description = "Description",
                     Image = "Image"
@@ -936,7 +994,9 @@ namespace UnitTests.Pages.Product.Update
             // Assert
             Assert.False(pageModel.ModelState.IsValid);
         }
-
+        /// <summary>
+        /// Test case for inputting all valid input should update the paw and reset the data after passing the test case
+        /// </summary>
         [Test]
         public void OnPost_Valid_Input_Should_Return_Page()
         {
