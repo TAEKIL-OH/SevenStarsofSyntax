@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using NUnit.Framework;
 
 using ContosoCrafts.WebSite.Models;
+using System.Runtime.InteropServices;
 
 namespace UnitTests.Pages.Service.JsonFilePawService
 {
@@ -126,5 +127,81 @@ namespace UnitTests.Pages.Service.JsonFilePawService
             TestHelper.PawService.SavePawsDataToJsonFile(InitialPaws);
         }
         #endregion DeletePaw
+
+        #region CreatePaw
+
+        [Test]
+
+        public void CreatePaw_Valid_Paw_Detail_Should_Return_True()
+
+        {
+
+            //Arrange
+
+            var InitialPaws = TestHelper.PawService.GetPaws();
+
+            var testpaw = new PawModel
+
+            {
+
+                Id = "5425251635",
+
+                Paw = new Paw
+
+                {
+
+                    Name = "Test",
+
+                    Breed = "Breed",
+
+                    Gender = "Gender",
+
+                    Age = 1.0,
+
+                    Size = "Size",
+
+                    Description = "Description",
+
+                    Image = "Image"
+
+                },
+
+                Owner = new Owner
+
+                {
+
+                    Name = "Name",
+
+                    Address = "Address",
+
+                    City = "City",
+
+                    Zipcode = "Zipcode",
+
+                    Email = "paw@paw.com",
+
+                    Phone = "Phone"
+
+                }
+
+            };
+
+            //Act
+
+            var result = TestHelper.PawService.CreatePaw(testpaw);
+
+            //Assert
+
+            Assert.IsTrue(result);
+
+            //Reset
+
+            TestHelper.PawService.SavePawsDataToJsonFile(InitialPaws);
+
+        }
+
+        #endregion CreatePaw
+
+
     }
 }
