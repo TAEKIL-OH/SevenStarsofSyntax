@@ -16,13 +16,14 @@ using NUnit.Framework;
 
 using ContosoCrafts.WebSite.Pages;
 using ContosoCrafts.WebSite.Services;
+using ContosoCrafts.WebSite.Pages.Product;
 
 namespace UnitTests.Pages.Index
 {
     /// <summary>
-    /// Unit testing for Index (Home) page tests
+    /// Unit testing for Listing existing paws data in index page
     /// </summary>
-    public class IndexTests
+    public class PawIndexTests
     {
         #region TestSetup
         /// <summary>
@@ -38,11 +39,11 @@ namespace UnitTests.Pages.Index
         public static TempDataDictionary tempData;
         public static PageContext pageContext;
 
-        public static IndexModel pageModel;
+        public static PawIndexModel pageModel;
 
         [SetUp]
         /// <summary>
-        /// Initializes mock Index (Home) page model for testing.
+        /// Initializes mock Update page model for testing.
         /// </summary>
         public void TestInitialize()
         {
@@ -69,12 +70,12 @@ namespace UnitTests.Pages.Index
             mockWebHostEnvironment.Setup(m => m.WebRootPath).Returns("../../../../src/bin/Debug/net7.0/wwwroot");
             mockWebHostEnvironment.Setup(m => m.ContentRootPath).Returns("./data/");
 
-            var MockLoggerDirect = Mock.Of<ILogger<IndexModel>>();
+            var MockLoggerDirect = Mock.Of<ILogger<PawIndexModel>>();
             JsonFilePawService pawService;
 
             pawService = new JsonFilePawService(mockWebHostEnvironment.Object);
 
-            pageModel = new IndexModel(MockLoggerDirect, pawService)
+            pageModel = new PawIndexModel(pawService)
             {
             };
         }
@@ -82,10 +83,10 @@ namespace UnitTests.Pages.Index
         #endregion TestSetup
 
         #region OnGet
-        /// <summary>
-        /// Test case for getting the paws from a valid request
-        /// </summary>
         [Test]
+        /// <summary>
+        /// Test case for requesting valid paws value should return the paws
+        /// </summary>
         public void OnGet_Valid_Should_Return_Paws()
         {
             // Arrange
