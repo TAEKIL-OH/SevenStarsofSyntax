@@ -138,6 +138,19 @@ namespace ContosoCrafts.WebSite.Services
             return true;
         }
 
+        public IEnumerable<PawModel> SearchPaw(String pawName)
+        {
+            var PawsData = GetPaws();
+            var PawToGet = PawsData.Where(P => P.Paw.Name.Equals(pawName));
+
+            if(PawToGet == null) 
+            { 
+                return null; 
+            }
+
+            return PawToGet;
+        }
+
         /// <summary>
         /// SavePawsDataToJsonFile - Take pawmodel as a arguement and save the whole model to the paws.json file
         /// </summary>
