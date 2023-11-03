@@ -4,6 +4,15 @@
 @*@inject JsonFileProductService ProductService*@
 @inject JsonFilePawService PawService
 
+<div>
+    <div class="row my-5">
+        <div class="col">
+            <input class="form-control-sm" type="text"  placeholder="Search Paw" />
+            <button class="btn btn-success">Search</button>
+        </div>
+    </div>
+</div>
+
 <div class="card-columns">
 @foreach (var paw in PawService.GetPaws())
 {
