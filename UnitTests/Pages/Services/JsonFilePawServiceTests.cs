@@ -196,6 +196,33 @@ namespace UnitTests.Pages.Service.JsonFilePawService
         }
         #endregion CreatePaw
 
+        #region SearchPaw
+        [Test]
+        public void SearchPaw_InValid_Paw_Name_Should_Return_Null()
+        {
+            //Arrange
+            var pawToSearch = "Team7";
+
+            //Act
+            var result = TestHelper.PawService.SearchPaw(pawToSearch);
+
+            //Assert
+            Assert.IsNull(result);
+        }
+        [Test]
+        public void SearchPaw_Valid_Paw_Name_Should_Return_Paw()
+        {
+            //Arrange
+            var pawToSearch = "Amy";
+
+            //Act
+            var result = TestHelper.PawService.SearchPaw(pawToSearch);
+
+            //Assert
+            Assert.IsTrue(result.All(paw => paw.Paw.Name.Equals(pawToSearch)));
+        }
+        #endregion SearchPaw
+
 
     }
 }
