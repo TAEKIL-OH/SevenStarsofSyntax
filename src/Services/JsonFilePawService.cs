@@ -141,14 +141,14 @@ namespace ContosoCrafts.WebSite.Services
         public IEnumerable<PawModel> SearchPaw(String pawName)
         {
             var PawsData = GetPaws();
-            var PawToGet = PawsData.Where(P => P.Paw.Name.Equals(pawName));
+            var PawToGet = PawsData.FirstOrDefault(P => P.Paw.Name.Equals(pawName));
 
             if(PawToGet == null) 
             { 
                 return null; 
             }
 
-            return PawToGet;
+            return new List<PawModel> { PawToGet };
         }
 
         /// <summary>
