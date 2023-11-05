@@ -9,7 +9,7 @@
         <div class="col">
             <input class="form-control-sm" type="text" placeholder="Search Paw" />
             <button class="btn btn-success">Search</button>
-            <button class="btn btn-danger">Clear</button>
+            <button @onclick="(e => ClearFilterData())" class="btn btn-danger">Clear</button>
         </div>
     </div>
 </div>
@@ -101,6 +101,13 @@
     //ProductModel selectedProduct;
     PawModel selectedPaw, selectedOwner;
     string selectedPawId;
+    bool SearchData = false;
+
+    void ClearFilterData()
+    {
+        // If the Filter is enabled, set the filter flag
+        SearchData = false;
+    }
 
     void SelectPaw(string pawId)
     {
