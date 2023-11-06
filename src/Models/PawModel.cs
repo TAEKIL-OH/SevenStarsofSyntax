@@ -29,6 +29,9 @@ namespace ContosoCrafts.WebSite.Models
 
         //Getter and Setter of Image
         public string Image { get; set; }
+
+        //Getter and Setter of Feedback
+        public string[] Feedback { get; set; }
     }
 
     //Owner Class
