@@ -151,6 +151,33 @@ namespace ContosoCrafts.WebSite.Services
             return new List<PawModel> { PawToGet };
         }
 
+        public bool AddFeedckToPaw(string id, string message)
+        {
+            //Checking if the paw is existing or not
+            var PawsData = GetPaws();
+            var PawToUpdate = PawsData.FirstOrDefault(P => P.Id.Equals(id));
+            ///If the paw data is null it will return false
+            if (PawToUpdate == null)
+            {
+                return false;
+            }
+            
+            if(PawToUpdate.Paw.Feedback == null)
+            {
+                PawToUpdate.Paw.Feedback = new string[] { message };
+            }
+            else
+            {
+                var feedbacks = PawToUpdate.Paw.Feedback.ToList();
+                feedbacks.Add(message);
+                PawToUpdate.Paw.Feedback = feedbacks.ToArray();
+            }
+
+            SavePawsDataToJsonFile(PawsData);
+
+            return true;
+        }
+
         /// <summary>
         /// SavePawsDataToJsonFile - Take pawmodel as a arguement and save the whole model to the paws.json file
         /// </summary>
