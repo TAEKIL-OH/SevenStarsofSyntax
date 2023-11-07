@@ -102,5 +102,81 @@ namespace UnitTests.Pages.Product.AddFeedback
         }
         #endregion OnGet
 
+        #region OnPost
+        [Test]
+        public void OnPost_InValid_Model_State_Should_Return_Page()
+        {
+            // Arrange
+            pageModel.ModelState.AddModelError("ModelOnly", "Something went wrong");
+            pageModel.message = "Good Paw";
+            pageModel.Paw = new PawModel
+            {
+                Id = "5425261635"
+            };
+
+            // Act
+            var result = pageModel.OnPost(pageModel.message);
+
+            // Assert
+            Assert.IsInstanceOf<PageResult>(result);
+            Assert.IsFalse(pageModel.ModelState.IsValid);
+
+            // Check for the specific error message in the model state.
+
+            Assert.IsTrue(pageModel.ModelState.ContainsKey("ModelOnly"));
+        }
+        [Test]
+        public void OnPost_Invalid_Message_Null_Should_Return_Page()
+        {
+            // Arrange
+            pageModel.Paw = new PawModel
+            {
+                Id = "5425261635"
+            };
+            pageModel.message = null;
+
+            // act
+            var result = pageModel.OnPost(pageModel.message) as RedirectToPageResult;
+
+            // Assert
+            Assert.False(pageModel.ModelState.IsValid);
+        }
+
+        [Test]
+        public void OnPost_Invalid_Message_Empty_Should_Return_Page()
+        {
+            // Arrange
+            pageModel.Paw = new PawModel
+            {
+                Id = "5425261635"
+            };
+            pageModel.message = "";
+
+            // act
+            var result = pageModel.OnPost(pageModel.message) as RedirectToPageResult;
+
+            // Assert
+            Assert.False(pageModel.ModelState.IsValid);
+        }
+        [Test]
+        public void OnPost_Valid_Message_Should_Add_Feedack_And_Redirect_To_Page()
+        {
+            // Arrange
+            pageModel.Paw = new PawModel
+            {
+                Id = "5425261635"
+            };
+            pageModel.message = "Hey Paw";
+
+            // act
+            var result = pageModel.OnPost(pageModel.message) as RedirectToPageResult;
+
+            // Assert
+            Assert.True(pageModel.ModelState.IsValid);
+        }
+
+
+        #endregion OnPost
+
     }
 }
