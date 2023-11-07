@@ -84,7 +84,23 @@ namespace UnitTests.Pages.Product.AddFeedback
 
         #endregion TestSetup
 
-        
+        #region OnGet
+        [Test]
+        /// <summary>
+        /// Test case for requesting valid paw value should return the paw
+        /// </summary>
+        public void OnGet_Valid_Should_Return_Requested_Paw()
+        {
+            // Arrange
+
+            // Act
+            pageModel.OnGet("5425261635");
+
+            // Assert
+            Assert.AreEqual(true, pageModel.ModelState.IsValid);
+            Assert.AreEqual("5425261635", pageModel.Paw.Id);
+        }
+        #endregion OnGet
 
     }
 }
