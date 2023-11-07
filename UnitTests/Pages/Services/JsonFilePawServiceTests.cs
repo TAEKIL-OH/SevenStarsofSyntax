@@ -223,6 +223,62 @@ namespace UnitTests.Pages.Service.JsonFilePawService
         }
         #endregion SearchPaw
 
+        #region AddFeedbackToPaw
+
+        [Test]
+        public void AddFeedbackToPaw_Invalid_Paw_Id_Should_Return_False()
+        {
+            //Arrange
+            var testpaw = new PawModel
+            {
+                Id = "542526163512",
+            };
+            var testMessage = "Great Paw";
+
+            //Act
+            bool result = TestHelper.PawService.AddFeedckToPaw(testpaw.Id, testMessage);
+
+            //Result
+            Assert.IsFalse(result);
+        }
+        [Test]
+        public void AddFeedbackToPaw_Valid_Paw_Id_With_No_Feedback_Should_Return_True()
+        {
+            //Arrange
+            var testpaw = new PawModel
+            {
+                Id = "5425261635",
+            };
+            var testMessage = "Great Paw";
+
+            //Act
+            bool result = TestHelper.PawService.AddFeedckToPaw(testpaw.Id, testMessage);
+
+            //Result
+            Assert.IsTrue(result);
+
+        }
+
+        [Test]
+        public void AddFeedbackToPaw_Valid_Paw_Id_With_Feedback_Should_Add_More_Feedback_And_Return_True()
+        {
+            //Arrange
+            var testpaw = new PawModel
+            {
+                Id = "5425261635",
+            };
+            var testMessage = "Great Paw There";
+
+            //Act
+            bool result = TestHelper.PawService.AddFeedckToPaw(testpaw.Id, testMessage);
+
+            //Result
+            Assert.IsTrue(result);
+
+        }
+
+        #endregion AddFeedbackToPaw
+
 
     }
 }
