@@ -8,35 +8,48 @@
     <div class="row my-5">
         <div class="col">
             <input class="form-control-sm" type="text" placeholder="Search Paw" />
-            <button class="btn btn-success">Search</button>
+            <button @onclick="(e => EnableFilterData())" class="btn btn-success">Search</button>
             <button @onclick="(e => ClearFilterData())" class="btn btn-danger">Clear</button>
         </div>
     </div>
 </div>
 
 <div class="card-columns">
-@foreach (var paw in PawService.GetPaws())
-{
-    <!-- Rendering a card  -->
-    <div class="card">
-        <div class="card-img" style="background-image: url('@paw.Paw.Image');">
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">@paw.Paw.Name</h5>
-        </div>
-        <div class="card-footer">
-            <small class="text-muted"><button @onclick="(e => SelectPaw(paw.Id))" 
-              data-toggle="modal" data-target="#pawModal" class="btn btn-primary">More Info</button>
-            </small>
-            <small class="text-muted">
-                <button @onclick="(e => SelectOwner(paw.Id))"
+    @{
+        var pawList = PawService.GetPaws();
+        if (SearchData)
+        {
+            pawList = PawService.SearchPaw(PawToSearch);
+        }
+
+        @foreach (var paw in pawList)
+        {
+            <!-- Rendering a card  -->
+            <div class="card">
+                <div class="card-img" style="background-image: url('@paw.Paw.Image');">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">@paw.Paw.Name</h5>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">
+                        <button @onclick="(e => SelectPaw(paw.Id))"
+                        data-toggle="modal" data-target="#pawModal" class="btn btn-primary">
+                            More Info
+                        </button>
+                    </small>
+                    <small class="text-muted">
+                        <button @onclick="(e => SelectOwner(paw.Id))"
                         data-toggle="modal" data-target="#ownerModal" class="btn btn-primary">
-                    Owner Info
-                </button>
-            </small>
-        </div>
-    </div>
-}
+                            Owner Info
+                        </button>
+                    </small>
+                </div>
+            </div>
+        }
+
+    }
+
 </div>
 
 <!-- The selected paw information will be rendered in a popup -->
@@ -101,12 +114,24 @@
     //ProductModel selectedProduct;
     PawModel selectedPaw, selectedOwner;
     string selectedPawId;
+    string PawToSearch = null;
     bool SearchData = false;
 
+    void UpdateFilterText(string text)
+    {
+        PawToSearch = text;
+    }
     void ClearFilterData()
     {
         // If the Filter is enabled, set the filter flag
+        PawToSearch = null;
         SearchData = false;
+    }
+
+    void EnableFilterData()
+    {
+        // If the Filter is enabled, set the filter flag
+        SearchData = true;
     }
 
     void SelectPaw(string pawId)
