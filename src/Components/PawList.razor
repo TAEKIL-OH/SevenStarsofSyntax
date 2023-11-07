@@ -71,6 +71,14 @@
                 </div>
                 <div class="card-body">
                     <p class="card-text">@selectedPaw.Paw.Description</p>
+                    @if (selectedPaw.Paw.Feedback != null)
+                    {
+                      <h5 class="card-text"> Feedbacks </h5> 
+                      @foreach (var feedback in selectedPaw.Paw.Feedback)
+                      {
+                        <p class="card-text"> => @feedback </p>
+                      }              
+                    }
                 </div>
               </div>
             </div>
