@@ -21,7 +21,7 @@ using System.Runtime.InteropServices;
 namespace UnitTests.Pages.Product.AddFeedback
 {
     /// <summary>
-    /// Unit testing for Creating a new paw data
+    /// Unit testing for adding a new feedack in paw data
     /// </summary>
     public class AddFeedback
     {
@@ -44,7 +44,7 @@ namespace UnitTests.Pages.Product.AddFeedback
 
         [SetUp]
         /// <summary>
-        /// Initializes mock Create page model for testing.
+        /// Initializes mock AddFeedbackModel page model for testing.
         /// </summary>
         public void TestInitialize()
         {
@@ -86,6 +86,7 @@ namespace UnitTests.Pages.Product.AddFeedback
 
         #region OnGet
         [Test]
+
         /// <summary>
         /// Test case for requesting valid paw value should return the paw
         /// </summary>
@@ -100,10 +101,16 @@ namespace UnitTests.Pages.Product.AddFeedback
             Assert.AreEqual(true, pageModel.ModelState.IsValid);
             Assert.AreEqual("5425261635", pageModel.Paw.Id);
         }
+
         #endregion OnGet
 
         #region OnPost
+
         [Test]
+
+        /// <summary>
+        /// Test case for invalid model state should return the page
+        /// </summary>
         public void OnPost_InValid_Model_State_Should_Return_Page()
         {
             // Arrange
@@ -125,7 +132,12 @@ namespace UnitTests.Pages.Product.AddFeedback
 
             Assert.IsTrue(pageModel.ModelState.ContainsKey("ModelOnly"));
         }
+
         [Test]
+
+        /// <summary>
+        /// Test case for null message should return the page
+        /// </summary>
         public void OnPost_Invalid_Message_Null_Should_Return_Page()
         {
             // Arrange
@@ -143,6 +155,10 @@ namespace UnitTests.Pages.Product.AddFeedback
         }
 
         [Test]
+
+        /// <summary>
+        /// Test case for empty message should return the page
+        /// </summary>
         public void OnPost_Invalid_Message_Empty_Should_Return_Page()
         {
             // Arrange
@@ -158,10 +174,39 @@ namespace UnitTests.Pages.Product.AddFeedback
             // Assert
             Assert.False(pageModel.ModelState.IsValid);
         }
+
         [Test]
+
+        /// <summary>
+        /// Test case for invalid paw id should return the page
+        /// </summary>
+        public void OnPost_Invalid_Paw_Should_Return_Page()
+        {
+            // Arrange
+            pageModel.Paw = new PawModel
+            {
+                Id = "542526163534"
+            };
+            pageModel.message = "Test";
+
+            // act
+            var result = pageModel.OnPost(pageModel.message) as PageResult;
+
+            // Assert
+            Assert.False(pageModel.ModelState.IsValid);
+            Assert.IsInstanceOf<PageResult>(result);
+            Assert.True(pageModel.ModelState.ContainsKey("ModelOnly"));
+        }
+
+        [Test]
+
+        /// <summary>
+        /// Test case for valid message should add feedack return to the page and reset the data
+        /// </summary>
         public void OnPost_Valid_Message_Should_Add_Feedack_And_Redirect_To_Page()
         {
             // Arrange
+            var InitialPaws = pageModel.PawService.GetPaws();
             pageModel.Paw = new PawModel
             {
                 Id = "5425261635"
@@ -173,10 +218,12 @@ namespace UnitTests.Pages.Product.AddFeedback
 
             // Assert
             Assert.True(pageModel.ModelState.IsValid);
+
+            //Reset
+            pageModel.PawService.SavePawsDataToJsonFile(InitialPaws);
         }
 
-
         #endregion OnPost
-
     }
+
 }
