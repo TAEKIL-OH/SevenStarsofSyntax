@@ -17,12 +17,14 @@ using ContosoCrafts.WebSite.Services;
 
 namespace UnitTests.Pages.Product.Read
 {
+
     /// <summary>
     /// Unit testing for Read page tests
     /// </summary>
     public class ReadTests
     {
         #region TestSetup
+
         /// <summary>
         /// Variales to be used while testing
         /// </summary>
@@ -39,6 +41,7 @@ namespace UnitTests.Pages.Product.Read
         public static ReadModel pageModel;
 
         [SetUp]
+
         /// <summary>
         /// Initializes mock Read page model for testing.
         /// </summary>
@@ -80,6 +83,7 @@ namespace UnitTests.Pages.Product.Read
         #endregion TestSetup
 
         #region OnGet
+
         /// <summary>
         /// Test case - Get valid paw data from a valid request
         /// </summary>
@@ -95,6 +99,8 @@ namespace UnitTests.Pages.Product.Read
             Assert.AreEqual(true, pageModel.ModelState.IsValid);
             Assert.AreEqual("Amy", pageModel.Paw.Paw.Name);
         }
+
         #endregion OnGet
     }
+
 }
