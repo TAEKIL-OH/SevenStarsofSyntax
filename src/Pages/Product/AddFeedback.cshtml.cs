@@ -9,48 +9,78 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ContosoCrafts.WebSite.Pages.Product
 {
+    /// <summary>
+    /// This AddFeedackModel is the class for adding feedback in paw data
+    /// </summary>
 	public class AddFeedbackModel : PageModel
     {
+        /// <summary>
+        /// Constructor of AddFeedackModel 
+        /// </summary>
+        /// <param name="pawService"></param>
         public AddFeedbackModel(JsonFilePawService pawService)
         {
             PawService = pawService;
         }
 
+        //Getter of paw service
         public JsonFilePawService PawService { get; }
 
+
         [BindProperty]
+        //Getter and setter of paw model
         public PawModel Paw { get; set; }
+        //Getter and setter of message field
         public string message { get; set; }
 
+        /// <summary>
+        /// REST Get request for the particular paw
+        /// </summary>
+        /// <param name="id"></param>
         public void OnGet(string id)
         {
             Paw = PawService.GetPaws().FirstOrDefault(m => m.Id.Equals(id));
         }
 
+        /// <summary>
+        /// REST OnPost method to add a new feedback data
+        /// </summary>
+        /// <returns></returns>
         public IActionResult OnPost(string message)
         {
+            // If model state is invalid then it will return to the page
             if (!ModelState.IsValid)
             {
                 ModelState.AddModelError("ModelOnly", "Something went wrong");
                 return Page();
             }
 
+            // If message field is null then it will return to the page with validation error
             if (message == null)
             {
                 ModelState.AddModelError("message", "Please donot keep this field empty");
                 return Page();
             }
 
+            // If message field is empty then it will return to the page with validation error
             if (message == "")
             {
                 ModelState.AddModelError("message", "Please donot keep this field empty");
                 return Page();
             }
 
-            bool feedback = PawService.AddFeedckToPaw(Paw.Id, message);
-            return RedirectToPage("./Index");
+            // It will check that feedack is added if yes then it will redirect to index page otherwise it will return to current page with error
+            bool isFeedbackAdded = PawService.AddFeedckToPaw(Paw.Id, message);
 
+            if (isFeedbackAdded == false)
+            {
+                ModelState.AddModelError("ModelOnly", "Something went wrong");
+                return Page();
+            }
+
+            return RedirectToPage("./Index");
         }
 
     }
+
 }
