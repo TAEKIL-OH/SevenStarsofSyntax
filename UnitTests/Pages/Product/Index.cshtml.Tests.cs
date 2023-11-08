@@ -20,12 +20,14 @@ using ContosoCrafts.WebSite.Pages.Product;
 
 namespace UnitTests.Pages.Index
 {
+
     /// <summary>
     /// Unit testing for Listing existing paws data in index page
     /// </summary>
     public class PawIndexTests
     {
         #region TestSetup
+
         /// <summary>
         /// Variales to be used while testing
         /// </summary>
@@ -42,6 +44,7 @@ namespace UnitTests.Pages.Index
         public static PawIndexModel pageModel;
 
         [SetUp]
+
         /// <summary>
         /// Initializes mock Update page model for testing.
         /// </summary>
@@ -84,6 +87,7 @@ namespace UnitTests.Pages.Index
 
         #region OnGet
         [Test]
+
         /// <summary>
         /// Test case for requesting valid paws value should return the paws
         /// </summary>
@@ -98,6 +102,8 @@ namespace UnitTests.Pages.Index
             Assert.AreEqual(true, pageModel.ModelState.IsValid);
             Assert.AreEqual(20, pageModel.Paws.ToList().Count);
         }
+
         #endregion OnGet
     }
+
 }
