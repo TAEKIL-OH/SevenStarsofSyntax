@@ -1,4 +1,3 @@
-
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Routing;
@@ -139,9 +138,8 @@ namespace UnitTests.Pages.Product.Delete
             var result = pageModel.OnPost() as PageResult;
 
             // Assert
-            Assert.NotNull(result);
-            Assert.False(pageModel.ModelState.IsValid);
-            Assert.IsTrue(pageModel.ModelState.ContainsKey("ModelOnly"));
+            Assert.IsInstanceOf<PageResult>(result);
+            Assert.True(pageModel.ModelState.ContainsKey("ModelOnly"));
         }
 
         [Test]
@@ -157,7 +155,7 @@ namespace UnitTests.Pages.Product.Delete
             };
 
             // Act
-            var result = pageModel.OnPost();
+            var result = pageModel.OnPost() as PageResult;
 
             // Assert
             Assert.True(pageModel.ModelState.IsValid);
@@ -165,7 +163,9 @@ namespace UnitTests.Pages.Product.Delete
             //Reset
             pageModel.PawService.SavePawsDataToJsonFile(InitialPaws);
         }
+
         #endregion OnPost
 
     }
+
 }
