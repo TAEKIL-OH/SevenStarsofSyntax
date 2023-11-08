@@ -13,6 +13,7 @@ namespace UnitTests.Controllers
     /// </summary>
     public class PawsControllerTests
     {
+
         //Creating and instance
         public static PawsController pawController;
 
@@ -28,6 +29,7 @@ namespace UnitTests.Controllers
         #endregion TestSetup
 
         #region Get
+
         /// <summary>
         /// Testing if get is valid should return paws list
         /// </summary>
@@ -59,8 +61,8 @@ namespace UnitTests.Controllers
                 Assert.AreEqual(typeof(string), data.GetType());
             }
         }
+
         #endregion Get
-
-
     }
+
 }
