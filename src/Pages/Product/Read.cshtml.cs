@@ -35,5 +35,7 @@ namespace ContosoCrafts.WebSite.Pages.Product
         {
             Paw = PawService.GetPaws().FirstOrDefault(m => m.Id.Equals(id));
         }
+
     }
+
 }
