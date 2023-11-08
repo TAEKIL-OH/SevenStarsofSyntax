@@ -50,16 +50,13 @@ namespace ContosoCrafts.WebSite.Pages.Product
                 return Page();
             }
 
-            //If the paw dosent exists then return to the page with error
-            var CheckPaw = PawService.GetPaws().FirstOrDefault(m => m.Id.Equals(Paw.Id));
-            if (CheckPaw == null)
+            //If the paw exists then it will delete that paw and redirect to index page
+            bool isValidDelete = PawService.DeletePaw(Paw.Id);
+            if (isValidDelete == false)
             {
-                ModelState.AddModelError("ModelOnly", "Cannot find this paw");
+                ModelState.AddModelError("ModelOnly", "Something went wrong");
                 return Page();
             }
-
-            //If the paw exists then it will delete that paw and redirect to index page
-            PawService.DeletePaw(CheckPaw.Id);
             return RedirectToPage("./Index");
         }
     }
