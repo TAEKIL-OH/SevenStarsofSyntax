@@ -218,5 +218,7 @@ namespace ContosoCrafts.WebSite.Pages.Product
             PawService.CreatePaw(Paw);
             return RedirectToPage("./Index");
         }
+
     }
+
 }
