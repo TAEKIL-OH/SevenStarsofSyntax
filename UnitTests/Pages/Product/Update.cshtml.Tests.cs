@@ -1,4 +1,3 @@
-
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Routing;
@@ -26,6 +25,7 @@ namespace UnitTests.Pages.Product.Update
     public class UpdateTests
     {
         #region TestSetup
+
         /// <summary>
         /// Variales to be used while testing
         /// </summary>
@@ -42,6 +42,7 @@ namespace UnitTests.Pages.Product.Update
         public static UpdateModel pageModel;
 
         [SetUp]
+
         /// <summary>
         /// Initializes mock Update page model for testing.
         /// </summary>
@@ -85,6 +86,7 @@ namespace UnitTests.Pages.Product.Update
 
         #region OnGet
         [Test]
+
         /// <summary>
         /// Test case for requesting valid paw value should return the paw
         /// </summary>
@@ -99,10 +101,13 @@ namespace UnitTests.Pages.Product.Update
             Assert.AreEqual(true, pageModel.ModelState.IsValid);
             Assert.AreEqual("Amy", pageModel.Paw.Paw.Name);
         }
+
         #endregion OnGet
 
         #region OnPost
+
         [Test]
+
         /// <summary>
         /// Test case for invalid model state that should return a page
         /// </summary>
@@ -120,7 +125,9 @@ namespace UnitTests.Pages.Product.Update
             // Check for the specific error message in the model state.
             Assert.IsTrue(pageModel.ModelState.ContainsKey("ModelOnly"));
         }
+
         [Test]
+
         /// <summary>
         /// Test case for null name field value should return a page with invalid state
         /// </summary>
@@ -160,6 +167,7 @@ namespace UnitTests.Pages.Product.Update
         }
 
         [Test]
+
         /// <summary>
         /// Test case for empty name field value should return a page with invalid state
         /// </summary>
@@ -197,6 +205,7 @@ namespace UnitTests.Pages.Product.Update
             // Assert
             Assert.False(pageModel.ModelState.IsValid);
         }
+
         /// <summary>
         /// Test case for null breed field value should return a page with invalid state
         /// </summary>
@@ -276,6 +285,7 @@ namespace UnitTests.Pages.Product.Update
         }
 
         [Test]
+
         /// <summary>
         /// Test case for invalid age field value should return a page with invalid state
         /// </summary>
@@ -312,6 +322,7 @@ namespace UnitTests.Pages.Product.Update
         }
 
         [Test]
+
         /// <summary>
         /// Test case for null size field value should return a page with invalid state
         /// </summary>
@@ -351,6 +362,7 @@ namespace UnitTests.Pages.Product.Update
         }
 
         [Test]
+
         /// <summary>
         /// Test case for empty size field value should return a page with invalid state
         /// </summary>
@@ -390,6 +402,7 @@ namespace UnitTests.Pages.Product.Update
         }
 
         [Test]
+
         /// <summary>
         /// Test case for null description field value should return a page with invalid state
         /// </summary>
@@ -429,6 +442,7 @@ namespace UnitTests.Pages.Product.Update
         }
 
         [Test]
+
         /// <summary>
         /// Test case for empty description field value should return a page with invalid state
         /// </summary>
@@ -468,6 +482,7 @@ namespace UnitTests.Pages.Product.Update
         }
 
         [Test]
+
         /// <summary>
         /// Test case for null image field value should return a page with invalid state
         /// </summary>
@@ -507,6 +522,7 @@ namespace UnitTests.Pages.Product.Update
         }
 
         [Test]
+
         /// <summary>
         /// Test case for empty image field value should return a page with invalid state
         /// </summary>
@@ -546,6 +562,7 @@ namespace UnitTests.Pages.Product.Update
         }
 
         [Test]
+
         /// <summary>
         /// Test case for null owner name field value should return a page with invalid state
         /// </summary>
@@ -585,6 +602,7 @@ namespace UnitTests.Pages.Product.Update
         }
 
         [Test]
+
         /// <summary>
         /// Test case for empty owner name field value should return a page with invalid state
         /// </summary>
@@ -624,6 +642,7 @@ namespace UnitTests.Pages.Product.Update
         }
 
         [Test]
+
         /// <summary>
         /// Test case for null owner address field value should return a page with invalid state
         /// </summary>
@@ -663,6 +682,7 @@ namespace UnitTests.Pages.Product.Update
         }
 
         [Test]
+
         /// <summary>
         /// Test case for empty owner address field value should return a page with invalid state
         /// </summary>
@@ -702,6 +722,7 @@ namespace UnitTests.Pages.Product.Update
         }
 
         [Test]
+
         /// <summary>
         /// Test case for null owner city field value should return a page with invalid state
         /// </summary>
@@ -741,6 +762,7 @@ namespace UnitTests.Pages.Product.Update
         }
 
         [Test]
+
         /// <summary>
         /// Test case for empty owner city field value should return a page with invalid state
         /// </summary>
@@ -780,6 +802,7 @@ namespace UnitTests.Pages.Product.Update
         }
 
         [Test]
+
         /// <summary>
         /// Test case for null owner zipcode field value should return a page with invalid state
         /// </summary>
@@ -819,6 +842,7 @@ namespace UnitTests.Pages.Product.Update
         }
 
         [Test]
+
         /// <summary>
         /// Test case for empty owner zipcode field value should return a page with invalid state
         /// </summary>
@@ -858,6 +882,7 @@ namespace UnitTests.Pages.Product.Update
         }
 
         [Test]
+
         /// <summary>
         /// Test case for null owner email field value should return a page with invalid state
         /// </summary>
@@ -1012,6 +1037,52 @@ namespace UnitTests.Pages.Product.Update
             // Assert
             Assert.False(pageModel.ModelState.IsValid);
         }
+
+        /// <summary>
+        /// Test case for inputting all valid input should update the paw and reset the data after passing the test case
+        /// </summary>
+        [Test]
+        public void OnPost_InValid_Input_Should_Return_Page()
+        {
+            // Arrange
+            var InitialPaws = pageModel.PawService.GetPaws();
+
+            pageModel.Paw = new PawModel
+            {
+                Id = "id",
+                Paw = new Paw
+                {
+                    Name = "Name",
+                    Breed = "Breed",
+                    Gender = "Gender",
+                    Age = 1,
+                    Size = "Size",
+                    Description = "Description",
+                    Image = "Image"
+                },
+                Owner = new Owner
+                {
+                    Name = "Name",
+                    Address = "Address",
+                    City = "City",
+                    Zipcode = "Zipcode",
+                    Email = "Email",
+                    Phone = "Phone"
+                }
+
+            };
+
+            // act
+            var result = pageModel.OnPost() as RedirectToPageResult;
+
+            // Assert
+            Assert.False(pageModel.ModelState.IsValid);
+
+            //Reset
+            pageModel.PawService.SavePawsDataToJsonFile(InitialPaws);
+
+        }
+
         /// <summary>
         /// Test case for inputting all valid input should update the paw and reset the data after passing the test case
         /// </summary>
@@ -1023,7 +1094,7 @@ namespace UnitTests.Pages.Product.Update
 
             pageModel.Paw = new PawModel
             {
-                Id = "id",
+                Id = "5425261635",
                 Paw = new Paw
                 {
                     Name = "Name",
