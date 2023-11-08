@@ -213,7 +213,7 @@ namespace ContosoCrafts.WebSite.Pages.Product
 
             //If the validation are passes then update the paw and redirect to Index page else return to current page with error
             bool isValidUpdate = PawService.UpdatePaw(Paw);
-            if(isValidUpdate == false)
+            if (isValidUpdate == false)
             {
                 ModelState.AddModelError("ModelOnly", "Something went wrong");
                 return Page();
