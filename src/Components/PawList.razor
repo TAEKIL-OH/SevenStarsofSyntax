@@ -1,7 +1,6 @@
 @using ContosoCrafts.WebSite.Models
 @using ContosoCrafts.WebSite.Services
 @using Microsoft.AspNetCore.Components.Web
-@*@inject JsonFileProductService ProductService*@
 @inject JsonFilePawService PawService
 
 <div>
@@ -17,6 +16,8 @@
 <div class="card-columns">
     @{
         var pawList = PawService.GetPaws();
+
+        // If filter is enabled, search the data set to the filter string
         if (SearchData)
         {
             pawList = PawService.SearchPaw(PawToSearch);
@@ -76,7 +77,7 @@
                       <h5 class="card-text"> Feedbacks </h5> 
                       @foreach (var feedback in selectedPaw.Paw.Feedback)
                       {
-                        <p class="card-text"> => @feedback </p>
+                        <p class="card-text"> => @feedbackâ€ </p>
                       }              
                     }
                 </div>
@@ -129,6 +130,7 @@
     {
         PawToSearch = text;
     }
+
     void ClearFilterData()
     {
         // If the Filter is enabled, set the filter flag
@@ -152,4 +154,5 @@
         selectedPawId = pawId;
         selectedOwner = PawService.GetPaws().First(x => x.Id == pawId);
     }
+
 }
