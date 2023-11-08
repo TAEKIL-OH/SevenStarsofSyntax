@@ -6,7 +6,7 @@
 <div>
     <div class="row my-5">
         <div class="col">
-            <input class="form-control-sm" type="text" placeholder="Search Paw" />
+            <input class="form-control-sm" type="text" @onchange="(e) => UpdateFilterText(e.Value.ToString())" value="@PawToSearch" placeholder="Search Paw" />
             <button @onclick="(e => EnableFilterData())" class="btn btn-success">Search</button>
             <button @onclick="(e => ClearFilterData())" class="btn btn-danger">Clear</button>
         </div>
