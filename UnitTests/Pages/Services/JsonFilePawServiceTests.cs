@@ -282,6 +282,10 @@ namespace UnitTests.Pages.Service.JsonFilePawService
             var testpaw = new PawModel
             {
                 Id = "5425261635",
+                Paw = new Paw
+                {
+                    Feedback = null
+                }
             };
             var testMessage = "Great Paw";
 
@@ -305,7 +309,11 @@ namespace UnitTests.Pages.Service.JsonFilePawService
             //Arrange
             var testpaw = new PawModel
             {
-                Id = "5425261635",
+                Id = "7115673952",
+                Paw = new Paw
+                {
+                    Feedback = new string[] {"Good Paw"}
+                }
             };
             var testMessage = "Great Paw There";
 
