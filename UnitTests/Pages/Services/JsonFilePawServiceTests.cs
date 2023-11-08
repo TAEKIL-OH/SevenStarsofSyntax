@@ -21,6 +21,7 @@ namespace UnitTests.Pages.Service.JsonFilePawService
         #endregion TestSetup
 
         #region UpdatePaw
+
         /// <summary>
         /// REST Initialize an invalid paw id
         /// Test the invalid paw data
@@ -60,6 +61,7 @@ namespace UnitTests.Pages.Service.JsonFilePawService
             //Assert
             Assert.IsFalse(result);
         }
+
         /// <summary>
         /// REST Initialize an valid paw id
         /// Test the valid paw data
@@ -99,9 +101,11 @@ namespace UnitTests.Pages.Service.JsonFilePawService
             //Assert
             Assert.IsTrue(result);
         }
+
         #endregion UpdatePaw
 
         #region DeletePaw
+
         /// <summary>
         /// REST Initialize an invalid paw id
         /// Test the invalid paw data
@@ -122,6 +126,7 @@ namespace UnitTests.Pages.Service.JsonFilePawService
             //Assert
             Assert.IsFalse(result);
         }
+
         /// <summary>
         /// REST Initialize an valid paw id
         /// Test the valid paw data
@@ -150,6 +155,7 @@ namespace UnitTests.Pages.Service.JsonFilePawService
         #endregion DeletePaw
 
         #region CreatePaw
+        
         /// <summary>
         /// REST Initialize an paw data
         /// Test the paw data
@@ -194,10 +200,18 @@ namespace UnitTests.Pages.Service.JsonFilePawService
             //Reset
             TestHelper.PawService.SavePawsDataToJsonFile(InitialPaws);
         }
+
         #endregion CreatePaw
 
         #region SearchPaw
+
         [Test]
+
+        /// <summary>
+        /// Initialize an invalid paw name
+        /// Test the paw data
+        /// The result should be null
+        /// </summary>
         public void SearchPaw_InValid_Paw_Name_Should_Return_Null()
         {
             //Arrange
@@ -209,7 +223,14 @@ namespace UnitTests.Pages.Service.JsonFilePawService
             //Assert
             Assert.IsNull(result);
         }
+
         [Test]
+
+        /// <summary>
+        /// Initialize an valid paw name
+        /// Test the paw data
+        /// The result should be paw data
+        /// </summary>
         public void SearchPaw_Valid_Paw_Name_Should_Return_Paw()
         {
             //Arrange
@@ -221,11 +242,17 @@ namespace UnitTests.Pages.Service.JsonFilePawService
             //Assert
             Assert.IsTrue(result.All(paw => paw.Paw.Name.Equals(pawToSearch)));
         }
+
         #endregion SearchPaw
 
         #region AddFeedbackToPaw
-
         [Test]
+
+        /// <summary>
+        /// Initialize an invalid paw id
+        /// Test the paw data
+        /// The result should be false
+        /// </summary>
         public void AddFeedbackToPaw_Invalid_Paw_Id_Should_Return_False()
         {
             //Arrange
@@ -241,7 +268,14 @@ namespace UnitTests.Pages.Service.JsonFilePawService
             //Result
             Assert.IsFalse(result);
         }
+
         [Test]
+        
+        /// <summary>
+        /// Initialize an valid paw id with no feedback field
+        /// Test the paw data
+        /// The result should be true
+        /// </summary>
         public void AddFeedbackToPaw_Valid_Paw_Id_With_No_Feedback_Should_Return_True()
         {
             //Arrange
@@ -260,6 +294,12 @@ namespace UnitTests.Pages.Service.JsonFilePawService
         }
 
         [Test]
+
+        /// <summary>
+        /// Initialize an valid paw id
+        /// Test the paw data
+        /// The result should be true
+        /// </summary>
         public void AddFeedbackToPaw_Valid_Paw_Id_With_Feedback_Should_Add_More_Feedback_And_Return_True()
         {
             //Arrange
@@ -274,11 +314,9 @@ namespace UnitTests.Pages.Service.JsonFilePawService
 
             //Result
             Assert.IsTrue(result);
-
         }
 
         #endregion AddFeedbackToPaw
-
-
     }
+
 }
