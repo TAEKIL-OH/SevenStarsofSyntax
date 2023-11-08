@@ -138,34 +138,52 @@ namespace ContosoCrafts.WebSite.Services
             return true;
         }
 
+        /// <summary>
+        /// Search Paw :- Search the existing paw and return the data
+        /// </summary>
+        /// <param name="pawName"></param>
+        /// <returns></returns>
         public IEnumerable<PawModel> SearchPaw(String pawName)
         {
+            //Checking if the paw exists
             var PawsData = GetPaws();
             var PawToGet = PawsData.FirstOrDefault(P => P.Paw.Name.Equals(pawName));
 
-            if(PawToGet == null) 
-            { 
-                return null; 
+            //If the paw does not exist then return null
+            if (PawToGet == null)
+            {
+                return null;
             }
 
+            //Else return the data
             return new List<PawModel> { PawToGet };
         }
 
+        /// <summary>
+        /// AddFeedback will add feedback to an existing paw data
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="message"></param>
+        /// <returns></returns>
         public bool AddFeedckToPaw(string id, string message)
         {
             //Checking if the paw is existing or not
             var PawsData = GetPaws();
             var PawToUpdate = PawsData.FirstOrDefault(P => P.Id.Equals(id));
+
             ///If the paw data is null it will return false
             if (PawToUpdate == null)
             {
                 return false;
             }
-            
-            if(PawToUpdate.Paw.Feedback == null)
+
+            //If the feedback field is not present then make it and add the message
+            if (PawToUpdate.Paw.Feedback == null)
             {
                 PawToUpdate.Paw.Feedback = new string[] { message };
             }
+
+            //else append the message in the array
             else
             {
                 var feedbacks = PawToUpdate.Paw.Feedback.ToList();
@@ -173,6 +191,7 @@ namespace ContosoCrafts.WebSite.Services
                 PawToUpdate.Paw.Feedback = feedbacks.ToArray();
             }
 
+            //Save the data to json file
             SavePawsDataToJsonFile(PawsData);
 
             return true;
@@ -191,5 +210,7 @@ namespace ContosoCrafts.WebSite.Services
 
             File.WriteAllText(JsonFileName, json);
         }
+
     }
+
 }
