@@ -197,6 +197,78 @@ namespace ContosoCrafts.WebSite.Services
             return true;
         }
 
+        public bool AddMeetup(
+            string pawOne,
+            string pawTwo,
+            string dateOfMeetup,
+            string location,
+            string message)
+        {
+            var PawsData = GetPaws();
+            var PawToUpdate = PawsData.FirstOrDefault(P => P.Id.Equals(pawOne));
+            var SecondPawToUpdate = PawsData.FirstOrDefault(P => P.Id.Equals(pawTwo));
+
+            if (PawToUpdate == null)
+            {
+                return false;
+            }
+
+            if (PawToUpdate.BookingLists == null)
+            {
+                PawToUpdate.BookingLists.Add(new BookingModel()
+                {
+                    PawToMeet = pawTwo,
+                    DateOfMeetup = dateOfMeetup,
+                    LocationOfMeetup = location,
+                    SpecialMessage = message
+                });
+            }
+
+            else
+            {
+                List<BookingModel> meetups = PawToUpdate.BookingLists;
+                meetups.Add(new BookingModel()
+                {
+                    PawToMeet = pawTwo,
+                    DateOfMeetup = dateOfMeetup,
+                    LocationOfMeetup = location,
+                    SpecialMessage = message
+                });
+            }
+
+            if (SecondPawToUpdate == null)
+            {
+                return false;
+            }
+
+            if (SecondPawToUpdate.BookingLists == null)
+            {
+                SecondPawToUpdate.BookingLists.Add(new BookingModel()
+                {
+                    PawToMeet = pawOne,
+                    DateOfMeetup = dateOfMeetup,
+                    LocationOfMeetup = location,
+                    SpecialMessage = message
+                });
+            }
+
+            else
+            {
+                List<BookingModel> meetups = SecondPawToUpdate.BookingLists;
+                meetups.Add(new BookingModel()
+                {
+                    PawToMeet = pawOne,
+                    DateOfMeetup = dateOfMeetup,
+                    LocationOfMeetup = location,
+                    SpecialMessage = message
+                });
+            }
+
+            SavePawsDataToJsonFile(PawsData);
+
+            return true;
+        }
+
         /// <summary>
         /// SavePawsDataToJsonFile - Take pawmodel as a arguement and save the whole model to the paws.json file
         /// </summary>
