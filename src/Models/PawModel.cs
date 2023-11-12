@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using System.Collections.Generic;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
 namespace ContosoCrafts.WebSite.Models
@@ -67,6 +68,8 @@ namespace ContosoCrafts.WebSite.Models
 
         //Getter and Setter of Owner Class
         public Owner Owner { get; set; }
+
+        public List<MeetupModel> BookingLists { get; set; } = new List<MeetupModel>();
 
         //Serializes PawModel Model to a String
         public override string ToString() => JsonSerializer.Serialize<PawModel>(this);
