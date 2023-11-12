@@ -215,7 +215,7 @@ namespace ContosoCrafts.WebSite.Services
 
             if (PawToUpdate.BookingLists == null)
             {
-                PawToUpdate.BookingLists.Add(new BookingModel()
+                PawToUpdate.BookingLists.Add(new MeetupModel()
                 {
                     PawToMeet = pawTwo,
                     DateOfMeetup = dateOfMeetup,
@@ -226,8 +226,8 @@ namespace ContosoCrafts.WebSite.Services
 
             else
             {
-                List<BookingModel> meetups = PawToUpdate.BookingLists;
-                meetups.Add(new BookingModel()
+                List<MeetupModel> meetups = PawToUpdate.BookingLists;
+                meetups.Add(new MeetupModel()
                 {
                     PawToMeet = pawTwo,
                     DateOfMeetup = dateOfMeetup,
@@ -243,7 +243,7 @@ namespace ContosoCrafts.WebSite.Services
 
             if (SecondPawToUpdate.BookingLists == null)
             {
-                SecondPawToUpdate.BookingLists.Add(new BookingModel()
+                SecondPawToUpdate.BookingLists.Add(new MeetupModel()
                 {
                     PawToMeet = pawOne,
                     DateOfMeetup = dateOfMeetup,
@@ -254,8 +254,8 @@ namespace ContosoCrafts.WebSite.Services
 
             else
             {
-                List<BookingModel> meetups = SecondPawToUpdate.BookingLists;
-                meetups.Add(new BookingModel()
+                List<MeetupModel> meetups = SecondPawToUpdate.BookingLists;
+                meetups.Add(new MeetupModel()
                 {
                     PawToMeet = pawOne,
                     DateOfMeetup = dateOfMeetup,
