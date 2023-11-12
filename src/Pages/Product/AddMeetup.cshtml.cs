@@ -19,7 +19,11 @@ namespace ContosoCrafts.WebSite.Pages.Product
         
         [BindProperty]
         public IEnumerable<PawModel> Paw { get; set; }
-        
+        public string pawOne { get; set; }
+        public string pawToMeet { get; set; }
+        public string meetupDate { get; set; }
+        public string meetupLocation { get; set; }
+        public string message { get; set; }
 
         public void OnGet()
         {
