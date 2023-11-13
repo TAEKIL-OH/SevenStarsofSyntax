@@ -28,4 +28,23 @@
             <p class="card-text"> Phone :- @Model.Paw.Owner.Phone </p>
         </div>
     </div>
+
+    @if (Model.Paw.Paw.Feedback != null)
+    {
+        <h1>Feedback(s) </h1>
+
+        <div class="content">
+            <div class="card my-5">
+                <div class="card-header">
+                    <h5>Feedbacks for @Model.Paw.Paw.Name</h5>
+                </div>
+                <div class="card-body">
+                    @foreach (var feedback in Model.Paw.Paw.Feedback)
+                    {
+                        <p class="card-text"> => @feedback</p>
+                    }
+                </div>
+            </div>
+        </div>
+    }
 </div>
