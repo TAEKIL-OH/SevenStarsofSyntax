@@ -205,17 +205,17 @@ namespace ContosoCrafts.WebSite.Services
             string message)
         {
             var PawsData = GetPaws();
-            var PawToUpdate = PawsData.FirstOrDefault(P => P.Id.Equals(pawOne));
+            var FirstPawToUpdate = PawsData.FirstOrDefault(P => P.Id.Equals(pawOne));
             var SecondPawToUpdate = PawsData.FirstOrDefault(P => P.Id.Equals(pawTwo));
 
-            if (PawToUpdate == null)
+            if (FirstPawToUpdate == null)
             {
                 return false;
             }
 
-            if (PawToUpdate.BookingLists == null)
+            if (FirstPawToUpdate.BookingLists == null)
             {
-                PawToUpdate.BookingLists.Add(new MeetupModel()
+                FirstPawToUpdate.BookingLists.Add(new MeetupModel()
                 {
                     PawToMeet = pawTwo,
                     DateOfMeetup = dateOfMeetup,
@@ -226,7 +226,7 @@ namespace ContosoCrafts.WebSite.Services
 
             else
             {
-                List<MeetupModel> meetups = PawToUpdate.BookingLists;
+                List<MeetupModel> meetups = FirstPawToUpdate.BookingLists;
                 meetups.Add(new MeetupModel()
                 {
                     PawToMeet = pawTwo,
