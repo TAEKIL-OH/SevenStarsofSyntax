@@ -325,6 +325,96 @@ namespace UnitTests.Pages.Service.JsonFilePawService
         }
 
         #endregion AddFeedbackToPaw
+
+        #region AddMeetup
+
+        [Test]
+
+        public void AddMeetup_Invalid_First_Paw_Id_Should_Return_False()
+        {
+            //Arrange
+            string pawOne = "542526163587";
+            string pawTwo = "7115673952";
+            string dateOfMeetup = "11/13/2023";
+            string location = "Seattle, WA";
+            string message = "Nothing";
+
+
+            //Act
+            bool result = TestHelper.PawService.AddMeetup(pawOne,pawTwo,dateOfMeetup,location,message);
+
+            //Result
+            Assert.IsFalse(result);
+        }
+
+        [Test]
+
+        public void AddMeetup_Invalid_Second_Paw_Id_Should_Return_False()
+        {
+            //Arrange
+            string pawOne = "5425261635";
+            string pawTwo = "7115673952456";
+            string dateOfMeetup = "11/13/2023";
+            string location = "Seattle, WA";
+            string message = "Nothing";
+
+
+            //Act
+            bool result = TestHelper.PawService.AddMeetup(pawOne, pawTwo, dateOfMeetup, location, message);
+
+            //Result
+            Assert.IsFalse(result);
+        }
+
+        [Test]
+
+        public void AddFeedbackToPaw_Valid_First_Paw_Id_With_No_Meetup_Should_Return_True()
+        {
+            //Arrange
+            var InitialPaws = TestHelper.PawService.GetPaws();
+
+            string pawOne = "7623900396";
+            string pawTwo = "3593932834";
+            string dateOfMeetup = "11/13/2023";
+            string location = "Seattle, WA";
+            string message = "Nothing";
+
+            //Act
+            bool result = TestHelper.PawService.AddMeetup(pawOne, pawTwo, dateOfMeetup, location, message);
+
+
+            //Result
+            Assert.IsTrue(result);
+
+            //Reset
+            TestHelper.PawService.SavePawsDataToJsonFile(InitialPaws);
+        }
+
+        [Test]
+
+        public void AddFeedbackToPaw_Valid_Paw_Id_With_Meetup_Should_Add_More_Meetups_And_Return_True()
+        {
+            //Arrange
+            var InitialPaws = TestHelper.PawService.GetPaws();
+
+            string pawOne = "7623900396";
+            string pawTwo = "3593932834";
+            string dateOfMeetup = "11/13/2023";
+            string location = "Seattle, WA";
+            string message = "Nothing";
+
+            //Act
+            bool result = TestHelper.PawService.AddMeetup(pawOne, pawTwo, dateOfMeetup, location, message);
+
+
+            //Result
+            Assert.IsTrue(result);
+
+            //Reset
+            TestHelper.PawService.SavePawsDataToJsonFile(InitialPaws);
+        }
+
+        #endregion AddMeetup
     }
 
 }
