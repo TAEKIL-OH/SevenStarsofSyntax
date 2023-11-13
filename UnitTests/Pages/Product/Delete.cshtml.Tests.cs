@@ -156,10 +156,12 @@ namespace UnitTests.Pages.Product.Delete
 
             // Act
             var result = pageModel.OnPost() as PageResult;
+            var UpdatedPaws = pageModel.PawService.GetPaws();
+            Assert.AreNotEqual(InitialPaws, UpdatedPaws);
 
             // Assert
             Assert.True(pageModel.ModelState.IsValid);
-
+            
             //Reset
             pageModel.PawService.SavePawsDataToJsonFile(InitialPaws);
         }
