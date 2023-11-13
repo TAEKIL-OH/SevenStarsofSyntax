@@ -330,6 +330,11 @@ namespace UnitTests.Pages.Service.JsonFilePawService
 
         [Test]
 
+        /// <summary>
+        /// Initialize an invalid paw id for the first paw
+        /// Test the paw data
+        /// The result should be false
+        /// </summary>
         public void AddMeetup_Invalid_First_Paw_Id_Should_Return_False()
         {
             //Arrange
@@ -349,6 +354,11 @@ namespace UnitTests.Pages.Service.JsonFilePawService
 
         [Test]
 
+        /// <summary>
+        /// Initialize an invalid paw id for the second paw
+        /// Test the paw data
+        /// The result should be false
+        /// </summary>
         public void AddMeetup_Invalid_Second_Paw_Id_Should_Return_False()
         {
             //Arrange
@@ -357,7 +367,6 @@ namespace UnitTests.Pages.Service.JsonFilePawService
             string dateOfMeetup = "11/13/2023";
             string location = "Seattle, WA";
             string message = "Nothing";
-
 
             //Act
             bool result = TestHelper.PawService.AddMeetup(pawOne, pawTwo, dateOfMeetup, location, message);
@@ -368,6 +377,11 @@ namespace UnitTests.Pages.Service.JsonFilePawService
 
         [Test]
 
+        /// <summary>
+        /// Initialize the valid paw id
+        /// Test the paw data for the paws who have no records for meetup
+        /// The result should be true
+        /// </summary>
         public void AddFeedbackToPaw_Valid_First_Paw_Id_With_No_Meetup_Should_Return_True()
         {
             //Arrange
@@ -382,7 +396,6 @@ namespace UnitTests.Pages.Service.JsonFilePawService
             //Act
             bool result = TestHelper.PawService.AddMeetup(pawOne, pawTwo, dateOfMeetup, location, message);
 
-
             //Result
             Assert.IsTrue(result);
 
@@ -392,6 +405,11 @@ namespace UnitTests.Pages.Service.JsonFilePawService
 
         [Test]
 
+        /// <summary>
+        /// Initialize the valid paw id
+        /// Test the paw data for the paws who have alreadt records for meetup
+        /// The result should be true
+        /// </summary>
         public void AddFeedbackToPaw_Valid_Paw_Id_With_Meetup_Should_Add_More_Meetups_And_Return_True()
         {
             //Arrange
@@ -405,7 +423,6 @@ namespace UnitTests.Pages.Service.JsonFilePawService
 
             //Act
             bool result = TestHelper.PawService.AddMeetup(pawOne, pawTwo, dateOfMeetup, location, message);
-
 
             //Result
             Assert.IsTrue(result);
