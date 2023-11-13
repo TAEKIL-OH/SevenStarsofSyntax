@@ -144,7 +144,7 @@ namespace UnitTests.Pages.Product.Delete
 
         [Test]
         /// <summary>
-        /// Test case for delete valid paw value should delete the paw and reset the paw data after passing the test case 
+        /// Test case for delete valid paw value should delete the paw then check if the paw exists after the deletion and then reset the paw data after passing the test case 
         /// </summary>
         public void OnPost_Valid_Paw_Data_Should_Return_Page()
         {
@@ -156,6 +156,8 @@ namespace UnitTests.Pages.Product.Delete
 
             // Act
             var result = pageModel.OnPost() as PageResult;
+
+            //Checking if the paw dosent exist after deletion
             var UpdatedPaws = pageModel.PawService.GetPaws();
             Assert.AreNotEqual(InitialPaws, UpdatedPaws);
 
