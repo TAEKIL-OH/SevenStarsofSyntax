@@ -101,6 +101,25 @@ namespace UnitTests.Pages.Product.AddMeetup
 
         #endregion OnGet
 
+        #region  OnPost
+
+        [Test]
+
+        public void OnPost_InValid_Model_State_Should_Return_Page()
+        {
+            // Arrange
+            pageModel.ModelState.AddModelError("ModelOnly", "Something went wrong");
+
+            // Act
+            var result = pageModel.OnPost();
+
+            // Assert
+            Assert.IsInstanceOf<PageResult>(result);
+            Assert.IsFalse(pageModel.ModelState.IsValid);
+            Assert.IsTrue(pageModel.ModelState.ContainsKey("ModelOnly"));
+        }
+        #endregion OnPost
+
     }
 
 }
