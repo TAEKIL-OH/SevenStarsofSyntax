@@ -23,15 +23,18 @@
                             <option value="@Paw.Id">@Paw.Paw.Name</option>
                         }
                     </select>
+                    <span asp-validation-for="pawOne" class="text-danger"></span>
+
                     =>
-                    <select asp-for="pawToMeet" class="form-control-sm" id="pawTwo">
+                    <select asp-for="pawTwo" class="form-control-sm" id="pawTwo">
                         <option selected disabled>Open this select menu</option>
                         @foreach (var Paw in Model.Paw)
                         {
                             <option value="@Paw.Id">@Paw.Paw.Name</option>
                         }
                     </select>
-                    <span asp-validation-for="pawOne" class="text-danger"></span>
+                    <span asp-validation-for="pawTwo" class="text-danger"></span>
+
                 </div>
                 <div class="form-group">
                     <label asp-for="meetupDate" class="form-label"> Date of meetup </label>
