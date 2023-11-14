@@ -8,18 +8,27 @@ using System.Linq;
 
 namespace UnitTests.Components
 {
+    /// <summary>
+    /// Unit testing for components file
+    /// </summary>
     public class PawListTests
     {
         [Test]
+
+        /// <summary>
+        /// Test case for displaying the paw lists
+        /// </summary>
         public void PawList_Should_Return_Content()
         {
+            //Arrange
             using var context = new Bunit.TestContext();
             context.Services.AddSingleton<JsonFilePawService>(TestHelper.PawService);
 
+            //Act
             var page = context.RenderComponent<PawList>();
-
             var result = page.Markup;
 
+            //Assert
             Assert.NotNull(result);
             Assert.IsTrue(result.Contains("Amy"));
             Assert.IsTrue(result.Contains("More Info"));
@@ -27,6 +36,10 @@ namespace UnitTests.Components
         }
 
         [Test]
+
+        /// <summary>
+        /// Test case for the more info button
+        /// </summary>
         public void SelectedPaw_Valid_Id_Should_Return_Content()
         {
             //Arrange
@@ -34,40 +47,47 @@ namespace UnitTests.Components
             context.Services.AddSingleton<JsonFilePawService>(TestHelper.PawService);
             var id = "moreInfo_7623900396";
 
+            //Act
             var page = context.RenderComponent<PawList>();
-
             var buttonList = page.FindAll("button");
-
             var button = buttonList.First(m => m.OuterHtml.Contains(id, StringComparison.OrdinalIgnoreCase));
-
             button.Click();
-
             var result = page.Markup;
+
+            //Assert
             Assert.NotNull(result);
             Assert.IsTrue(result.Contains("Hob is s an agile and intelligent dog with a striking black-and-white coat. He\u0027s a quick learner, excels in obedience training, and loves to show off his tricks."));
         }
 
         [Test]
+
+        /// <summary>
+        /// Test case for owner info button
+        /// </summary>
         public void SelectedPaw_Owner_Info_Valid_Id_Should_Return_Content()
         {
+            //Arrange
             using var context = new Bunit.TestContext();
             context.Services.AddSingleton<JsonFilePawService>(TestHelper.PawService);
             var id = "ownerInfo_7623900396";
 
+            //Act
             var page = context.RenderComponent<PawList>();
-
             var buttonList = page.FindAll("button");
-
             var button = buttonList.First(m => m.OuterHtml.Contains(id, StringComparison.OrdinalIgnoreCase));
-
             button.Click();
-
             var result = page.Markup;
+
+            //Assert
             Assert.NotNull(result);
             Assert.IsTrue(result.Contains("Michelle Brewer"));
         }
 
         [Test]
+
+        /// <summary>
+        /// Test case for searching valid paw value should return the paw
+        /// </summary>
         public void SearchPaw_Valid_Name_Should_Return_Content()
         {
             //Arrange
@@ -76,27 +96,27 @@ namespace UnitTests.Components
             var id = "searchInput";
             var searchPawButtonId = "searchPaw";
 
+            //Act
             var page = context.RenderComponent<PawList>();
-
             var inputTags = page.FindAll("input");
-
             var input = inputTags.First(m => m.OuterHtml.Contains(id, StringComparison.OrdinalIgnoreCase));
-
             input.Change("Amy");
-
             var buttonList = page.FindAll("button");
-
             var button = buttonList.First(m => m.OuterHtml.Contains(searchPawButtonId, StringComparison.OrdinalIgnoreCase));
-
-            button.Click();
-
+            button.Click()
             var result = page.Markup;
+
+            //Assert
             Assert.NotNull(result);
             Assert.IsTrue(result.Contains("Amy"));
             Assert.IsFalse(result.Contains("Brooke"));
         }
 
         [Test]
+
+        /// <summary>
+        /// Test case for clearing the text of searching paw and return the original list
+        /// </summary>
         public void CLearText_Should_CLear_The_Search_Input_And_Return_Content()
         {
             //Arrange
@@ -106,34 +126,33 @@ namespace UnitTests.Components
             var searchPawButtonId = "searchPaw";
             var clearTextButtonId = "clearText";
 
-
+            //Act
             var page = context.RenderComponent<PawList>();
-
             var inputTags = page.FindAll("input");
-
             var input = inputTags.First(m => m.OuterHtml.Contains(inputTextId, StringComparison.OrdinalIgnoreCase));
-
             input.Change("Amy");
-
             var buttonList = page.FindAll("button");
-
             var searchpawbutton = buttonList.First(m => m.OuterHtml.Contains(searchPawButtonId, StringComparison.OrdinalIgnoreCase));
-
             searchpawbutton.Click();
-
             var result = page.Markup;
+
+
+            //Assert
             Assert.NotNull(result);
             Assert.IsTrue(result.Contains("Amy"));
             Assert.IsFalse(result.Contains("Brooke"));
 
+            //Act
             var clearpawbutton = buttonList.First(m => m.OuterHtml.Contains(clearTextButtonId, StringComparison.OrdinalIgnoreCase));
-
             clearpawbutton.Click();
-
             var updated_result = page.Markup;
+
+            //Assert
             Assert.NotNull(updated_result);
             Assert.IsTrue(updated_result.Contains("Amy"));
             Assert.IsTrue(updated_result.Contains("Brooke"));
         }
+
     }
+
 }
