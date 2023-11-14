@@ -84,7 +84,23 @@ namespace UnitTests.Pages.Product.AddMeetup
 
         #endregion TestSetup
 
-        
+        #region OnGet
+
+        [Test]
+
+        public void OnGet_Valid_Should_Return_Requested_Paw()
+        {
+            // Arrange
+
+            // Act
+            pageModel.OnGet();
+
+            // Assert
+            Assert.AreEqual(true, pageModel.ModelState.IsValid);
+        }
+
+        #endregion OnGet
+
     }
 
 }
