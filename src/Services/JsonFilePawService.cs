@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text.Json;
 
 using ContosoCrafts.WebSite.Models;
@@ -197,6 +198,16 @@ namespace ContosoCrafts.WebSite.Services
             return true;
         }
 
+        
+        /// <summary>
+        /// Add Meetup will add new entry of meetup
+        /// </summary>
+        /// <param name="pawOne"></param>
+        /// <param name="pawTwo"></param>
+        /// <param name="dateOfMeetup"></param>
+        /// <param name="location"></param>
+        /// <param name="message"></param>
+        /// <returns></returns>
         public bool AddMeetup(
             string pawOne,
             string pawTwo,
@@ -204,15 +215,20 @@ namespace ContosoCrafts.WebSite.Services
             string location,
             string message)
         {
+            //Getting paw lists
             var PawsData = GetPaws();
+
+            //Getting both of paws to update
             var FirstPawToUpdate = PawsData.FirstOrDefault(P => P.Id.Equals(pawOne));
             var SecondPawToUpdate = PawsData.FirstOrDefault(P => P.Id.Equals(pawTwo));
 
+            //Checking if first paw exists
             if (FirstPawToUpdate == null)
             {
                 return false;
             }
 
+            //If there is no entry of meetup lists then it will add first entry
             if (FirstPawToUpdate.BookingLists == null)
             {
                 FirstPawToUpdate.BookingLists.Add(new MeetupModel()
@@ -224,6 +240,7 @@ namespace ContosoCrafts.WebSite.Services
                 });
             }
 
+            //If there are entry available then append it to the entries
             else
             {
                 List<MeetupModel> meetups = FirstPawToUpdate.BookingLists;
@@ -236,11 +253,13 @@ namespace ContosoCrafts.WebSite.Services
                 });
             }
 
+            //Checking if second paw exists
             if (SecondPawToUpdate == null)
             {
                 return false;
             }
 
+            //If there is no entry of meetup lists then it will add first entry
             if (SecondPawToUpdate.BookingLists == null)
             {
                 SecondPawToUpdate.BookingLists.Add(new MeetupModel()
@@ -252,6 +271,7 @@ namespace ContosoCrafts.WebSite.Services
                 });
             }
 
+            //If there are entry available then append it to the entries
             else
             {
                 List<MeetupModel> meetups = SecondPawToUpdate.BookingLists;
@@ -264,9 +284,11 @@ namespace ContosoCrafts.WebSite.Services
                 });
             }
 
+            //Save the data to json file
             SavePawsDataToJsonFile(PawsData);
 
             return true;
+
         }
 
         /// <summary>
