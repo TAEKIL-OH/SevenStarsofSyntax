@@ -309,11 +309,7 @@ namespace UnitTests.Pages.Service.JsonFilePawService
             //Arrange
             var testpaw = new PawModel
             {
-                Id = "7115673952",
-                Paw = new Paw
-                {
-                    Feedback = new string[] {"Good Paw"}
-                }
+                Id = "7623900396",
             };
             var testMessage = "Great Paw There";
 
@@ -382,13 +378,41 @@ namespace UnitTests.Pages.Service.JsonFilePawService
         /// Test the paw data for the paws who have no records for meetup
         /// The result should be true
         /// </summary>
-        public void AddFeedbackToPaw_Valid_First_Paw_Id_With_No_Meetup_Should_Return_True()
+        public void AddMeetup_Valid_First_Paw_Id_With_No_Meetup_Should_Return_True()
+        {
+            //Arrange
+            var InitialPaws = TestHelper.PawService.GetPaws();
+
+            string pawOne = "6289540473";
+            string pawTwo = "3593932834";
+            string dateOfMeetup = "11/13/2023";
+            string location = "Seattle, WA";
+            string message = "Nothing";
+
+            //Act
+            bool result = TestHelper.PawService.AddMeetup(pawOne, pawTwo, dateOfMeetup, location, message);
+
+            //Result
+            Assert.IsTrue(result);
+
+            //Reset
+            TestHelper.PawService.SavePawsDataToJsonFile(InitialPaws);
+        }
+
+        [Test]
+
+        /// <summary>
+        /// Initialize the valid paw id
+        /// Test the paw data for the second paw who have no records for meetup
+        /// The result should be true
+        /// </summary>
+        public void AddMeetup_Valid_First_Second_Id_With_No_Meetup_Should_Return_True()
         {
             //Arrange
             var InitialPaws = TestHelper.PawService.GetPaws();
 
             string pawOne = "7623900396";
-            string pawTwo = "3593932834";
+            string pawTwo = "9669740612";
             string dateOfMeetup = "11/13/2023";
             string location = "Seattle, WA";
             string message = "Nothing";
@@ -410,7 +434,7 @@ namespace UnitTests.Pages.Service.JsonFilePawService
         /// Test the paw data for the paws who have alreadt records for meetup
         /// The result should be true
         /// </summary>
-        public void AddFeedbackToPaw_Valid_Paw_Id_With_Meetup_Should_Add_More_Meetups_And_Return_True()
+        public void AddMeetup_Valid_Paw_Id_With_Meetup_Should_Add_More_Meetups_And_Return_True()
         {
             //Arrange
             var InitialPaws = TestHelper.PawService.GetPaws();
