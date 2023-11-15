@@ -136,6 +136,8 @@ namespace UnitTests.Pages.Product.AddMeetup
         public void OnPost_InValid_Paw_One_Null_Should_Return_Page()
         {
             // Arrange
+            var InitialPaws = TestHelper.PawService.GetPaws();
+
             pageModel.pawOne = null;
             pageModel.pawTwo = "3593932834";
             pageModel.meetupDate = "11/13/2023";
@@ -149,6 +151,9 @@ namespace UnitTests.Pages.Product.AddMeetup
             Assert.IsInstanceOf<PageResult>(result);
             Assert.IsFalse(pageModel.ModelState.IsValid);
             Assert.IsTrue(pageModel.ModelState.ContainsKey("pawOne"));
+
+            //Reset 
+            TestHelper.PawService.SavePawsDataToJsonFile(InitialPaws);
         }
 
         [Test]
@@ -159,6 +164,8 @@ namespace UnitTests.Pages.Product.AddMeetup
         public void OnPost_InValid_Paw_One_Empty_Should_Return_Page()
         {
             // Arrange
+            var InitialPaws = TestHelper.PawService.GetPaws();
+
             pageModel.pawOne = "";
             pageModel.pawTwo = "3593932834";
             pageModel.meetupDate = "11/13/2023";
@@ -172,6 +179,9 @@ namespace UnitTests.Pages.Product.AddMeetup
             Assert.IsInstanceOf<PageResult>(result);
             Assert.IsFalse(pageModel.ModelState.IsValid);
             Assert.IsTrue(pageModel.ModelState.ContainsKey("pawOne"));
+
+            //Reset 
+            TestHelper.PawService.SavePawsDataToJsonFile(InitialPaws);
         }
 
 
@@ -183,6 +193,8 @@ namespace UnitTests.Pages.Product.AddMeetup
         public void OnPost_InValid_Paw_Two_Null_Should_Return_Page()
         {
             // Arrange
+            var InitialPaws = TestHelper.PawService.GetPaws();
+
             pageModel.pawOne = "7623900396";
             pageModel.pawTwo = null;
             pageModel.meetupDate = "11/13/2023";
@@ -196,6 +208,9 @@ namespace UnitTests.Pages.Product.AddMeetup
             Assert.IsInstanceOf<PageResult>(result);
             Assert.IsFalse(pageModel.ModelState.IsValid);
             Assert.IsTrue(pageModel.ModelState.ContainsKey("pawTwo"));
+
+            //Reset 
+            TestHelper.PawService.SavePawsDataToJsonFile(InitialPaws);
         }
 
         [Test]
@@ -206,6 +221,8 @@ namespace UnitTests.Pages.Product.AddMeetup
         public void OnPost_InValid_Paw_Two_Empty_Should_Return_Page()
         {
             // Arrange
+            var InitialPaws = TestHelper.PawService.GetPaws();
+
             pageModel.pawOne = "7623900396";
             pageModel.pawTwo = "";
             pageModel.meetupDate = "11/13/2023";
@@ -219,25 +236,36 @@ namespace UnitTests.Pages.Product.AddMeetup
             Assert.IsInstanceOf<PageResult>(result);
             Assert.IsFalse(pageModel.ModelState.IsValid);
             Assert.IsTrue(pageModel.ModelState.ContainsKey("pawTwo"));
+
+            //Reset 
+            TestHelper.PawService.SavePawsDataToJsonFile(InitialPaws);
         }
 
         [Test]
 
         /// <summary>
-        /// Test case for no paw value should return the page 
+        /// Test case for invalid paw two empty should return the page
         /// </summary>
-        public void OnPost_InValid_Paw_Data_Should_Return_Page()
+        public void OnPost_InValid_Paw_Id_Should_Return_Page()
         {
+            // Arrange
+            var InitialPaws = TestHelper.PawService.GetPaws();
+
+            pageModel.pawOne = "Team7";
+            pageModel.pawTwo = "7Team";
             pageModel.meetupDate = "11/13/2023";
             pageModel.meetupLocation = "Seattle, WA";
             pageModel.message = "Nothing";
 
             // Act
-            var result = pageModel.OnPost() as PageResult;
+            var result = pageModel.OnPost();
 
             // Assert
             Assert.IsInstanceOf<PageResult>(result);
-            Assert.False(pageModel.ModelState.ContainsKey("ModelOnly"));
+            Assert.IsFalse(pageModel.ModelState.IsValid);
+
+            //Reset 
+            TestHelper.PawService.SavePawsDataToJsonFile(InitialPaws);
         }
 
         [Test]
@@ -248,6 +276,8 @@ namespace UnitTests.Pages.Product.AddMeetup
         public void OnPost_Valid_Data_Should_AddMeetup_And_Return_Page()
         {
             // Arrange
+            var InitialPaws = TestHelper.PawService.GetPaws();
+
             pageModel.pawOne = "7623900396";
             pageModel.pawTwo = "3593932834";
             pageModel.meetupDate = "11/13/2023";
@@ -259,6 +289,9 @@ namespace UnitTests.Pages.Product.AddMeetup
 
             // Assert
             Assert.IsTrue(pageModel.ModelState.IsValid);
+
+            //Reset 
+            TestHelper.PawService.SavePawsDataToJsonFile(InitialPaws);
         }
 
         #endregion OnPost
