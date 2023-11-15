@@ -103,7 +103,7 @@ namespace UnitTests.Components
             input.Change("Amy");
             var buttonList = page.FindAll("button");
             var button = buttonList.First(m => m.OuterHtml.Contains(searchPawButtonId, StringComparison.OrdinalIgnoreCase));
-            button.Click()
+            button.Click();
             var result = page.Markup;
 
             //Assert
