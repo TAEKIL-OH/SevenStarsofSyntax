@@ -22,7 +22,7 @@ using System.Linq;
 namespace UnitTests.Pages.Product.AddMeetup
 {
     /// <summary>
-    /// Unit testing for adding a new feedack in paw data
+    /// Unit testing for adding a new meetup in paw data
     /// </summary>
     public class AddFeedback
     {
@@ -44,8 +44,9 @@ namespace UnitTests.Pages.Product.AddMeetup
 
 
         [SetUp]
+
         /// <summary>
-        /// Initializes mock AddFeedbackModel page model for testing.
+        /// Initializes mock AddMeetupModel page model for testing.
         /// </summary>
         public void TestInitialize()
         {
@@ -89,6 +90,9 @@ namespace UnitTests.Pages.Product.AddMeetup
 
         [Test]
 
+        /// <summary>
+        /// Test case for requesting valid paws value should return the paws
+        /// </summary>
         public void OnGet_Valid_Should_Return_Requested_Paw()
         {
             // Arrange
@@ -107,6 +111,9 @@ namespace UnitTests.Pages.Product.AddMeetup
 
         [Test]
 
+        /// <summary>
+        /// Test case for invalid model state should return the page
+        /// </summary>
         public void OnPost_InValid_Model_State_Should_Return_Page()
         {
             // Arrange
@@ -123,6 +130,9 @@ namespace UnitTests.Pages.Product.AddMeetup
 
         [Test]
 
+        /// <summary>
+        /// Test case for invalid paw one null state should return the page
+        /// </summary>
         public void OnPost_InValid_Paw_One_Null_Should_Return_Page()
         {
             // Arrange
@@ -143,6 +153,9 @@ namespace UnitTests.Pages.Product.AddMeetup
 
         [Test]
 
+        /// <summary>
+        /// Test case for invalid paw one empty should return the page
+        /// </summary>
         public void OnPost_InValid_Paw_One_Empty_Should_Return_Page()
         {
             // Arrange
@@ -164,6 +177,9 @@ namespace UnitTests.Pages.Product.AddMeetup
 
         [Test]
 
+        /// <summary>
+        /// Test case for invalid paw two null should return the page
+        /// </summary>
         public void OnPost_InValid_Paw_Two_Null_Should_Return_Page()
         {
             // Arrange
@@ -184,6 +200,9 @@ namespace UnitTests.Pages.Product.AddMeetup
 
         [Test]
 
+        /// <summary>
+        /// Test case for invalid paw two empty should return the page
+        /// </summary>
         public void OnPost_InValid_Paw_Two_Empty_Should_Return_Page()
         {
             // Arrange
@@ -203,8 +222,9 @@ namespace UnitTests.Pages.Product.AddMeetup
         }
 
         [Test]
+
         /// <summary>
-        /// Test case for delete invalid paw value should return the page 
+        /// Test case for no paw value should return the page 
         /// </summary>
         public void OnPost_InValid_Paw_Data_Should_Return_Page()
         {
@@ -222,7 +242,10 @@ namespace UnitTests.Pages.Product.AddMeetup
 
         [Test]
 
-        public void OnPost_Valid_Data_Empty_Should_AddMeetup_And_Return_Page()
+        /// <summary>
+        /// Test case for valid data should add meetup and return the page
+        /// </summary>
+        public void OnPost_Valid_Data_Should_AddMeetup_And_Return_Page()
         {
             // Arrange
             pageModel.pawOne = "7623900396";
@@ -237,6 +260,7 @@ namespace UnitTests.Pages.Product.AddMeetup
             // Assert
             Assert.IsTrue(pageModel.ModelState.IsValid);
         }
+
         #endregion OnPost
 
     }
