@@ -244,7 +244,7 @@ namespace UnitTests.Pages.Product.AddMeetup
         [Test]
 
         /// <summary>
-        /// Test case for invalid paw two empty should return the page
+        /// Test case for invalid paw id should return the page
         /// </summary>
         public void OnPost_InValid_Paw_Id_Should_Return_Page()
         {
