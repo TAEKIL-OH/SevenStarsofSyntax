@@ -17,6 +17,7 @@ using ContosoCrafts.WebSite.Services;
 using ContosoCrafts.WebSite.Models;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Linq;
 
 namespace UnitTests.Pages.Product.AddMeetup
 {
@@ -97,6 +98,7 @@ namespace UnitTests.Pages.Product.AddMeetup
 
             // Assert
             Assert.AreEqual(true, pageModel.ModelState.IsValid);
+            Assert.AreEqual(20, pageModel.Paw.ToList().Count);
         }
 
         #endregion OnGet
@@ -117,6 +119,123 @@ namespace UnitTests.Pages.Product.AddMeetup
             Assert.IsInstanceOf<PageResult>(result);
             Assert.IsFalse(pageModel.ModelState.IsValid);
             Assert.IsTrue(pageModel.ModelState.ContainsKey("ModelOnly"));
+        }
+
+        [Test]
+
+        public void OnPost_InValid_Paw_One_Null_Should_Return_Page()
+        {
+            // Arrange
+            pageModel.pawOne = null;
+            pageModel.pawTwo = "3593932834";
+            pageModel.meetupDate = "11/13/2023";
+            pageModel.meetupLocation = "Seattle, WA";
+            pageModel.message = "Nothing";
+
+            // Act
+            var result = pageModel.OnPost();
+
+            // Assert
+            Assert.IsInstanceOf<PageResult>(result);
+            Assert.IsFalse(pageModel.ModelState.IsValid);
+            Assert.IsTrue(pageModel.ModelState.ContainsKey("pawOne"));
+        }
+
+        [Test]
+
+        public void OnPost_InValid_Paw_One_Empty_Should_Return_Page()
+        {
+            // Arrange
+            pageModel.pawOne = "";
+            pageModel.pawTwo = "3593932834";
+            pageModel.meetupDate = "11/13/2023";
+            pageModel.meetupLocation = "Seattle, WA";
+            pageModel.message = "Nothing";
+
+            // Act
+            var result = pageModel.OnPost();
+
+            // Assert
+            Assert.IsInstanceOf<PageResult>(result);
+            Assert.IsFalse(pageModel.ModelState.IsValid);
+            Assert.IsTrue(pageModel.ModelState.ContainsKey("pawOne"));
+        }
+
+
+        [Test]
+
+        public void OnPost_InValid_Paw_Two_Null_Should_Return_Page()
+        {
+            // Arrange
+            pageModel.pawOne = "7623900396";
+            pageModel.pawTwo = null;
+            pageModel.meetupDate = "11/13/2023";
+            pageModel.meetupLocation = "Seattle, WA";
+            pageModel.message = "Nothing";
+
+            // Act
+            var result = pageModel.OnPost();
+
+            // Assert
+            Assert.IsInstanceOf<PageResult>(result);
+            Assert.IsFalse(pageModel.ModelState.IsValid);
+            Assert.IsTrue(pageModel.ModelState.ContainsKey("pawTwo"));
+        }
+
+        [Test]
+
+        public void OnPost_InValid_Paw_Two_Empty_Should_Return_Page()
+        {
+            // Arrange
+            pageModel.pawOne = "7623900396";
+            pageModel.pawTwo = "";
+            pageModel.meetupDate = "11/13/2023";
+            pageModel.meetupLocation = "Seattle, WA";
+            pageModel.message = "Nothing";
+
+            // Act
+            var result = pageModel.OnPost();
+
+            // Assert
+            Assert.IsInstanceOf<PageResult>(result);
+            Assert.IsFalse(pageModel.ModelState.IsValid);
+            Assert.IsTrue(pageModel.ModelState.ContainsKey("pawTwo"));
+        }
+
+        [Test]
+        /// <summary>
+        /// Test case for delete invalid paw value should return the page 
+        /// </summary>
+        public void OnPost_InValid_Paw_Data_Should_Return_Page()
+        {
+            pageModel.meetupDate = "11/13/2023";
+            pageModel.meetupLocation = "Seattle, WA";
+            pageModel.message = "Nothing";
+
+            // Act
+            var result = pageModel.OnPost() as PageResult;
+
+            // Assert
+            Assert.IsInstanceOf<PageResult>(result);
+            Assert.False(pageModel.ModelState.ContainsKey("ModelOnly"));
+        }
+
+        [Test]
+
+        public void OnPost_Valid_Data_Empty_Should_AddMeetup_And_Return_Page()
+        {
+            // Arrange
+            pageModel.pawOne = "7623900396";
+            pageModel.pawTwo = "3593932834";
+            pageModel.meetupDate = "11/13/2023";
+            pageModel.meetupLocation = "Seattle, WA";
+            pageModel.message = "Nothing";
+
+            // Act
+            var result = pageModel.OnPost();
+
+            // Assert
+            Assert.IsTrue(pageModel.ModelState.IsValid);
         }
         #endregion OnPost
 
