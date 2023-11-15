@@ -1,5 +1,5 @@
 ﻿using Bunit;
-using ContosoCrafts.WebSite.Components; // Adjust the namespace based on your project structure
+using ContosoCrafts.WebSite.Components;
 using ContosoCrafts.WebSite.Services;
 using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
