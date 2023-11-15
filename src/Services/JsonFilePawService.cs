@@ -182,16 +182,16 @@ namespace ContosoCrafts.WebSite.Services
             if (PawToUpdate.Paw.Feedback == null)
             {
                 PawToUpdate.Paw.Feedback = new string[] { message };
+                SavePawsDataToJsonFile(PawsData);
+                return true;
             }
 
             //else append the message in the array
-            else
-            {
-                var feedbacks = PawToUpdate.Paw.Feedback.ToList();
-                feedbacks.Add(message);
-                PawToUpdate.Paw.Feedback = feedbacks.ToArray();
-            }
-
+            
+            var feedbacks = PawToUpdate.Paw.Feedback.ToList();
+            feedbacks.Add(message);
+            PawToUpdate.Paw.Feedback = feedbacks.ToArray();
+            
             //Save the data to json file
             SavePawsDataToJsonFile(PawsData);
 
@@ -229,7 +229,7 @@ namespace ContosoCrafts.WebSite.Services
             }
 
             //If there is no entry of meetup lists then it will add first entry
-            if (FirstPawToUpdate.BookingLists == null)
+            if (FirstPawToUpdate.BookingLists.Count == 0)
             {
                 FirstPawToUpdate.BookingLists.Add(new MeetupModel()
                 {
@@ -260,7 +260,7 @@ namespace ContosoCrafts.WebSite.Services
             }
 
             //If there is no entry of meetup lists then it will add first entry
-            if (SecondPawToUpdate.BookingLists == null)
+            if (SecondPawToUpdate.BookingLists.Count == 0)
             {
                 SecondPawToUpdate.BookingLists.Add(new MeetupModel()
                 {
