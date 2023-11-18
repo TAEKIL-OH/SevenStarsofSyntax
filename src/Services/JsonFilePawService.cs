@@ -112,6 +112,12 @@ namespace ContosoCrafts.WebSite.Services
             PawToUpdate.Paw.Gender = Paw.Paw.Gender;
             PawToUpdate.Paw.Description = Paw.Paw.Description;
             PawToUpdate.Paw.Image = Paw.Paw.Image;
+            PawToUpdate.Owner.Name = Paw.Owner.Name;
+            PawToUpdate.Owner.Address= Paw.Owner.Address;
+            PawToUpdate.Owner.Phone = Paw.Owner.Phone;
+            PawToUpdate.Owner.City = Paw.Owner.City;
+            PawToUpdate.Owner.Zipcode = Paw.Owner.Zipcode;
+            PawToUpdate.Owner.Email = Paw.Owner.Email;
             //Save the new data to the json file
             SavePawsDataToJsonFile(PawsData);
             return true;
