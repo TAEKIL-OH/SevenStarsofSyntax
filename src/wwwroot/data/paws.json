@@ -4,7 +4,7 @@
     "Paw": {
       "Name": "Amy",
       "Breed": "Labrador Retriever Mix",
-      "Gender": "Female",
+      "Gender": 2,
       "Age": 4,
       "Size": "Large",
       "Description": "Amy is is a gentle and affectionate soul. She\u0027s incredibly loyal to the family and is always ready for an adventure outdoors. She\u0027s especially fond of water and enjoys a good swim.",
@@ -26,7 +26,7 @@
     "Paw": {
       "Name": "Brooke",
       "Breed": "Pit Bull Terrir Mix",
-      "Gender": "Female",
+      "Gender": 2,
       "Age": 1,
       "Size": "Large",
       "Description": "Brooke is a tough-looking guy with a heart of gold. She\u0027s loyal, protective, and has a soft spot for squeaky toys. She\u0027s great with kids and always up for a game of fetch.",
@@ -48,7 +48,7 @@
     "Paw": {
       "Name": "Hob",
       "Breed": "Shephered Mix",
-      "Gender": "Male",
+      "Gender": 1,
       "Age": 0.8,
       "Size": "Medium",
       "Description": "Hob is s an agile and intelligent dog with a striking black-and-white coat. He\u0027s a quick learner, excels in obedience training, and loves to show off his tricks.",
@@ -72,7 +72,7 @@
     "Paw": {
       "Name": "Niall",
       "Breed": "Pumi",
-      "Gender": "Male",
+      "Gender": 1,
       "Age": 3,
       "Size": "Medium",
       "Description": "Niall is is a charming little ball of fur. He\u0027s incredibly friendly and loves meeting new people.",
@@ -94,7 +94,7 @@
     "Paw": {
       "Name": "Rusty",
       "Breed": "Mixed reed",
-      "Gender": "Male",
+      "Gender": 1,
       "Age": 1.5,
       "Size": "Large",
       "Description": "Rusty is s a highly intelligent and disciplined dog. He\u0027s obedient, alert, and loves training sessions. He\u0027s a natural protector and is deeply devoted to his family.",
@@ -116,7 +116,7 @@
     "Paw": {
       "Name": "Dori",
       "Breed": "Pit Bull Terri Mix",
-      "Gender": "Female",
+      "Gender": 2,
       "Age": 0.6,
       "Size": "Large",
       "Description": "Dori is is a sassy and curious dog. She\u0027s playful, full of energy, and has a mischievous streak. She loves chasing after squirrels and cuddling up on the couch.",
@@ -138,7 +138,7 @@
     "Paw": {
       "Name": "Eugene",
       "Breed": "Terrir",
-      "Gender": "Female",
+      "Gender": 2,
       "Age": 2,
       "Size": "Medium",
       "Description": "Eugene is an exceptionally smart and agile dog. She\u0027s a quick learner, excels in agility, and loves solving puzzles.",
@@ -160,7 +160,7 @@
     "Paw": {
       "Name": "Eva",
       "Breed": "Husky",
-      "Gender": "Female",
+      "Gender": 2,
       "Age": 3,
       "Size": "Medium",
       "Description": "Eva is is a free spirit. She\u0027s independent, intelligent, and has a love for the great outdoors. She\u0027s happiest when she\u0027s running and exploring, especially in cold weather.",
@@ -182,7 +182,7 @@
     "Paw": {
       "Name": "Elle",
       "Breed": "Mixed reed",
-      "Gender": "Female",
+      "Gender": 2,
       "Age": 1,
       "Size": "Medium",
       "Description": "Elle is the epitome of a gentle giant. She\u0027s friendly, patient, and great with kids. She has an affectionate nature and loves being around people.",
@@ -204,7 +204,7 @@
     "Paw": {
       "Name": "Sabrina",
       "Breed": "Terrier Mix",
-      "Gender": "Female",
+      "Gender": 2,
       "Age": 1,
       "Size": "Large",
       "Description": "Sabrina is a highly intelligent and disciplined dog. She\u0027s obedient, alert, and loves training sessions. She\u0027s a natural protector and is deeply devoted to his family.",
@@ -226,7 +226,7 @@
     "Paw": {
       "Name": "Opal",
       "Breed": "American Bull Dog Mix",
-      "Gender": "Female",
+      "Gender": 2,
       "Age": 2,
       "Size": "Small",
       "Description": "Opal is a big teddy bear at heart. Despite her imposing appearance, she\u0027s a gentle giant who adores her family. She\u0027s protective, playful, and always up for a game of tug-of-war.",
@@ -248,7 +248,7 @@
     "Paw": {
       "Name": "Biscuit",
       "Breed": "Treeing Walker Coonhound Mix",
-      "Gender": "Female",
+      "Gender": 2,
       "Age": 5,
       "Size": "Large",
       "Description": "Biscuit is a spotty bundle of energy and excitement. She\u0027s playful, outgoing, and loves to run and play fetch. ",
@@ -270,7 +270,7 @@
     "Paw": {
       "Name": "Marnie",
       "Breed": "Siberian Husky Mix",
-      "Gender": "Female",
+      "Gender": 2,
       "Age": 4,
       "Size": "Large",
       "Description": "Marnie is a bundle of energy and enthusiasm. She\u0027s intelligent, always ready for an adventure, and loves engaging in interactive games with her family",
@@ -292,7 +292,7 @@
     "Paw": {
       "Name": "Grubauer",
       "Breed": "Mixed Breed",
-      "Gender": "Male",
+      "Gender": 1,
       "Age": 3,
       "Size": "Large",
       "Description": "Grubauer is playful and up for activities, but also really enjoys a quiet night in to relax.",
@@ -314,7 +314,7 @@
     "Paw": {
       "Name": "Lila",
       "Breed": "Yellow Labrador Retriever",
-      "Gender": "Female",
+      "Gender": 2,
       "Age": 2,
       "Size": "Medium",
       "Description": "Lila is a curious and playful dog with a nose for adventure. She\u0027s friendly, sociable, and has a love for exploring new scents and discovering hidden treasures.",
@@ -336,7 +336,7 @@
     "Paw": {
       "Name": "Zara",
       "Breed": "Mixed Breed",
-      "Gender": "Female",
+      "Gender": 2,
       "Age": 5,
       "Size": "Large",
       "Description": "Zara is a beautiful and agile dog with a bright personality. She\u0027s smart, friendly, and has a keen sense of her surroundings.",
@@ -358,7 +358,7 @@
     "Paw": {
       "Name": "Higo",
       "Breed": "Mixed reed",
-      "Gender": "Male",
+      "Gender": 1,
       "Age": 3,
       "Size": "Large",
       "Description": "Higo is a friendly and affectionate dog. He\u0027s gentle, playful, and loves to wag his tail whenever he meets someone new.",
@@ -380,7 +380,7 @@
     "Paw": {
       "Name": "Hershey",
       "Breed": "Great Pyrenees",
-      "Gender": "Male",
+      "Gender": 1,
       "Age": 1,
       "Size": "Large",
       "Description": "Hershey is a charming and comical dog with a penchant for making people laugh. He\u0027s affectionate, loyal, and loves to cuddle",
@@ -402,7 +402,7 @@
     "Paw": {
       "Name": "Whisky",
       "Breed": "Bull Terrier Mix",
-      "Gender": "Male",
+      "Gender": 1,
       "Age": 3,
       "Size": "Medium",
       "Description": "Whisky is a noble and loyal protector. He\u0027s highly intelligent, disciplined, and always on alert",
@@ -424,7 +424,7 @@
     "Paw": {
       "Name": "Blondie",
       "Breed": "American Staffordshire Terrier",
-      "Gender": "Female",
+      "Gender": 2,
       "Age": 2,
       "Size": "Medium",
       "Description": "Blondie is a majestic and powerful dog with a gentle heart. She\u0027s intelligent, affectionate, and has a playful side.",
