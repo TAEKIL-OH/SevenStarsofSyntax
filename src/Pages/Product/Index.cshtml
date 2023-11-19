@@ -11,33 +11,35 @@
         </div>
         <div class="card-body">
             <table class="table table-bordered table-striped">
-        <thead>
-            <tr>
-            <th>Name</th>
-            <th>Breed</th>
-            <th>Age</th>
-            <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var Paw in Model.Paws)
-            {
-            <tr>
-                <td>@Paw.Paw.Name</td>
-                <td>@Paw.Paw.Breed</td>
-                <td>@Paw.Paw.Age Years</td>
-                <td>
-                    <a class="btn btn-primary" asp-page="Read" asp-route-id="@Paw.Id">Read</a>
-                    <a class="btn btn-secondary" asp-page="Update" asp-route-id="@Paw.Id">Update</a>
-                    <a class="btn btn-danger" asp-page="Delete" asp-route-id="@Paw.Id">Delete</a>
-                    <a class="btn btn-success" asp-page="AddFeedback" asp-route-id="@Paw.Id">Add Feedback</a>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Breed</th>
+                        <th>Gender</th>
+                        <th>Age</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var Paw in Model.Paws)
+                    {
+                        <tr>
+                            <td>@Paw.Paw.Name</td>
+                            <td>@Paw.Paw.Breed</td>
+                            <td>@Paw.Paw.Gender</td>
+                            <td>@Paw.Paw.Age Years</td>
+                            <td>
+                                <a class="btn btn-primary" asp-page="Read" asp-route-id="@Paw.Id">Read</a>
+                                <a class="btn btn-secondary" asp-page="Update" asp-route-id="@Paw.Id">Update</a>
+                                <a class="btn btn-danger" asp-page="Delete" asp-route-id="@Paw.Id">Delete</a>
+                                <a class="btn btn-success" asp-page="AddFeedback" asp-route-id="@Paw.Id">Add Feedback</a>
 
-                </td>
-                </tr>
-            }
-        </tbody>
-    </table>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
         </div>
     </div>
-    
+
 </div>
