@@ -35,13 +35,13 @@
                 <div class="card-footer">
                     <small class="text-muted">
                         <button @onclick="(e => SelectPaw(paw.Id))" id="moreInfo_@paw.Id"
-                        data-toggle="modal" data-target="#pawModal" class="btn btn-primary">
+                                data-toggle="modal" data-target="#pawModal" class="btn btn-primary">
                             More Info
                         </button>
                     </small>
                     <small class="text-muted">
                         <button @onclick="(e => SelectOwner(paw.Id))" id="ownerInfo_@paw.Id"
-                        data-toggle="modal" data-target="#ownerModal" class="btn btn-primary">
+                                data-toggle="modal" data-target="#ownerModal" class="btn btn-primary">
                             Owner Info
                         </button>
                     </small>
@@ -59,32 +59,40 @@
         <!-- change the location of if statement to slove button error -->
         @if (selectedPaw != null)
         {
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="pawName">@selectedPaw.Paw.Name</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <div class="card">
-                <div class="card-img" style="background-image: url('@selectedPaw.Paw.Image');">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="pawName">@selectedPaw.Paw.Name</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-                <div class="card-body">
-                    <p class="card-text">@selectedPaw.Paw.Description</p>
-                    @if (selectedPaw.Paw.Feedback != null)
-                    {
-                      <h5 class="card-text"> Feedbacks </h5> 
-                      @foreach (var feedback in selectedPaw.Paw.Feedback)
-                      {
-                        <p class="card-text"> => @feedback†</p>
-                      }              
-                    }
+                <div class="modal-body">
+                    <div class="card">
+                        <div class="card-img" style="background-image: url('@selectedPaw.Paw.Image');">
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">@selectedPaw.Paw.Description</p>
+                            @if (selectedPaw.Paw.Feedback != null)
+                            {
+                                <h5 class="card-text"> Feedbacks </h5>
+                                @foreach (var feedback in selectedPaw.Paw.Feedback)
+                                {
+                                    <p class="card-text"> => @feedback</p>
+                                }
+                            }
+                        </div>
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col">
+                                    <input class="form-control-sm" type="text" @onchange="(e) => UpdateMessageText(e.Value.ToString())" id="feedbackMessage" value="@MessageText" placeholder="Search Paw" />
+                                    <button @onclick="(e => AddFeedback())" data-dismiss="modal" id="addFeedback" class="btn btn-success">Add Feedback</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
-}
+        }
     </div>
 </div>
 
@@ -112,18 +120,19 @@
                 </div>
             </div>
         }
-        </div>
+    </div>
 </div>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <!-- This function starts working when any user selects a paw and its information is being rendered --!>
-@code 
+@code
 {
     //ProductModel selectedProduct;
     PawModel selectedPaw, selectedOwner;
     string selectedPawId;
     string PawToSearch = null;
+    string MessageText = null;
     bool SearchData = false;
 
     void UpdateFilterText(string text)
@@ -149,10 +158,21 @@
         selectedPawId = pawId;
         selectedPaw = PawService.GetPaws().First(x => x.Id == pawId);
     }
+
     void SelectOwner(string pawId)
     {
         selectedPawId = pawId;
         selectedOwner = PawService.GetPaws().First(x => x.Id == pawId);
     }
 
+    void UpdateMessageText(string message)
+    {
+        MessageText = message;
+    }
+
+    void AddFeedback()
+    {
+        PawService.AddFeedckToPaw(selectedPawId, MessageText);
+        MessageText = null;
+    }
 }
