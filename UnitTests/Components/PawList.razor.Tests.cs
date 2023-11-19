@@ -153,6 +153,42 @@ namespace UnitTests.Components
             Assert.IsTrue(updated_result.Contains("Brooke"));
         }
 
+        [Test]
+
+        /// <summary>
+        /// Test case for adding new feedback in the homepage
+        /// </summary>
+        public void AddFeedack_Should_Add_The_Feedback_From_Input_And_Close_Modal()
+        {
+            //Arrange
+            var InitialPaws = TestHelper.PawService.GetPaws();
+            using var context = new Bunit.TestContext();
+            context.Services.AddSingleton<JsonFilePawService>(TestHelper.PawService);
+            var id = "moreInfo_7623900396";
+            var feedbackMessageId = "feedbackMessage";
+            var addFeedbackId = "addFeedback";
+
+            //Act
+            var page = context.RenderComponent<PawList>();
+            var buttonList = page.FindAll("button");
+            var button = buttonList.First(m => m.OuterHtml.Contains(id, StringComparison.OrdinalIgnoreCase));
+            button.Click();
+            var inputTags = page.FindAll("input");
+            var message = inputTags.First(m => m.OuterHtml.Contains(feedbackMessageId, StringComparison.OrdinalIgnoreCase));
+            message.Change("amazing amy so great");
+            var addFeedbackbutton = buttonList.First(m => m.OuterHtml.Contains(addFeedbackId, StringComparison.OrdinalIgnoreCase));
+            addFeedbackbutton.Click();
+            button.Click();
+            var result = page.Markup;
+
+            //Assert
+            Assert.NotNull(result);
+            Assert.IsTrue(result.Contains("amazing amy so great"));
+
+            //Reset
+            TestHelper.PawService.SavePawsDataToJsonFile(InitialPaws);
+        }
+
     }
 
 }
