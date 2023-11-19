@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using ContosoCrafts.WebSite.Enums;
+using System.Collections.Generic;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -17,7 +18,7 @@ namespace ContosoCrafts.WebSite.Models
         public string Breed { get; set; }
 
         //Getter and Setter of Gender
-        public string Gender { get; set; }
+        public GenderTypeEnum Gender { get; set; }
 
         ////Getter and Setter of Age
         public double Age { get; set; }
