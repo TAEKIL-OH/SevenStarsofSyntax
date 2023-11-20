@@ -118,7 +118,7 @@ namespace UnitTests.Pages.Product.Create
                 {
                     Name = "Name",
                     Breed = "Breed",
-                    Gender = "Gender",
+                    Gender = (ContosoCrafts.WebSite.Enums.GenderTypeEnum)1,
                     Age = 1.0,
                     Size = "Size",
                     Description = "Description",
@@ -157,7 +157,7 @@ namespace UnitTests.Pages.Product.Create
                 {
                     Name = "Name",
                     Breed = "Breed",
-                    Gender = "Gender",
+                    Gender = (ContosoCrafts.WebSite.Enums.GenderTypeEnum)1,
                     Age = 1.0,
                     Size = "Size",
                     Description = "Description",
@@ -195,7 +195,7 @@ namespace UnitTests.Pages.Product.Create
                 {
                     Name = null,
                     Breed = "Breed",
-                    Gender = "Gender",
+                    Gender = (ContosoCrafts.WebSite.Enums.GenderTypeEnum)1,
                     Age = 1.0,
                     Size = "Size",
                     Description = "Description",
@@ -234,7 +234,7 @@ namespace UnitTests.Pages.Product.Create
                 {
                     Name = "",
                     Breed = "Breed",
-                    Gender = "Gender",
+                    Gender = (ContosoCrafts.WebSite.Enums.GenderTypeEnum)1,
                     Age = 1.0,
                     Size = "Size",
                     Description = "Description",
@@ -272,7 +272,7 @@ namespace UnitTests.Pages.Product.Create
                 {
                     Name = "Name",
                     Breed = null,
-                    Gender = "Gender",
+                    Gender = (ContosoCrafts.WebSite.Enums.GenderTypeEnum)1,
                     Age = 1.0,
                     Size = "Size",
                     Description = "Description",
@@ -311,7 +311,7 @@ namespace UnitTests.Pages.Product.Create
                 {
                     Name = "Name",
                     Breed = "",
-                    Gender = "Gender",
+                    Gender = (ContosoCrafts.WebSite.Enums.GenderTypeEnum)1,
                     Age = 1.0,
                     Size = "Size",
                     Description = "Description",
@@ -350,7 +350,7 @@ namespace UnitTests.Pages.Product.Create
                 {
                     Name = "Name",
                     Breed = "Breed",
-                    Gender = "Gender",
+                    Gender = (ContosoCrafts.WebSite.Enums.GenderTypeEnum)1,
                     Age = 0,
                     Size = "Size",
                     Description = "Description",
@@ -386,7 +386,7 @@ namespace UnitTests.Pages.Product.Create
                 {
                     Name = "Name",
                     Breed = "Breed",
-                    Gender = "Gender",
+                    Gender = (ContosoCrafts.WebSite.Enums.GenderTypeEnum)1,
                     Age = 1.0,
                     Size = null,
                     Description = "Description",
@@ -425,7 +425,7 @@ namespace UnitTests.Pages.Product.Create
                 {
                     Name = "Name",
                     Breed = "Breed",
-                    Gender = "Gender",
+                    Gender = (ContosoCrafts.WebSite.Enums.GenderTypeEnum)1,
                     Age = 1.0,
                     Size = "",
                     Description = "Description",
@@ -464,7 +464,7 @@ namespace UnitTests.Pages.Product.Create
                 {
                     Name = "Name",
                     Breed = "Breed",
-                    Gender = "Gender",
+                    Gender = (ContosoCrafts.WebSite.Enums.GenderTypeEnum)1,
                     Age = 1.0,
                     Size = "Size",
                     Description = null,
@@ -503,7 +503,7 @@ namespace UnitTests.Pages.Product.Create
                 {
                     Name = "Name",
                     Breed = "Breed",
-                    Gender = "Gender",
+                    Gender = (ContosoCrafts.WebSite.Enums.GenderTypeEnum)1,
                     Age = 1.0,
                     Size = "Size",
                     Description = "",
@@ -542,7 +542,7 @@ namespace UnitTests.Pages.Product.Create
                 {
                     Name = "Name",
                     Breed = "Breed",
-                    Gender = "Gender",
+                    Gender = (ContosoCrafts.WebSite.Enums.GenderTypeEnum)1,
                     Age = 1.0,
                     Size = "Size",
                     Description = "Description",
@@ -581,7 +581,7 @@ namespace UnitTests.Pages.Product.Create
                 {
                     Name = "Name",
                     Breed = "Breed",
-                    Gender = "Gender",
+                    Gender = (ContosoCrafts.WebSite.Enums.GenderTypeEnum)1,
                     Age = 1.0,
                     Size = "Size",
                     Description = "Description",
@@ -620,7 +620,7 @@ namespace UnitTests.Pages.Product.Create
                 {
                     Name = "Name",
                     Breed = "Breed",
-                    Gender = "Gender",
+                    Gender = (ContosoCrafts.WebSite.Enums.GenderTypeEnum)1,
                     Age = 1.0,
                     Size = "Size",
                     Description = "Description",
@@ -659,7 +659,7 @@ namespace UnitTests.Pages.Product.Create
                 {
                     Name = "Name",
                     Breed = "Breed",
-                    Gender = "Gender",
+                    Gender = (ContosoCrafts.WebSite.Enums.GenderTypeEnum)1,
                     Age = 1.0,
                     Size = "Size",
                     Description = "Description",
@@ -698,7 +698,7 @@ namespace UnitTests.Pages.Product.Create
                 {
                     Name = "Name",
                     Breed = "Breed",
-                    Gender = "Gender",
+                    Gender = (ContosoCrafts.WebSite.Enums.GenderTypeEnum)1,
                     Age = 1.0,
                     Size = "Size",
                     Description = "Description",
@@ -737,7 +737,7 @@ namespace UnitTests.Pages.Product.Create
                 {
                     Name = "Name",
                     Breed = "Breed",
-                    Gender = "Gender",
+                    Gender = (ContosoCrafts.WebSite.Enums.GenderTypeEnum)1,
                     Age = 1.0,
                     Size = "Size",
                     Description = "Description",
@@ -776,7 +776,7 @@ namespace UnitTests.Pages.Product.Create
                 {
                     Name = "Name",
                     Breed = "Breed",
-                    Gender = "Gender",
+                    Gender = (ContosoCrafts.WebSite.Enums.GenderTypeEnum)1,
                     Age = 1.0,
                     Size = "Size",
                     Description = "Description",
@@ -815,7 +815,7 @@ namespace UnitTests.Pages.Product.Create
                 {
                     Name = "Name",
                     Breed = "Breed",
-                    Gender = "Gender",
+                    Gender = (ContosoCrafts.WebSite.Enums.GenderTypeEnum)1,
                     Age = 1.0,
                     Size = "Size",
                     Description = "Description",
@@ -854,7 +854,7 @@ namespace UnitTests.Pages.Product.Create
                 {
                     Name = "Name",
                     Breed = "Breed",
-                    Gender = "Gender",
+                    Gender = (ContosoCrafts.WebSite.Enums.GenderTypeEnum)1,
                     Age = 1.0,
                     Size = "Size",
                     Description = "Description",
@@ -893,7 +893,7 @@ namespace UnitTests.Pages.Product.Create
                 {
                     Name = "Name",
                     Breed = "Breed",
-                    Gender = "Gender",
+                    Gender = (ContosoCrafts.WebSite.Enums.GenderTypeEnum)1,
                     Age = 1.0,
                     Size = "Size",
                     Description = "Description",
@@ -932,7 +932,7 @@ namespace UnitTests.Pages.Product.Create
                 {
                     Name = "Name",
                     Breed = "Breed",
-                    Gender = "Gender",
+                    Gender = (ContosoCrafts.WebSite.Enums.GenderTypeEnum)1,
                     Age = 1.0,
                     Size = "Size",
                     Description = "Description",
@@ -971,7 +971,7 @@ namespace UnitTests.Pages.Product.Create
                 {
                     Name = "Name",
                     Breed = "Breed",
-                    Gender = "Gender",
+                    Gender = (ContosoCrafts.WebSite.Enums.GenderTypeEnum)1,
                     Age = 1.0,
                     Size = "Size",
                     Description = "Description",
@@ -1010,7 +1010,7 @@ namespace UnitTests.Pages.Product.Create
                 {
                     Name = "Name",
                     Breed = "Breed",
-                    Gender = "Gender",
+                    Gender = (ContosoCrafts.WebSite.Enums.GenderTypeEnum)1,
                     Age = 1.0,
                     Size = "Size",
                     Description = "Description",
@@ -1049,7 +1049,7 @@ namespace UnitTests.Pages.Product.Create
                 {
                     Name = "Name",
                     Breed = "Breed",
-                    Gender = "Gender",
+                    Gender = (ContosoCrafts.WebSite.Enums.GenderTypeEnum)1,
                     Age = 1.0,
                     Size = "Size",
                     Description = "Description",
@@ -1089,7 +1089,7 @@ namespace UnitTests.Pages.Product.Create
                 {
                     Name = "Name",
                     Breed = "Breed",
-                    Gender = "Gender",
+                    Gender = (ContosoCrafts.WebSite.Enums.GenderTypeEnum)1,
                     Age = 1.0,
                     Size = "Size",
                     Description = "Description",
