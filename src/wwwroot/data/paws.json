@@ -9,7 +9,9 @@
       "Size": "Large",
       "Description": "Amy is is a gentle and affectionate soul. She\u0027s incredibly loyal to the family and is always ready for an adventure outdoors. She\u0027s especially fond of water and enjoys a good swim.",
       "Image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtLvQO_3DfeDI5OIopxKoLSRdNor9LOhEqZcGq1MeWLQ\u0026s",
-      "Feedback": null
+      "Feedback": [
+        "Gentle"
+      ]
     },
     "Owner": {
       "Name": "Gina Lindsey",
