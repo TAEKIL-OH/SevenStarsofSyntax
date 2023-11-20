@@ -33,18 +33,28 @@
                     <h5 class="card-title">@paw.Paw.Name</h5>
                 </div>
                 <div class="card-footer">
-                    <small class="text-muted">
+                    <small class="text-muted mx-2">
                         <button @onclick="(e => SelectPaw(paw.Id))" id="moreInfo_@paw.Id"
-                                data-toggle="modal" data-target="#pawModal" class="btn btn-primary">
+                                data-toggle="modal" data-target="#pawModal" class="btn btn-primary btn-sm">
                             More Info
                         </button>
                     </small>
-                    <small class="text-muted">
+                    <small class="text-muted mx-2">
                         <button @onclick="(e => SelectOwner(paw.Id))" id="ownerInfo_@paw.Id"
-                                data-toggle="modal" data-target="#ownerModal" class="btn btn-primary">
+                                data-toggle="modal" data-target="#ownerModal" class="btn btn-primary btn-sm">
                             Owner Info
                         </button>
                     </small>
+
+                    @if(paw.BookingLists.Count > 0)
+                    {
+                        <small class="text-muted mx-2">
+                            <button @onclick="(e => SelectPaw(paw.Id))" id="meetInfo_@paw.Id"
+                            data-toggle="modal" data-target="#meetupModal" class="btn btn-primary btn-sm">
+                                Meetup Info
+                            </button>
+                        </small>
+                    }  
                 </div>
             </div>
         }
@@ -123,9 +133,41 @@
     </div>
 </div>
 
+<div class="modal fade" id="meetupModal" tabindex="-1" role="dialog" aria-labelledby="pawName" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <!-- change the location of if statement to slove button error -->
+        @if (selectedPaw != null)
+        {
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ownerDetails">Meetup Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="card">
+                        <div class="card-body">
+                            @foreach (var meetups in selectedPaw.BookingLists)
+                            {
+                                var pawtoMeet = PawService.GetPaws().FirstOrDefault(m => m.Id.Equals(@meetups.PawToMeet));
+
+                                <p class="card-text"> Meet With :- @pawtoMeet.Paw.Name </p>
+                                <p class="card-text"> Meet Date :- @meetups.DateOfMeetup </p>
+                                <p class="card-text"> Meet Location :- @meetups.LocationOfMeetup </p>
+                                <p class="card-text"> Message :- @meetups.SpecialMessage </p>
+                            }                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<!-- This function starts working when any user selects a paw and its information is being rendered --!>
 @code
 {
     //ProductModel selectedProduct;
