@@ -26,7 +26,7 @@ namespace ContosoCrafts.WebSite.Pages.Product
 
         // The data to show and delete
         [BindProperty]
-        public PawModel Paw { get; set; }
+        public DetailedPawModel Paw { get; set; }
 
         /// <summary>
         /// Rest OnGet method to display the data of selected paw 
