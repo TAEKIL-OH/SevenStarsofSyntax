@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text.Json;
+
 using ContosoCrafts.WebSite.Models;
 using Microsoft.AspNetCore.Hosting;
 
@@ -111,7 +113,7 @@ namespace ContosoCrafts.WebSite.Services
             PawToUpdate.Paw.Description = Paw.Paw.Description;
             PawToUpdate.Paw.Image = Paw.Paw.Image;
             PawToUpdate.Owner.Name = Paw.Owner.Name;
-            PawToUpdate.Owner.Address= Paw.Owner.Address;
+            PawToUpdate.Owner.Address = Paw.Owner.Address;
             PawToUpdate.Owner.Phone = Paw.Owner.Phone;
             PawToUpdate.Owner.City = Paw.Owner.City;
             PawToUpdate.Owner.Zipcode = Paw.Owner.Zipcode;
@@ -191,18 +193,18 @@ namespace ContosoCrafts.WebSite.Services
             }
 
             //else append the message in the array
-            
+
             var feedbacks = PawToUpdate.Paw.Feedback.ToList();
             feedbacks.Add(message);
             PawToUpdate.Paw.Feedback = feedbacks.ToArray();
-            
+
             //Save the data to json file
             SavePawsDataToJsonFile(PawsData);
 
             return true;
         }
 
-        
+
         /// <summary>
         /// Add Meetup will add new entry of meetup
         /// </summary>
@@ -233,7 +235,7 @@ namespace ContosoCrafts.WebSite.Services
             }
 
             //If there is no entry of meetup lists then it will add first entry
-            if (FirstPawToUpdate.BookingLists.Count == 0)
+            if (FirstPawToUpdate.BookingLists == null)
             {
                 FirstPawToUpdate.BookingLists.Add(new MeetupModel()
                 {
@@ -264,7 +266,7 @@ namespace ContosoCrafts.WebSite.Services
             }
 
             //If there is no entry of meetup lists then it will add first entry
-            if (SecondPawToUpdate.BookingLists.Count == 0)
+            if (SecondPawToUpdate.BookingLists == null)
             {
                 SecondPawToUpdate.BookingLists.Add(new MeetupModel()
                 {
