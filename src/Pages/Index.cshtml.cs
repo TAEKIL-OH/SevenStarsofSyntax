@@ -31,7 +31,7 @@ namespace ContosoCrafts.WebSite.Pages
         public JsonFilePawService PawService { get; }
 
         //Getter and Private Setter for Paws
-        public IEnumerable<PawModel> Paws { get; private set; }
+        public IEnumerable<DetailedPawModel> Paws { get; private set; }
 
         // OnGet will get all the Data and render it in the Razor Page
         public void OnGet()
