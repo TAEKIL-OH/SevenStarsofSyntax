@@ -26,7 +26,7 @@ namespace ContosoCrafts.WebSite.Pages.Product
 
         // The data to show and update
         [BindProperty]
-        public PawModel Paw { get; set; }
+        public DetailedPawModel Paw { get; set; }
 
         /// <summary>
         /// Rest OnGet for getting the selcted paw
