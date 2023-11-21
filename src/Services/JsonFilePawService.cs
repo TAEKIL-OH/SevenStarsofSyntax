@@ -37,11 +37,11 @@ namespace ContosoCrafts.WebSite.Services
         /// Method of IEnumerable of PawModel Type
         /// </summary>
         /// <returns> Deserialized JSON data </returns>
-        public IEnumerable<PawModel> GetPaws()
+        public IEnumerable<DetailedPawModel> GetPaws()
         {
             using (var jsonFileReader = File.OpenText(JsonFileName))
             {
-                return JsonSerializer.Deserialize<PawModel[]>(jsonFileReader.ReadToEnd(),
+                return JsonSerializer.Deserialize<DetailedPawModel[]>(jsonFileReader.ReadToEnd(),
                     new JsonSerializerOptions
                     {
                         PropertyNameCaseInsensitive = true
@@ -54,13 +54,13 @@ namespace ContosoCrafts.WebSite.Services
         /// </summary>
         /// <param name="paw"></param>
         /// <returns>True</returns>
-        public bool CreatePaw(PawModel paw)
+        public bool CreatePaw(DetailedPawModel paw)
         {
             //newPaw will contain the details of new Paw
-            var newPaw = new PawModel()
+            var newPaw = new DetailedPawModel()
             {
                 Id = paw.Id,
-                Paw = new Paw
+                Paw = new PawModel
                 {
                     Name = paw.Paw.Name,
                     Breed = paw.Paw.Breed,
@@ -93,7 +93,7 @@ namespace ContosoCrafts.WebSite.Services
         /// </summary>
         /// <param name="Paw"></param>
         /// <returns>True / False</returns>
-        public bool UpdatePaw(PawModel Paw)
+        public bool UpdatePaw(DetailedPawModel Paw)
         {
             //Checking if the paw is existing or not
             var PawsData = GetPaws();
@@ -150,7 +150,7 @@ namespace ContosoCrafts.WebSite.Services
         /// </summary>
         /// <param name="pawName"></param>
         /// <returns></returns>
-        public IEnumerable<PawModel> SearchPaw(String pawName)
+        public IEnumerable<DetailedPawModel> SearchPaw(String pawName)
         {
             //Checking if the paw exists
             var PawsData = GetPaws();
@@ -163,7 +163,7 @@ namespace ContosoCrafts.WebSite.Services
             }
 
             //Else return the data
-            return new List<PawModel> { PawToGet };
+            return new List<DetailedPawModel> { PawToGet };
         }
 
         /// <summary>
@@ -301,7 +301,7 @@ namespace ContosoCrafts.WebSite.Services
         /// SavePawsDataToJsonFile - Take pawmodel as a arguement and save the whole model to the paws.json file
         /// </summary>
         /// <param name="paws"></param>
-        public void SavePawsDataToJsonFile(IEnumerable<PawModel> paws)
+        public void SavePawsDataToJsonFile(IEnumerable<DetailedPawModel> paws)
         {
             var json = JsonSerializer.Serialize(paws, new JsonSerializerOptions
             {
