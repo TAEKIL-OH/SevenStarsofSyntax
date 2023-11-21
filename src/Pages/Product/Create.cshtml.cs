@@ -24,7 +24,7 @@ namespace ContosoCrafts.WebSite.Pages.Product
 
         // The data to e created
         [BindProperty]
-        public PawModel Paw { get; set; }
+        public DetailedPawModel Paw { get; set; }
 
         /// <summary>
         /// REST OnPost method to create a new paw data
