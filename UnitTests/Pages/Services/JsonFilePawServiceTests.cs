@@ -26,14 +26,14 @@ namespace UnitTests.Pages.Service.JsonFilePawService
         public void UpdatePaw_Invalid_Paw_Id_Should_Return_False()
         {
             //Arrange
-            var testpaw = new PawModel
+            var testpaw = new DetailedPawModel
             {
                 Id = "542526163512",
-                Paw = new Paw
+                Paw = new PawModel
                 {
                     Name = "Paw",
                     Breed = "Breed",
-                    Gender = "Gender",
+                    Gender = (ContosoCrafts.WebSite.Enums.GenderTypeEnum)1,
                     Age = 1.0,
                     Size = "Size",
                     Description = "Description",
@@ -66,14 +66,14 @@ namespace UnitTests.Pages.Service.JsonFilePawService
         public void UpdatePaw_Valid_Paw_Id_Should_Return_True()
         {
             //Arrange
-            var testpaw = new PawModel
+            var testpaw = new DetailedPawModel
             {
                 Id = "5425261635",
-                Paw = new Paw
+                Paw = new PawModel
                 {
                     Name = "Paw",
                     Breed = "Breed",
-                    Gender = "Gender",
+                    Gender = (ContosoCrafts.WebSite.Enums.GenderTypeEnum)1,
                     Age = 1.1,
                     Size = "Size",
                     Description = "Description",
@@ -110,7 +110,7 @@ namespace UnitTests.Pages.Service.JsonFilePawService
         public void DeletePaw_Invalid_Paw_Id_Should_Return_False()
         {
             //Arrange
-            var testpaw = new PawModel
+            var testpaw = new DetailedPawModel
             {
                 Id = "542526163512",
             };
@@ -133,7 +133,7 @@ namespace UnitTests.Pages.Service.JsonFilePawService
         {
             //Arrange
             var InitialPaws = TestHelper.PawService.GetPaws();
-            var testpaw = new PawModel
+            var testpaw = new DetailedPawModel
             {
                 Id = "5425261635",
             };
@@ -150,7 +150,7 @@ namespace UnitTests.Pages.Service.JsonFilePawService
         #endregion DeletePaw
 
         #region CreatePaw
-        
+
         /// <summary>
         /// REST Initialize an paw data
         /// Test the paw data
@@ -162,14 +162,14 @@ namespace UnitTests.Pages.Service.JsonFilePawService
         {
             //Arrange
             var InitialPaws = TestHelper.PawService.GetPaws();
-            var testpaw = new PawModel
+            var testpaw = new DetailedPawModel
             {
                 Id = "5425251635",
-                Paw = new Paw
+                Paw = new PawModel
                 {
                     Name = "Test",
                     Breed = "Breed",
-                    Gender = "Gender",
+                    Gender = (ContosoCrafts.WebSite.Enums.GenderTypeEnum)1,
                     Age = 1.0,
                     Size = "Size",
                     Description = "Description",
@@ -251,7 +251,7 @@ namespace UnitTests.Pages.Service.JsonFilePawService
         public void AddFeedbackToPaw_Invalid_Paw_Id_Should_Return_False()
         {
             //Arrange
-            var testpaw = new PawModel
+            var testpaw = new DetailedPawModel
             {
                 Id = "542526163512",
             };
@@ -265,7 +265,7 @@ namespace UnitTests.Pages.Service.JsonFilePawService
         }
 
         [Test]
-        
+
         /// <summary>
         /// Initialize an valid paw id with no feedback field
         /// Test the paw data
@@ -274,10 +274,10 @@ namespace UnitTests.Pages.Service.JsonFilePawService
         public void AddFeedbackToPaw_Valid_Paw_Id_With_No_Feedback_Should_Return_True()
         {
             //Arrange
-            var testpaw = new PawModel
+            var testpaw = new DetailedPawModel
             {
                 Id = "5425261635",
-                Paw = new Paw
+                Paw = new PawModel
                 {
                     Feedback = null
                 }
@@ -302,7 +302,7 @@ namespace UnitTests.Pages.Service.JsonFilePawService
         public void AddFeedbackToPaw_Valid_Paw_Id_With_Feedback_Should_Add_More_Feedback_And_Return_True()
         {
             //Arrange
-            var testpaw = new PawModel
+            var testpaw = new DetailedPawModel
             {
                 Id = "7623900396",
             };
@@ -337,7 +337,7 @@ namespace UnitTests.Pages.Service.JsonFilePawService
 
 
             //Act
-            bool result = TestHelper.PawService.AddMeetup(pawOne,pawTwo,dateOfMeetup,location,message);
+            bool result = TestHelper.PawService.AddMeetup(pawOne, pawTwo, dateOfMeetup, location, message);
 
             //Result
             Assert.IsFalse(result);
