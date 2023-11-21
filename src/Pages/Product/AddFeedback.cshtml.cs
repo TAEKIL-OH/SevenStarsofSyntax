@@ -25,8 +25,10 @@ namespace ContosoCrafts.WebSite.Pages.Product
 
 
         [BindProperty]
+
         //Getter and setter of paw model
         public DetailedPawModel Paw { get; set; }
+
         //Getter and setter of message field
         public string message { get; set; }
 
