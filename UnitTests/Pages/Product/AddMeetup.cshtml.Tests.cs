@@ -111,10 +111,15 @@ namespace UnitTests.Pages.Product.AddMeetup
         public void OnPost_InValid_Model_State_Should_Return_Page()
         {
             // Arrange
+            pageModel.pawOne = "7623900396";
+            pageModel.pawTwo = "3593932834";
+            pageModel.meetupDate = "11/13/2023";
+            pageModel.meetupLocation = "Seattle, WA";
+            pageModel.message = "Nothing";
             pageModel.ModelState.AddModelError("ModelOnly", "Something went wrong");
 
             // Act
-            var result = pageModel.OnPost();
+            var result = pageModel.OnPost(pageModel.pawOne, pageModel.pawTwo, pageModel.meetupDate, pageModel.meetupLocation, pageModel.message);
 
             // Assert
             Assert.IsInstanceOf<PageResult>(result);
@@ -139,7 +144,7 @@ namespace UnitTests.Pages.Product.AddMeetup
             pageModel.message = "Nothing";
 
             // Act
-            var result = pageModel.OnPost();
+            var result = pageModel.OnPost(pageModel.pawOne, pageModel.pawTwo, pageModel.meetupDate, pageModel.meetupLocation, pageModel.message);
 
             // Assert
             Assert.IsInstanceOf<PageResult>(result);
@@ -167,7 +172,7 @@ namespace UnitTests.Pages.Product.AddMeetup
             pageModel.message = "Nothing";
 
             // Act
-            var result = pageModel.OnPost();
+            var result = pageModel.OnPost(pageModel.pawOne, pageModel.pawTwo, pageModel.meetupDate, pageModel.meetupLocation, pageModel.message);
 
             // Assert
             Assert.IsInstanceOf<PageResult>(result);
@@ -196,7 +201,7 @@ namespace UnitTests.Pages.Product.AddMeetup
             pageModel.message = "Nothing";
 
             // Act
-            var result = pageModel.OnPost();
+            var result = pageModel.OnPost(pageModel.pawOne, pageModel.pawTwo, pageModel.meetupDate, pageModel.meetupLocation, pageModel.message);
 
             // Assert
             Assert.IsInstanceOf<PageResult>(result);
@@ -224,7 +229,7 @@ namespace UnitTests.Pages.Product.AddMeetup
             pageModel.message = "Nothing";
 
             // Act
-            var result = pageModel.OnPost();
+            var result = pageModel.OnPost(pageModel.pawOne, pageModel.pawTwo, pageModel.meetupDate, pageModel.meetupLocation, pageModel.message);
 
             // Assert
             Assert.IsInstanceOf<PageResult>(result);
@@ -252,7 +257,7 @@ namespace UnitTests.Pages.Product.AddMeetup
             pageModel.message = "Nothing";
 
             // Act
-            var result = pageModel.OnPost();
+            var result = pageModel.OnPost(pageModel.pawOne, pageModel.pawTwo, pageModel.meetupDate, pageModel.meetupLocation, pageModel.message);
 
             // Assert
             Assert.IsInstanceOf<PageResult>(result);
@@ -279,7 +284,7 @@ namespace UnitTests.Pages.Product.AddMeetup
             pageModel.message = "Nothing";
 
             // Act
-            var result = pageModel.OnPost();
+            var result = pageModel.OnPost(pageModel.pawOne, pageModel.pawTwo, pageModel.meetupDate, pageModel.meetupLocation, pageModel.message);
 
             // Assert
             Assert.IsTrue(pageModel.ModelState.IsValid);
