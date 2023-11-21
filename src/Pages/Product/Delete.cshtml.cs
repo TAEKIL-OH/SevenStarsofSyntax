@@ -26,6 +26,8 @@ namespace ContosoCrafts.WebSite.Pages.Product
 
         // The data to show and delete
         [BindProperty]
+
+        //Getter and Setter of DetailedPawModel class
         public DetailedPawModel Paw { get; set; }
 
         /// <summary>
