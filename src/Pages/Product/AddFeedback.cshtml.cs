@@ -9,7 +9,7 @@ namespace ContosoCrafts.WebSite.Pages.Product
     /// <summary>
     /// This AddFeedackModel is the class for adding feedback in paw data
     /// </summary>
-	public class AddFeedbackModel : PageModel
+    public class AddFeedbackModel : PageModel
     {
         /// <summary>
         /// Constructor of AddFeedackModel 
@@ -26,7 +26,7 @@ namespace ContosoCrafts.WebSite.Pages.Product
 
         [BindProperty]
         //Getter and setter of paw model
-        public PawModel Paw { get; set; }
+        public DetailedPawModel Paw { get; set; }
         //Getter and setter of message field
         public string message { get; set; }
 
