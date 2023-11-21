@@ -22,8 +22,10 @@ namespace ContosoCrafts.WebSite.Pages.Product
         // Getter of PawService
         public JsonFilePawService PawService { get; }
 
-        // The data to e created
+        // The data to be created
         [BindProperty]
+
+        //Getter and Setter of DetailedPawModel
         public DetailedPawModel Paw { get; set; }
 
         /// <summary>
