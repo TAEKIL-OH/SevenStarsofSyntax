@@ -247,7 +247,7 @@ namespace ContosoCrafts.WebSite.Services
             }
 
             //If there are entry available then append it to the entries
-            else
+            if (FirstPawToUpdate.BookingLists != null)
             {
                 List<MeetupModel> meetups = FirstPawToUpdate.BookingLists;
                 meetups.Add(new MeetupModel()
@@ -278,7 +278,7 @@ namespace ContosoCrafts.WebSite.Services
             }
 
             //If there are entry available then append it to the entries
-            else
+            if (SecondPawToUpdate.BookingLists != null)
             {
                 List<MeetupModel> meetups = SecondPawToUpdate.BookingLists;
                 meetups.Add(new MeetupModel()
