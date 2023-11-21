@@ -112,7 +112,7 @@ namespace UnitTests.Pages.Product.AddFeedback
             // Arrange
             pageModel.ModelState.AddModelError("ModelOnly", "Something went wrong");
             pageModel.message = "Good Paw";
-            pageModel.Paw = new PawModel
+            pageModel.Paw = new DetailedPawModel
             {
                 Id = "5425261635"
             };
@@ -137,7 +137,7 @@ namespace UnitTests.Pages.Product.AddFeedback
         public void OnPost_Invalid_Message_Null_Should_Return_Page()
         {
             // Arrange
-            pageModel.Paw = new PawModel
+            pageModel.Paw = new DetailedPawModel
             {
                 Id = "5425261635"
             };
@@ -158,7 +158,7 @@ namespace UnitTests.Pages.Product.AddFeedback
         public void OnPost_Invalid_Message_Empty_Should_Return_Page()
         {
             // Arrange
-            pageModel.Paw = new PawModel
+            pageModel.Paw = new DetailedPawModel
             {
                 Id = "5425261635"
             };
@@ -179,7 +179,7 @@ namespace UnitTests.Pages.Product.AddFeedback
         public void OnPost_Invalid_Paw_Should_Return_Page()
         {
             // Arrange
-            pageModel.Paw = new PawModel
+            pageModel.Paw = new DetailedPawModel
             {
                 Id = "542526163534"
             };
@@ -203,7 +203,7 @@ namespace UnitTests.Pages.Product.AddFeedback
         {
             // Arrange
             var InitialPaws = pageModel.PawService.GetPaws();
-            pageModel.Paw = new PawModel
+            pageModel.Paw = new DetailedPawModel
             {
                 Id = "5425261635"
             };
