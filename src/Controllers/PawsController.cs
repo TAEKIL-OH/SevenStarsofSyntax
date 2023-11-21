@@ -27,7 +27,7 @@ namespace ContosoCrafts.WebSite.Controllers
         /// </summary>
         /// <returns> GetPaws -> Paws Data </returns>
         [HttpGet]
-        public IEnumerable<PawModel> Get()
+        public IEnumerable<DetailedPawModel> Get()
         {
             //Returned the list of all paws using the PawService method GetPaws()
             return PawService.GetPaws();
