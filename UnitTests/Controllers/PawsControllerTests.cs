@@ -40,7 +40,7 @@ namespace UnitTests.Controllers
             var data = pawController.Get().ToList();
 
             //Assert
-            Assert.AreEqual(typeof(List<PawModel>), data.GetType());
+            Assert.AreEqual(typeof(List<DetailedPawModel>), data.GetType());
         }
 
         /// <summary>
