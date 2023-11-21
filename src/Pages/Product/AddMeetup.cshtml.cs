@@ -27,7 +27,7 @@ namespace ContosoCrafts.WebSite.Pages.Product
 
         // The data to be used while adding paws
         [BindProperty]
-        public IEnumerable<PawModel> Paw { get; set; }
+        public IEnumerable<DetailedPawModel> Paw { get; set; }
         public string pawOne { get; set; }
         public string pawTwo { get; set; }
         public string meetupDate { get; set; }
