@@ -47,7 +47,7 @@ namespace ContosoCrafts.WebSite.Pages.Product
         /// Rest OnPost method to add meetup
         /// </summary>
         /// <returns></returns>
-        public IActionResult OnPost()
+        public IActionResult OnPost(string pawOne, string pawTwo, string meetupDate, string meetupLocation, string message)
         {
             // If model state is invalid then it will return to the page
             if (!ModelState.IsValid)
@@ -94,5 +94,5 @@ namespace ContosoCrafts.WebSite.Pages.Product
             }
             return RedirectToPage("./Index");
         }
-     }
+    }
 }
