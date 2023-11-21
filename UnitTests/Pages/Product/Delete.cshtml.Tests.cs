@@ -124,7 +124,7 @@ namespace UnitTests.Pages.Product.Delete
         /// </summary>
         public void OnPost_InValid_Paw_Data_Should_Return_Page()
         {
-            pageModel.Paw = new PawModel
+            pageModel.Paw = new DetailedPawModel
             {
                 Id = "542526163512",
             };
@@ -144,7 +144,7 @@ namespace UnitTests.Pages.Product.Delete
         public void OnPost_Valid_Paw_Data_Should_Return_Page()
         {
             var InitialPaws = pageModel.PawService.GetPaws();
-            pageModel.Paw = new PawModel
+            pageModel.Paw = new DetailedPawModel
             {
                 Id = "5425261635",
             };
@@ -158,7 +158,7 @@ namespace UnitTests.Pages.Product.Delete
 
             // Assert
             Assert.True(pageModel.ModelState.IsValid);
-            
+
             //Reset
             pageModel.PawService.SavePawsDataToJsonFile(InitialPaws);
         }
