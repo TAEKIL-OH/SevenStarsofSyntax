@@ -25,7 +25,7 @@ namespace ContosoCrafts.WebSite.Pages.Product
         public JsonFilePawService PawService { get; }
 
         // Paw data to show
-        public PawModel Paw;
+        public DetailedPawModel Paw;
 
         /// <summary>
         /// REST Get request for the particular paw
