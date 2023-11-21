@@ -9,7 +9,7 @@ namespace ContosoCrafts.WebSite.Models
     /// ProductModel Class
     /// </summary>
     //Paw Class
-    public class Paw
+    public class PawModel
     {
         //Getter and Setter of Name
         public string Name { get; set; }
@@ -58,21 +58,4 @@ namespace ContosoCrafts.WebSite.Models
         public string Email { get; set; }
     }
 
-    // PawModel Class
-    public class PawModel
-    {
-        //Getter and Setter of Paw Id
-        public string Id { get; set; }
-
-        //Getter and Setter of Paw Class
-        public Paw Paw { get; set; }
-
-        //Getter and Setter of Owner Class
-        public Owner Owner { get; set; }
-
-        public List<MeetupModel> BookingLists { get; set; } = new List<MeetupModel>();
-
-        //Serializes PawModel Model to a String
-        public override string ToString() => JsonSerializer.Serialize<PawModel>(this);
-    }
 }
