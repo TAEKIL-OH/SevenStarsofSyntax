@@ -27,11 +27,23 @@ namespace ContosoCrafts.WebSite.Pages.Product
 
         // The data to be used while adding paws
         [BindProperty]
+
+        //Getter and Setter of Detailed Paw Model
         public IEnumerable<DetailedPawModel> Paw { get; set; }
+
+        //Getter and Setter of First Paw
         public string pawOne { get; set; }
+
+        //Getter and Setter of Second Paw
         public string pawTwo { get; set; }
+
+        //Getter and Setter of Date of Meetup
         public string meetupDate { get; set; }
+
+        //Getter and Setter of Location of Meetup
         public string meetupLocation { get; set; }
+
+        //Getter and Setter of Special Message
         public string message { get; set; }
 
         /// <summary>
@@ -44,8 +56,13 @@ namespace ContosoCrafts.WebSite.Pages.Product
         }
 
         /// <summary>
-        /// Rest OnPost method to add meetup
+        /// REST OnPost method for adding meetup
         /// </summary>
+        /// <param name="pawOne"></param>
+        /// <param name="pawTwo"></param>
+        /// <param name="meetupDate"></param>
+        /// <param name="meetupLocation"></param>
+        /// <param name="message"></param>
         /// <returns></returns>
         public IActionResult OnPost(string pawOne, string pawTwo, string meetupDate, string meetupLocation, string message)
         {
