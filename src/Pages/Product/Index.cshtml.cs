@@ -24,7 +24,7 @@ namespace ContosoCrafts.WebSite.Pages.Product
         // Getter for PaswServices
         public JsonFilePawService PawService { get; }
 
-        //Getter and Private Setter for Paws
+        //Getter and Private Setter for DetailedPawModel
         public IEnumerable<DetailedPawModel> Paws { get; private set; }
 
         /// <summary>
