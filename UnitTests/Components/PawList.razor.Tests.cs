@@ -173,17 +173,30 @@ namespace UnitTests.Components
             var buttonList = page.FindAll("button");
             var button = buttonList.First(m => m.OuterHtml.Contains(id, StringComparison.OrdinalIgnoreCase));
             button.Click();
+
+            var buttonMarkup = page.Markup;
+
             var inputTags = page.FindAll("input");
-            var message = inputTags.First(m => m.OuterHtml.Contains(feedbackMessageId, StringComparison.OrdinalIgnoreCase));
-            message.Change("amazing amy so great");
-            var addFeedbackbutton = buttonList.First(m => m.OuterHtml.Contains(addFeedbackId, StringComparison.OrdinalIgnoreCase));
+            var message = inputTags.First(i => i.OuterHtml.Contains(feedbackMessageId, StringComparison.OrdinalIgnoreCase));
+            message.Change("amazing Hob so great");
+
+            var inputMarkup = page.Markup;
+
+            var feedbackbtnlist = page.FindAll("button");
+            var addFeedbackbutton = feedbackbtnlist.First(b => b.OuterHtml.Contains(addFeedbackId, StringComparison.OrdinalIgnoreCase));
             addFeedbackbutton.Click();
-            button.Click();
+
+            var secondTimeButtonMarkup = page.Markup;
+
+            var initialButtonLists = page.FindAll("button");
+            var moreInfoButton = initialButtonLists.First(m => m.OuterHtml.Contains(id, StringComparison.OrdinalIgnoreCase));
+            moreInfoButton.Click();
+
             var result = page.Markup;
 
             //Assert
             Assert.NotNull(result);
-            Assert.IsTrue(result.Contains("amazing amy so great"));
+            Assert.IsTrue(result.Contains("amazing Hob so great"));
 
             //Reset
             TestHelper.PawService.SavePawsDataToJsonFile(InitialPaws);
