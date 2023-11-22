@@ -199,7 +199,34 @@ namespace UnitTests.Pages.Product.AddFeedback
         /// <summary>
         /// Test case for valid message should add feedack return to the page and reset the data
         /// </summary>
-        public void OnPost_Valid_Message_Should_Add_Feedack_And_Redirect_To_Page()
+        public void OnPost_Valid_Message_No_Feedback_Should_Add_Feedack_And_Redirect_To_Page()
+        {
+            // Arrange
+            var InitialPaws = pageModel.PawService.GetPaws();
+            pageModel.Paw = new DetailedPawModel
+            {
+                Id = "7115673952"
+            };
+            pageModel.message = "Hey Paw";
+
+            // act
+            var result = pageModel.OnPost(pageModel.message) as RedirectToPageResult;
+            pageModel.OnGet("7115673952");
+
+            // Assert
+            Assert.True(pageModel.ModelState.IsValid);
+            Assert.AreEqual("Hey Paw", pageModel.Paw.Paw.Feedback[0]);
+
+            //Reset
+            pageModel.PawService.SavePawsDataToJsonFile(InitialPaws);
+        }
+
+        [Test]
+
+        /// <summary>
+        /// Test case for valid message should add feedack return to the page and reset the data
+        /// </summary>
+        public void OnPost_Valid_Message_With_Feedback_Should_Append_More_Feedack_And_Redirect_To_Page()
         {
             // Arrange
             var InitialPaws = pageModel.PawService.GetPaws();
