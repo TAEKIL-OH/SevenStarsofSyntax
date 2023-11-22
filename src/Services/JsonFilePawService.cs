@@ -235,7 +235,7 @@ namespace ContosoCrafts.WebSite.Services
             }
 
             //If there is no entry of meetup lists then it will add first entry
-            if (FirstPawToUpdate.BookingLists == null)
+            if (FirstPawToUpdate.BookingLists.Count == 0)
             {
                 FirstPawToUpdate.BookingLists.Add(new MeetupModel()
                 {
@@ -247,7 +247,7 @@ namespace ContosoCrafts.WebSite.Services
             }
 
             //If there are entry available then append it to the entries
-            if (FirstPawToUpdate.BookingLists != null)
+            if (FirstPawToUpdate.BookingLists.Count > 0)
             {
                 List<MeetupModel> meetups = FirstPawToUpdate.BookingLists;
                 meetups.Add(new MeetupModel()
@@ -266,7 +266,7 @@ namespace ContosoCrafts.WebSite.Services
             }
 
             //If there is no entry of meetup lists then it will add first entry
-            if (SecondPawToUpdate.BookingLists == null)
+            if (SecondPawToUpdate.BookingLists.Count == 0)
             {
                 SecondPawToUpdate.BookingLists.Add(new MeetupModel()
                 {
@@ -278,7 +278,7 @@ namespace ContosoCrafts.WebSite.Services
             }
 
             //If there are entry available then append it to the entries
-            if (SecondPawToUpdate.BookingLists != null)
+            if (SecondPawToUpdate.BookingLists.Count > 0)
             {
                 List<MeetupModel> meetups = SecondPawToUpdate.BookingLists;
                 meetups.Add(new MeetupModel()
