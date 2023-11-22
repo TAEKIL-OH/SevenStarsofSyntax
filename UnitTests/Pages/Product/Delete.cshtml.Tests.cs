@@ -154,6 +154,8 @@ namespace UnitTests.Pages.Product.Delete
 
             //Checking if the paw dosent exist after deletion
             var UpdatedPaws = pageModel.PawService.GetPaws();
+
+            //Proved that deletion operation worked
             Assert.AreNotEqual(InitialPaws, UpdatedPaws);
 
             // Assert
