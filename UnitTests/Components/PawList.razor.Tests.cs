@@ -159,14 +159,9 @@ namespace UnitTests.Components
             var searchpawbutton = buttonList.First(m => m.OuterHtml.Contains(searchPawButtonId, StringComparison.OrdinalIgnoreCase));
             searchpawbutton.Click();
             var result = page.Markup;
-
-
-            //Assert
             Assert.NotNull(result);
             Assert.IsTrue(result.Contains("Amy"));
             Assert.IsFalse(result.Contains("Brooke"));
-
-            //Act
             var clearpawbutton = buttonList.First(m => m.OuterHtml.Contains(clearTextButtonId, StringComparison.OrdinalIgnoreCase));
             clearpawbutton.Click();
             var updated_result = page.Markup;
