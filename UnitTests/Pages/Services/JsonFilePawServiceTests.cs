@@ -1,6 +1,7 @@
 using System.Linq;
 using NUnit.Framework;
 using ContosoCrafts.WebSite.Models;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace UnitTests.Pages.Service.JsonFilePawService
 {
@@ -66,12 +67,14 @@ namespace UnitTests.Pages.Service.JsonFilePawService
         public void UpdatePaw_Valid_Paw_Id_Should_Return_True()
         {
             //Arrange
+            var InitialPaws = TestHelper.PawService.GetPaws();
+
             var testpaw = new DetailedPawModel
             {
                 Id = "5425261635",
                 Paw = new PawModel
                 {
-                    Name = "Paw",
+                    Name = "Amy Update Test",
                     Breed = "Breed",
                     Gender = (ContosoCrafts.WebSite.Enums.GenderTypeEnum)1,
                     Age = 1.1,
@@ -92,9 +95,14 @@ namespace UnitTests.Pages.Service.JsonFilePawService
 
             //Act
             var result = TestHelper.PawService.UpdatePaw(testpaw);
+            var UpdatedPaw = TestHelper.PawService.GetPaws().FirstOrDefault(m => m.Id.Equals("5425261635"));
 
             //Assert
             Assert.IsTrue(result);
+            Assert.AreEqual("Amy Update Test", UpdatedPaw.Paw.Name);
+
+            //Reset
+            TestHelper.PawService.SavePawsDataToJsonFile(InitialPaws);
         }
 
         #endregion UpdatePaw
@@ -140,9 +148,12 @@ namespace UnitTests.Pages.Service.JsonFilePawService
 
             //Act
             var result = TestHelper.PawService.DeletePaw(testpaw.Id);
+            var UpdatedPaws = TestHelper.PawService.GetPaws().FirstOrDefault(m => m.Id.Equals("5425261635"));
+
 
             //Assert
             Assert.IsTrue(result);
+            Assert.AreNotEqual(InitialPaws, UpdatedPaws);
 
             //Reset
             TestHelper.PawService.SavePawsDataToJsonFile(InitialPaws);
@@ -164,7 +175,7 @@ namespace UnitTests.Pages.Service.JsonFilePawService
             var InitialPaws = TestHelper.PawService.GetPaws();
             var testpaw = new DetailedPawModel
             {
-                Id = "5425251635",
+                Id = "542525163599",
                 Paw = new PawModel
                 {
                     Name = "Test",
@@ -188,9 +199,11 @@ namespace UnitTests.Pages.Service.JsonFilePawService
 
             //Act
             var result = TestHelper.PawService.CreatePaw(testpaw);
+            var CreatedPaw = TestHelper.PawService.GetPaws().FirstOrDefault(m => m.Id.Equals("542525163599"));
 
             //Assert
             Assert.IsTrue(result);
+            Assert.AreEqual("Test", CreatedPaw.Paw.Name);
 
             //Reset
             TestHelper.PawService.SavePawsDataToJsonFile(InitialPaws);
@@ -274,6 +287,7 @@ namespace UnitTests.Pages.Service.JsonFilePawService
         public void AddFeedbackToPaw_Valid_Paw_Id_With_No_Feedback_Should_Return_True()
         {
             //Arrange
+            var InitialPaws = TestHelper.PawService.GetPaws();
             var testpaw = new DetailedPawModel
             {
                 Id = "5425261635",
@@ -286,10 +300,14 @@ namespace UnitTests.Pages.Service.JsonFilePawService
 
             //Act
             bool result = TestHelper.PawService.AddFeedckToPaw(testpaw.Id, testMessage);
+            var UpdatedPaw = TestHelper.PawService.GetPaws().FirstOrDefault(m => m.Id.Equals("5425261635"));
 
             //Result
             Assert.IsTrue(result);
+            Assert.AreEqual("Great Paw", UpdatedPaw.Paw.Feedback[1]);
 
+            //Reset
+            TestHelper.PawService.SavePawsDataToJsonFile(InitialPaws);
         }
 
         [Test]
@@ -302,6 +320,7 @@ namespace UnitTests.Pages.Service.JsonFilePawService
         public void AddFeedbackToPaw_Valid_Paw_Id_With_Feedback_Should_Add_More_Feedback_And_Return_True()
         {
             //Arrange
+            var InitialPaws = TestHelper.PawService.GetPaws();
             var testpaw = new DetailedPawModel
             {
                 Id = "7623900396",
@@ -310,9 +329,14 @@ namespace UnitTests.Pages.Service.JsonFilePawService
 
             //Act
             bool result = TestHelper.PawService.AddFeedckToPaw(testpaw.Id, testMessage);
+            var UpdatedPaw = TestHelper.PawService.GetPaws().FirstOrDefault(m => m.Id.Equals("7623900396"));
 
             //Result
             Assert.IsTrue(result);
+            Assert.AreEqual("Great Paw There", UpdatedPaw.Paw.Feedback[1]);
+
+            //Reset
+            TestHelper.PawService.SavePawsDataToJsonFile(InitialPaws);
         }
 
         #endregion AddFeedbackToPaw
