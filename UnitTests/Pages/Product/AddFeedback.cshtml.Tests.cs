@@ -211,9 +211,11 @@ namespace UnitTests.Pages.Product.AddFeedback
 
             // act
             var result = pageModel.OnPost(pageModel.message) as RedirectToPageResult;
+            pageModel.OnGet("5425261635");
 
             // Assert
             Assert.True(pageModel.ModelState.IsValid);
+            Assert.AreEqual("Hey Paw", pageModel.Paw.Paw.Feedback[1]);
 
             //Reset
             pageModel.PawService.SavePawsDataToJsonFile(InitialPaws);
