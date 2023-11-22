@@ -402,7 +402,7 @@ namespace UnitTests.Pages.Service.JsonFilePawService
             //Arrange
             var InitialPaws = TestHelper.PawService.GetPaws();
 
-            string pawOne = "6289540473";
+            string pawOne = "9869756897";
             string pawTwo = "3593932834";
             string dateOfMeetup = "11/13/2023";
             string location = "Seattle, WA";
@@ -431,7 +431,7 @@ namespace UnitTests.Pages.Service.JsonFilePawService
             var InitialPaws = TestHelper.PawService.GetPaws();
 
             string pawOne = "7623900396";
-            string pawTwo = "9669740612";
+            string pawTwo = "6225046605";
             string dateOfMeetup = "11/13/2023";
             string location = "Seattle, WA";
             string message = "Nothing";
