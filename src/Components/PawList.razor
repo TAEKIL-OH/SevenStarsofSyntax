@@ -46,15 +46,15 @@
                         </button>
                     </small>
 
-                    @if(paw.BookingLists.Count > 0)
+                    @if (paw.BookingLists.Count > 0)
                     {
                         <small class="text-muted mx-2">
-                            <button @onclick="(e => SelectPaw(paw.Id))" id="meetInfo_@paw.Id"
-                            data-toggle="modal" data-target="#meetupModal" class="btn btn-primary btn-sm">
+                            <button @onclick="(e => SelectMeetup(paw.Id))" id="meetInfo_@paw.Id"
+                                    data-toggle="modal" data-target="#meetupModal" class="btn btn-primary btn-sm">
                                 Meetup Info
                             </button>
                         </small>
-                    }  
+                    }
                 </div>
             </div>
         }
@@ -136,7 +136,7 @@
 <div class="modal fade" id="meetupModal" tabindex="-1" role="dialog" aria-labelledby="pawName" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <!-- change the location of if statement to slove button error -->
-        @if (selectedPaw != null)
+        @if (selectedMeetup != null)
         {
             <div class="modal-content">
                 <div class="modal-header">
@@ -148,7 +148,7 @@
                 <div class="modal-body">
                     <div class="card">
                         <div class="card-body">
-                            @foreach (var meetups in selectedPaw.BookingLists)
+                            @foreach (var meetups in selectedMeetup.BookingLists)
                             {
                                 var pawtoMeet = PawService.GetPaws().FirstOrDefault(m => m.Id.Equals(@meetups.PawToMeet));
 
@@ -156,7 +156,7 @@
                                 <p class="card-text"> Meet Date :- @meetups.DateOfMeetup </p>
                                 <p class="card-text"> Meet Location :- @meetups.LocationOfMeetup </p>
                                 <p class="card-text"> Message :- @meetups.SpecialMessage </p>
-                            }                            
+                            }
                         </div>
                     </div>
                 </div>
@@ -171,7 +171,7 @@
 @code
 {
     //ProductModel selectedProduct;
-    DetailedPawModel selectedPaw, selectedOwner;
+    DetailedPawModel selectedPaw, selectedOwner, selectedMeetup;
     string selectedPawId;
     string PawToSearch = null;
     string MessageText = null;
@@ -199,6 +199,12 @@
     {
         selectedPawId = pawId;
         selectedPaw = PawService.GetPaws().First(x => x.Id == pawId);
+    }
+
+    void SelectMeetup(string pawId)
+    {
+        selectedPawId = pawId;
+        selectedMeetup = PawService.GetPaws().First(x => x.Id == pawId);
     }
 
     void SelectOwner(string pawId)
