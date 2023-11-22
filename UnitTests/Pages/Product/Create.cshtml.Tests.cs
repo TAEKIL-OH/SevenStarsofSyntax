@@ -12,6 +12,7 @@ using NUnit.Framework;
 using ContosoCrafts.WebSite.Pages.Product;
 using ContosoCrafts.WebSite.Services;
 using ContosoCrafts.WebSite.Models;
+using System.Linq;
 
 namespace UnitTests.Pages.Product.Create
 {
@@ -1079,10 +1080,10 @@ namespace UnitTests.Pages.Product.Create
             var InitialPaws = pageModel.PawService.GetPaws();
             pageModel.Paw = new DetailedPawModel
             {
-                Id = "id",
+                Id = "1243658790",
                 Paw = new PawModel
                 {
-                    Name = "Name",
+                    Name = "Name Test Create",
                     Breed = "Breed",
                     Gender = (ContosoCrafts.WebSite.Enums.GenderTypeEnum)1,
                     Age = 1.0,
@@ -1104,9 +1105,11 @@ namespace UnitTests.Pages.Product.Create
 
             // act
             var result = pageModel.OnPost() as RedirectToPageResult;
+            pageModel.PawService.GetPaws().FirstOrDefault(m => m.Id.Equals(1243658790));
 
             // Assert
             Assert.True(pageModel.ModelState.IsValid);
+            Assert.AreEqual("Name Test Create", pageModel.Paw.Paw.Name);
 
             //Reset
             pageModel.PawService.SavePawsDataToJsonFile(InitialPaws);
