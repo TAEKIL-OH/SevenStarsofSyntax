@@ -86,6 +86,30 @@ namespace UnitTests.Components
         [Test]
 
         /// <summary>
+        /// Test case for owner info button
+        /// </summary>
+        public void SelectedPaw_Meetup_Info_Valid_Id_Should_Return_Content()
+        {
+            //Arrange
+            using var context = new Bunit.TestContext();
+            context.Services.AddSingleton<JsonFilePawService>(TestHelper.PawService);
+            var id = "meetInfo_5425261635";
+
+            //Act
+            var page = context.RenderComponent<PawList>();
+            var buttonList = page.FindAll("button");
+            var button = buttonList.First(m => m.OuterHtml.Contains(id, StringComparison.OrdinalIgnoreCase));
+            button.Click();
+            var result = page.Markup;
+
+            //Assert
+            Assert.NotNull(result);
+            Assert.IsTrue(result.Contains("Brooke"));
+        }
+
+        [Test]
+
+        /// <summary>
         /// Test case for searching valid paw value should return the paw
         /// </summary>
         public void SearchPaw_Valid_Name_Should_Return_Content()
