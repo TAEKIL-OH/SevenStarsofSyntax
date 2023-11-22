@@ -1093,7 +1093,7 @@ namespace UnitTests.Pages.Product.Update
                 Id = "5425261635",
                 Paw = new PawModel
                 {
-                    Name = "Name",
+                    Name = "Amy Update Test",
                     Breed = "Breed",
                     Gender = (ContosoCrafts.WebSite.Enums.GenderTypeEnum)1,
                     Age = 1,
@@ -1115,9 +1115,11 @@ namespace UnitTests.Pages.Product.Update
 
             // act
             var result = pageModel.OnPost() as RedirectToPageResult;
+            pageModel.OnGet("5425261635");
 
             // Assert
             Assert.True(pageModel.ModelState.IsValid);
+            Assert.AreEqual("Amy Update Test", pageModel.Paw.Paw.Name);
 
             //Reset
             pageModel.PawService.SavePawsDataToJsonFile(InitialPaws);
