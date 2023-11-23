@@ -11,6 +11,8 @@ namespace ContosoCrafts.WebSite.Pages
     {
         public string RequestId { get; set; }
 
+        public string ErrorMessage { get; set; }
+
         public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
 
         private readonly ILogger<ErrorModel> _logger;
@@ -23,6 +25,7 @@ namespace ContosoCrafts.WebSite.Pages
         public void OnGet()
         {
             RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier;
+            ErrorMessage = TempData["ErrorMessage"]?.ToString();
         }
     }
 }
