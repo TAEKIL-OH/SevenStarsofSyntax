@@ -36,7 +36,7 @@ namespace ContosoCrafts.WebSite.Pages.Product
         /// REST Get request for the particular paw
         /// </summary>
         /// <param name="id"></param>
-        public void OnGet(string id)
+        public IActionResult OnGet(string id)
         {
             Paw = PawService.GetPaws().FirstOrDefault(m => m.Id.Equals(id));
 
