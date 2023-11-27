@@ -106,8 +106,8 @@ namespace ContosoCrafts.WebSite.Pages.Product
 
             if (isValidMeetup == false)
             {
-                ModelState.AddModelError("ModelOnly", "Something went wrong");
-                return Page();
+                TempData["ErrorMessage"] = "Something went wrong while adding meetup to the paw(s) please retry";
+                return RedirectToPage("../Error");
             }
             return RedirectToPage("./Index");
         }
