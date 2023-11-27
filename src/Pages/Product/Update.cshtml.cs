@@ -34,9 +34,17 @@ namespace ContosoCrafts.WebSite.Pages.Product
         /// Rest OnGet for getting the selcted paw
         /// </summary>
         /// <param name="id"></param>
-        public void OnGet(string id)
+        public IActionResult OnGet(string id)
         {
             Paw = PawService.GetPaws().FirstOrDefault(m => m.Id.Equals(id));
+
+            if (Paw == null)
+            {
+                TempData["ErrorMessage"] = "Something went wrong while fetching the paw please retry";
+                return RedirectToPage("../Error");
+            }
+
+            return Page();
         }
 
         /// <summary>
@@ -217,8 +225,8 @@ namespace ContosoCrafts.WebSite.Pages.Product
             bool isValidUpdate = PawService.UpdatePaw(Paw);
             if (isValidUpdate == false)
             {
-                ModelState.AddModelError("ModelOnly", "Something went wrong");
-                return Page();
+                TempData["ErrorMessage"] = "Something went wrong while updating the paw please retry";
+                return RedirectToPage("../Error");
             }
 
             return RedirectToPage("./Index");
