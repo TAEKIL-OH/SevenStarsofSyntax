@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 using ContosoCrafts.WebSite.Models;
 using ContosoCrafts.WebSite.Services;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ContosoCrafts.WebSite.Pages.Product
 {
@@ -31,9 +32,17 @@ namespace ContosoCrafts.WebSite.Pages.Product
         /// REST Get request for the particular paw
         /// </summary>
         /// <param name="id"></param>
-        public void OnGet(string id)
+        public IActionResult OnGet(string id)
         {
             Paw = PawService.GetPaws().FirstOrDefault(m => m.Id.Equals(id));
+
+            if (Paw == null)
+            {
+                TempData["ErrorMessage"] = "Something went wrong while fetching the paw please retry";
+                return RedirectToPage("../Error");
+            }
+
+            return Page();
         }
 
     }
