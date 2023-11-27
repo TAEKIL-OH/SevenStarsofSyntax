@@ -73,8 +73,8 @@ namespace ContosoCrafts.WebSite.Pages.Product
 
             if (isFeedbackAdded == false)
             {
-                ModelState.AddModelError("ModelOnly", "Something went wrong");
-                return Page();
+                TempData["ErrorMessage"] = "Something went wrong while adding feedack to the paw please retry";
+                return RedirectToPage("../Error");
             }
 
             return RedirectToPage("./Index");
