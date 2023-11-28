@@ -104,15 +104,8 @@ namespace ContosoCrafts.WebSite.Pages.Product
                 return Page();
             }
 
-            // If Description field is null then it will return to the page with validation error
-            if (Paw.Paw.Description == null)
-            {
-                ModelState.AddModelError("Paw.Paw.Description", "Please donot keep this field empty");
-                return Page();
-            }
-
-            // If Description field is empty then it will return to the page with validation error
-            if (Paw.Paw.Description == "")
+            // If Description field is over limit then it will return to the page with validation error
+            if (Paw.Paw.Description.Length > 255)
             {
                 ModelState.AddModelError("Paw.Paw.Description", "Please donot keep this field empty");
                 return Page();
@@ -146,15 +139,8 @@ namespace ContosoCrafts.WebSite.Pages.Product
                 return Page();
             }
 
-            //If Owner Address field is null then it will return to the page with validation error
-            if (Paw.Owner.Address == null)
-            {
-                ModelState.AddModelError("Paw.Owner.Address", "Please donot keep this field empty");
-                return Page();
-            }
-
-            //If Owner Address field is empty then it will return to the page with validation error
-            if (Paw.Owner.Address == "")
+            //If Owner Address field is over limit then it will return to the page with validation error
+            if (Paw.Owner.Address.Length > 255)
             {
                 ModelState.AddModelError("Paw.Owner.Address", "Please donot keep this field empty");
                 return Page();
