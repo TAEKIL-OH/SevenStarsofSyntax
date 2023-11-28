@@ -76,6 +76,13 @@ namespace ContosoCrafts.WebSite.Pages.Product
                 return Page();
             }
 
+            // If message field length is over limit then it will return to the page with validation error
+            if (message.Length > 255)
+            {
+                ModelState.AddModelError("message", "Please limit the message");
+                return Page();
+            }
+
             // It will check that feedack is added if yes then it will redirect to index page otherwise it will return to current page with error
             bool isFeedbackAdded = PawService.AddFeedckToPaw(Paw.Id, message);
 
