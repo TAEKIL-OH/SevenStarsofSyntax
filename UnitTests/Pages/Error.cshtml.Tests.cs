@@ -19,9 +19,17 @@ using ContosoCrafts.WebSite.Services;
 
 namespace UnitTests.Pages.Error
 {
+
+    /// <summary>
+    /// Unit testing for Error page tests
+    /// </summary>
     public class ErrorTests
     {
         #region TestSetup
+
+        /// <summary>
+        /// Variales to be used while testing
+        /// </summary>
         public static IUrlHelperFactory urlHelperFactory;
         public static DefaultHttpContext httpContextDefault;
         public static IWebHostEnvironment webHostEnvironment;
@@ -78,8 +86,13 @@ namespace UnitTests.Pages.Error
         #endregion TestSetup
 
         #region OnGet
+
         [Test]
-        public void OnGet_Valid_Activity_Set_Should_Return_RequestId()
+
+        /// <summary>
+        /// Test case for valid activity should return request id and error message
+        /// </summary>
+        public void OnGet_Valid_Activity_Set_Should_Return_RequestId_And_Error_Message()
         {
             // Arrange
             pageModel.TempData["ErrorMessage"] = "Abnormal Error!";
@@ -99,6 +112,10 @@ namespace UnitTests.Pages.Error
         }
 
         [Test]
+
+        /// <summary>
+        /// Test case for invalid actvity should return traceidentifier
+        /// </summary>
         public void OnGet_InValid_Activity_Null_Should_Return_TraceIdentifier()
         {
             // Arrange
