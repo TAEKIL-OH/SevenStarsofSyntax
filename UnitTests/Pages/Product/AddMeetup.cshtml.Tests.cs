@@ -18,7 +18,7 @@ namespace UnitTests.Pages.Product.AddMeetup
     /// <summary>
     /// Unit testing for adding a new meetup in paw data
     /// </summary>
-    public class AddFeedback
+    public class AddMeetup
     {
         #region TestSetup
 
@@ -74,7 +74,7 @@ namespace UnitTests.Pages.Product.AddMeetup
 
             pageModel = new AddMeetupModel(pawService)
             {
-
+                TempData = new TempDataDictionary(new DefaultHttpContext(), Mock.Of<ITempDataProvider>())
             };
         }
 
@@ -257,11 +257,11 @@ namespace UnitTests.Pages.Product.AddMeetup
             pageModel.message = "Nothing";
 
             // Act
-            var result = pageModel.OnPost(pageModel.pawOne, pageModel.pawTwo, pageModel.meetupDate, pageModel.meetupLocation, pageModel.message);
+            var result = pageModel.OnPost(pageModel.pawOne, pageModel.pawTwo, pageModel.meetupDate, pageModel.meetupLocation, pageModel.message) as RedirectToPageResult;
 
             // Assert
-            Assert.IsInstanceOf<PageResult>(result);
-            Assert.IsFalse(pageModel.ModelState.IsValid);
+            Assert.AreEqual("../Error", result.PageName);
+            Assert.AreEqual("Something went wrong while adding meetup to the paw(s) please retry", pageModel.TempData["ErrorMessage"]);
 
             //Reset 
             TestHelper.PawService.SavePawsDataToJsonFile(InitialPaws);
