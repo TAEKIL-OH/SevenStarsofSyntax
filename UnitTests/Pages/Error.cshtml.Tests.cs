@@ -82,7 +82,7 @@ namespace UnitTests.Pages.Error
         public void OnGet_Valid_Activity_Set_Should_Return_RequestId()
         {
             // Arrange
-
+            pageModel.TempData["ErrorMessage"] = "Abnormal Error!";
             Activity activity = new Activity("activity");
             activity.Start();
 
@@ -95,6 +95,7 @@ namespace UnitTests.Pages.Error
             // Assert
             Assert.AreEqual(true, pageModel.ModelState.IsValid);
             Assert.AreEqual(activity.Id, pageModel.RequestId);
+            Assert.AreEqual(pageModel.ErrorMessage, pageModel.TempData["ErrorMessage"]);
         }
 
         [Test]
