@@ -74,7 +74,7 @@ namespace UnitTests.Pages.Product.Update
 
             pageModel = new UpdateModel(pawService)
             {
-
+                TempData = new TempDataDictionary(new DefaultHttpContext(), Mock.Of<ITempDataProvider>())
             };
         }
 
@@ -96,6 +96,23 @@ namespace UnitTests.Pages.Product.Update
             // Assert
             Assert.AreEqual(true, pageModel.ModelState.IsValid);
             Assert.AreEqual("Amy", pageModel.Paw.Paw.Name);
+        }
+
+        [Test]
+
+        /// <summary>
+        /// Test case for requesting invalid paw value should return the error page
+        /// </summary>
+        public void OnGet_Invalid_Should_Set_TempData_And_Redirect_To_Error_Page()
+        {
+            // Arrange
+
+            // Act
+            var result = pageModel.OnGet("5425261635123") as RedirectToPageResult;
+
+            // Assert
+            Assert.AreEqual("../Error", result.PageName);
+            Assert.AreEqual("Something went wrong while fetching the paw please retry", pageModel.TempData["ErrorMessage"]);
         }
 
         #endregion OnGet
@@ -1072,11 +1089,12 @@ namespace UnitTests.Pages.Product.Update
             var result = pageModel.OnPost() as RedirectToPageResult;
 
             // Assert
-            Assert.False(pageModel.ModelState.IsValid);
+            Assert.AreEqual("../Error", result.PageName);
+            Assert.AreEqual("Something went wrong while updating the paw please retry", pageModel.TempData["ErrorMessage"]);
 
             //Reset
             pageModel.PawService.SavePawsDataToJsonFile(InitialPaws);
-
+        
         }
 
         /// <summary>
