@@ -74,8 +74,9 @@ namespace UnitTests.Pages.Product.AddFeedback
 
             pageModel = new AddFeedbackModel(pawService)
             {
-
+                TempData = new TempDataDictionary(new DefaultHttpContext(), Mock.Of<ITempDataProvider>())
             };
+
         }
 
         #endregion TestSetup
@@ -96,6 +97,23 @@ namespace UnitTests.Pages.Product.AddFeedback
             // Assert
             Assert.AreEqual(true, pageModel.ModelState.IsValid);
             Assert.AreEqual("5425261635", pageModel.Paw.Id);
+        }
+
+        [Test]
+
+        /// <summary>
+        /// Test case for requesting invalid paw value should return the error page
+        /// </summary>
+        public void OnGet_Invalid_Should_Set_TempData_And_Redirect_To_Error_Page()
+        {
+            // Arrange
+
+            // Act
+            var result = pageModel.OnGet("5425261635123") as RedirectToPageResult;
+
+            // Assert
+            Assert.AreEqual("../Error", result.PageName);
+            Assert.AreEqual("Something went wrong while fetching the paw please retry", pageModel.TempData["ErrorMessage"]);
         }
 
         #endregion OnGet
@@ -186,12 +204,11 @@ namespace UnitTests.Pages.Product.AddFeedback
             pageModel.message = "Test";
 
             // act
-            var result = pageModel.OnPost(pageModel.message) as PageResult;
+            var result = pageModel.OnPost(pageModel.message) as RedirectToPageResult;
 
             // Assert
-            Assert.False(pageModel.ModelState.IsValid);
-            Assert.IsInstanceOf<PageResult>(result);
-            Assert.True(pageModel.ModelState.ContainsKey("ModelOnly"));
+            Assert.AreEqual("../Error", result.PageName);
+            Assert.AreEqual("Something went wrong while adding feedack to the paw please retry", pageModel.TempData["ErrorMessage"]);
         }
 
         [Test]
