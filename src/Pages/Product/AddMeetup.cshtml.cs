@@ -101,6 +101,42 @@ namespace ContosoCrafts.WebSite.Pages.Product
                 return Page();
             }
 
+            // If meetupDate field is null then it will return to the page with validation error
+            if (meetupDate == null)
+            {
+                ModelState.AddModelError("meetupDate", "Please donot keep this field empty");
+                return Page();
+            }
+
+            // If meetupDate field is empty then it will return to the page with validation error
+            if (meetupDate == "")
+            {
+                ModelState.AddModelError("meetupDate", "Please donot keep this field empty");
+                return Page();
+            }
+
+            // If meetupLocation field is null then it will return to the page with validation error
+            if (meetupLocation == null)
+            {
+                ModelState.AddModelError("meetupLocation", "Please donot keep this field empty");
+                return Page();
+            }
+
+            // If meetupLocation field is empty then it will return to the page with validation error
+            if (meetupLocation == "")
+            {
+                ModelState.AddModelError("meetupLocation", "Please donot keep this field empty");
+                return Page();
+            }
+
+            // If message field is over limit then it will return to the page with validation error
+            if (message.Length > 255)
+            {
+                ModelState.AddModelError("message", "Please limit your message");
+                return Page();
+            }
+
+
             //If the paw exists then it will add new meetup
             bool isValidMeetup = PawService.AddMeetup(pawOne, pawTwo, meetupDate, meetupLocation, message);
 
