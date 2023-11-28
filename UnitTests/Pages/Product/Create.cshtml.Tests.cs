@@ -447,10 +447,11 @@ namespace UnitTests.Pages.Product.Create
         }
 
         [Test]
+
         /// <summary>
-        /// Test case for null description field value should return a page with invalid state
+        /// Test case for over limit description field value should return a page with invalid state
         /// </summary>
-        public void OnPost_Invalid_Description_Null_Should_Return_Page()
+        public void OnPost_Invalid_Description_Length_More_Than_Limit_Should_Return_Page()
         {
             // Arrange
             pageModel.Paw = new DetailedPawModel
@@ -463,46 +464,7 @@ namespace UnitTests.Pages.Product.Create
                     Gender = (ContosoCrafts.WebSite.Enums.GenderTypeEnum)1,
                     Age = 1.0,
                     Size = "Size",
-                    Description = null,
-                    Image = "Image"
-                },
-                Owner = new Owner
-                {
-                    Name = "Name",
-                    Address = "Address",
-                    City = "City",
-                    Zipcode = "Zipcode",
-                    Email = "Email",
-                    Phone = "Phone"
-                }
-
-            };
-
-            // act
-            var result = pageModel.OnPost() as RedirectToPageResult;
-
-            // Assert
-            Assert.False(pageModel.ModelState.IsValid);
-        }
-
-        [Test]
-        /// <summary>
-        /// Test case for empty description field value should return a page with invalid state
-        /// </summary>
-        public void OnPost_Invalid_Description_Empty_Should_Return_Page()
-        {
-            // Arrange
-            pageModel.Paw = new DetailedPawModel
-            {
-                Id = "id",
-                Paw = new PawModel
-                {
-                    Name = "Name",
-                    Breed = "Breed",
-                    Gender = (ContosoCrafts.WebSite.Enums.GenderTypeEnum)1,
-                    Age = 1.0,
-                    Size = "Size",
-                    Description = "",
+                    Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, quam a hendrerit cursus, nisl ligula ultricies velit, ut fermentum arcu nisi eu turpis. Phasellus vel purus vitae ex cursus fringilla nec sit amet urna. Proin at lacinia nulla. Vestibulum convallis sapien a tortor cursus, ut fermentum nisl luctus. Curabitur et leo vel justo vulputate cursus. Integer ut luctus dui. Sed at tortor vitae odio placerat imperdiet. Fusce non lacus ac nunc interdum efficitur. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc auctor, eros in bibendum tristique, sem sapien lacinia justo, vel interdum libero orci eu metus. Sed euismod tellus in justo dapibus, sit amet sodales nunc tristique. Nulla facilisi. Integer tristique justo eget enim tincidunt, vel imperdiet orci fermentum. Curabitur pharetra ligula id urna volutpat, eget commodo odio blandit. In hac habitasse platea dictumst.\r\n\r\n\r\n\r\n\r\n\r\n",
                     Image = "Image"
                 },
                 Owner = new Owner
@@ -682,9 +644,9 @@ namespace UnitTests.Pages.Product.Create
 
         [Test]
         /// <summary>
-        /// Test case for null owner address field value should return a page with invalid state
+        /// Test case for over limit owner address field value should return a page with invalid state
         /// </summary>
-        public void OnPost_Invalid_Owner_Address_Null_Should_Return_Page()
+        public void OnPost_Invalid_Owner_Address_More_Than_Limit_Should_Return_Page()
         {
             // Arrange
             pageModel.Paw = new DetailedPawModel
@@ -703,46 +665,7 @@ namespace UnitTests.Pages.Product.Create
                 Owner = new Owner
                 {
                     Name = "Name",
-                    Address = null,
-                    City = "City",
-                    Zipcode = "Zipcode",
-                    Email = "Email",
-                    Phone = "Phone"
-                }
-
-            };
-
-            // act
-            var result = pageModel.OnPost() as RedirectToPageResult;
-
-            // Assert
-            Assert.False(pageModel.ModelState.IsValid);
-        }
-
-        [Test]
-        /// <summary>
-        /// Test case for empty owner address field value should return a page with invalid state
-        /// </summary>
-        public void OnPost_Invalid_Owner_Address_Empty_Should_Return_Page()
-        {
-            // Arrange
-            pageModel.Paw = new DetailedPawModel
-            {
-                Id = "id",
-                Paw = new PawModel
-                {
-                    Name = "Name",
-                    Breed = "Breed",
-                    Gender = (ContosoCrafts.WebSite.Enums.GenderTypeEnum)1,
-                    Age = 1.0,
-                    Size = "Size",
-                    Description = "Description",
-                    Image = "Image"
-                },
-                Owner = new Owner
-                {
-                    Name = "Name",
-                    Address = "",
+                    Address = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, quam a hendrerit cursus, nisl ligula ultricies velit, ut fermentum arcu nisi eu turpis. Phasellus vel purus vitae ex cursus fringilla nec sit amet urna. Proin at lacinia nulla. Vestibulum convallis sapien a tortor cursus, ut fermentum nisl luctus. Curabitur et leo vel justo vulputate cursus. Integer ut luctus dui. Sed at tortor vitae odio placerat imperdiet. Fusce non lacus ac nunc interdum efficitur. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc auctor, eros in bibendum tristique, sem sapien lacinia justo, vel interdum libero orci eu metus. Sed euismod tellus in justo dapibus, sit amet sodales nunc tristique. Nulla facilisi. Integer tristique justo eget enim tincidunt, vel imperdiet orci fermentum. Curabitur pharetra ligula id urna volutpat, eget commodo odio blandit. In hac habitasse platea dictumst.\r\n\r\n\r\n\r\n\r\n\r\n",
                     City = "City",
                     Zipcode = "Zipcode",
                     Email = "Email",
