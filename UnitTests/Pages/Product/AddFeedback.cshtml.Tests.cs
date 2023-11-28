@@ -192,6 +192,27 @@ namespace UnitTests.Pages.Product.AddFeedback
         [Test]
 
         /// <summary>
+        /// Test case for over limit message should return the page
+        /// </summary>
+        public void OnPost_Invalid_Message_Over_Limit_Should_Return_Page()
+        {
+            // Arrange
+            pageModel.Paw = new DetailedPawModel
+            {
+                Id = "5425261635"
+            };
+            pageModel.message = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, quam a hendrerit cursus, nisl ligula ultricies velit, ut fermentum arcu nisi eu turpis. Phasellus vel purus vitae ex cursus fringilla nec sit amet urna. Proin at lacinia nulla. Vestibulum convallis sapien a tortor cursus, ut fermentum nisl luctus. Curabitur et leo vel justo vulputate cursus. Integer ut luctus dui. Sed at tortor vitae odio placerat imperdiet. Fusce non lacus ac nunc interdum efficitur. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc auctor, eros in bibendum tristique, sem sapien lacinia justo, vel interdum libero orci eu metus. Sed euismod tellus in justo dapibus, sit amet sodales nunc tristique. Nulla facilisi. Integer tristique justo eget enim tincidunt, vel imperdiet orci fermentum. Curabitur pharetra ligula id urna volutpat, eget commodo odio blandit. In hac habitasse platea dictumst.\r\n\r\n\r\n\r\n\r\n\r\n";
+
+            // act
+            var result = pageModel.OnPost(pageModel.message) as RedirectToPageResult;
+
+            // Assert
+            Assert.False(pageModel.ModelState.IsValid);
+        }
+
+        [Test]
+
+        /// <summary>
         /// Test case for invalid paw id should return the page
         /// </summary>
         public void OnPost_Invalid_Paw_Should_Return_Page()
