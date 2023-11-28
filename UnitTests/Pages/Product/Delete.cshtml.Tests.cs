@@ -72,7 +72,7 @@ namespace UnitTests.Pages.Product.Delete
 
             pageModel = new DeleteModel(pawService)
             {
-
+                TempData = new TempDataDictionary(new DefaultHttpContext(), Mock.Of<ITempDataProvider>())
             };
         }
 
@@ -93,6 +93,23 @@ namespace UnitTests.Pages.Product.Delete
             // Assert
             Assert.AreEqual(true, pageModel.ModelState.IsValid);
             Assert.AreEqual("5425261635", pageModel.Paw.Id);
+        }
+
+        [Test]
+
+        /// <summary>
+        /// Test case for requesting invalid paw value should return the error page
+        /// </summary>
+        public void OnGet_Invalid_Should_Set_TempData_And_Redirect_To_Error_Page()
+        {
+            // Arrange
+
+            // Act
+            var result = pageModel.OnGet("5425261635123") as RedirectToPageResult;
+
+            // Assert
+            Assert.AreEqual("../Error", result.PageName);
+            Assert.AreEqual("Something went wrong while fetching the paw please retry", pageModel.TempData["ErrorMessage"]);
         }
         #endregion OnGet
 
@@ -130,11 +147,11 @@ namespace UnitTests.Pages.Product.Delete
             };
 
             // Act
-            var result = pageModel.OnPost() as PageResult;
+            var result = pageModel.OnPost() as RedirectToPageResult;
 
             // Assert
-            Assert.IsInstanceOf<PageResult>(result);
-            Assert.True(pageModel.ModelState.ContainsKey("ModelOnly"));
+            Assert.AreEqual("../Error", result.PageName);
+            Assert.AreEqual("Something went wrong while deleting the paw please retry", pageModel.TempData["ErrorMessage"]);
         }
 
         [Test]
