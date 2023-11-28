@@ -183,7 +183,6 @@ namespace UnitTests.Pages.Product.AddMeetup
             TestHelper.PawService.SavePawsDataToJsonFile(InitialPaws);
         }
 
-
         [Test]
 
         /// <summary>
@@ -235,6 +234,146 @@ namespace UnitTests.Pages.Product.AddMeetup
             Assert.IsInstanceOf<PageResult>(result);
             Assert.IsFalse(pageModel.ModelState.IsValid);
             Assert.IsTrue(pageModel.ModelState.ContainsKey("pawTwo"));
+
+            //Reset 
+            TestHelper.PawService.SavePawsDataToJsonFile(InitialPaws);
+        }
+
+        [Test]
+
+        /// <summary>
+        /// Test case for invalid meetup date null should return the page
+        /// </summary>
+        public void OnPost_InValid_Meetup_Date_Null_Should_Return_Page()
+        {
+            // Arrange
+            var InitialPaws = TestHelper.PawService.GetPaws();
+
+            pageModel.pawOne = "7623900396";
+            pageModel.pawTwo = "7623900196";
+            pageModel.meetupDate = null;
+            pageModel.meetupLocation = "Seattle, WA";
+            pageModel.message = "Nothing";
+
+            // Act
+            var result = pageModel.OnPost(pageModel.pawOne, pageModel.pawTwo, pageModel.meetupDate, pageModel.meetupLocation, pageModel.message);
+
+            // Assert
+            Assert.IsInstanceOf<PageResult>(result);
+            Assert.IsFalse(pageModel.ModelState.IsValid);
+            Assert.IsTrue(pageModel.ModelState.ContainsKey("meetupDate"));
+
+            //Reset 
+            TestHelper.PawService.SavePawsDataToJsonFile(InitialPaws);
+        }
+
+        [Test]
+
+        /// <summary>
+        /// Test case for invalid meetup date empty should return the page
+        /// </summary>
+        public void OnPost_InValid_Meetup_Date_Empty_Should_Return_Page()
+        {
+            // Arrange
+            var InitialPaws = TestHelper.PawService.GetPaws();
+
+            pageModel.pawOne = "7623900396";
+            pageModel.pawTwo = "7623900196";
+            pageModel.meetupDate = "";
+            pageModel.meetupLocation = "Seattle, WA";
+            pageModel.message = "Nothing";
+
+            // Act
+            var result = pageModel.OnPost(pageModel.pawOne, pageModel.pawTwo, pageModel.meetupDate, pageModel.meetupLocation, pageModel.message);
+
+            // Assert
+            Assert.IsInstanceOf<PageResult>(result);
+            Assert.IsFalse(pageModel.ModelState.IsValid);
+            Assert.IsTrue(pageModel.ModelState.ContainsKey("meetupDate"));
+
+            //Reset 
+            TestHelper.PawService.SavePawsDataToJsonFile(InitialPaws);
+        }
+
+        [Test]
+
+        /// <summary>
+        /// Test case for invalid meetup locatiom null should return the page
+        /// </summary>
+        public void OnPost_InValid_Meetup_Location_Null_Should_Return_Page()
+        {
+            // Arrange
+            var InitialPaws = TestHelper.PawService.GetPaws();
+
+            pageModel.pawOne = "7623900396";
+            pageModel.pawTwo = "7623900196";
+            pageModel.meetupDate = "11/28/2023";
+            pageModel.meetupLocation = null;
+            pageModel.message = "Nothing";
+
+            // Act
+            var result = pageModel.OnPost(pageModel.pawOne, pageModel.pawTwo, pageModel.meetupDate, pageModel.meetupLocation, pageModel.message);
+
+            // Assert
+            Assert.IsInstanceOf<PageResult>(result);
+            Assert.IsFalse(pageModel.ModelState.IsValid);
+            Assert.IsTrue(pageModel.ModelState.ContainsKey("meetupLocation"));
+
+            //Reset 
+            TestHelper.PawService.SavePawsDataToJsonFile(InitialPaws);
+        }
+
+        [Test]
+
+        /// <summary>
+        /// Test case for invalid meetup location empty should return the page
+        /// </summary>
+        public void OnPost_InValid_Meetup_Location_Empty_Should_Return_Page()
+        {
+            // Arrange
+            var InitialPaws = TestHelper.PawService.GetPaws();
+
+            pageModel.pawOne = "7623900396";
+            pageModel.pawTwo = "7623900196";
+            pageModel.meetupDate = "11/28/2023";
+            pageModel.meetupLocation = "";
+            pageModel.message = "Nothing";
+
+            // Act
+            var result = pageModel.OnPost(pageModel.pawOne, pageModel.pawTwo, pageModel.meetupDate, pageModel.meetupLocation, pageModel.message);
+
+            // Assert
+            Assert.IsInstanceOf<PageResult>(result);
+            Assert.IsFalse(pageModel.ModelState.IsValid);
+            Assert.IsTrue(pageModel.ModelState.ContainsKey("meetupLocation"));
+
+            //Reset 
+            TestHelper.PawService.SavePawsDataToJsonFile(InitialPaws);
+        }
+
+        [Test]
+
+        /// <summary>
+        /// Test case for invalid message over limit empty should return the page
+        /// </summary>
+        public void OnPost_InValid_Message_Over_Limit_Should_Return_Page()
+        {
+            // Arrange
+            var InitialPaws = TestHelper.PawService.GetPaws();
+
+            pageModel.pawOne = "7623900396";
+            pageModel.pawTwo = "7623900196";
+            pageModel.meetupDate = "11/28/2023";
+            pageModel.meetupLocation = "Seattle, WA";
+            pageModel.message = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, quam a hendrerit cursus, nisl ligula ultricies velit, ut fermentum arcu nisi eu turpis. Phasellus vel purus vitae ex cursus fringilla nec sit amet urna. Proin at lacinia nulla. Vestibulum convallis sapien a tortor cursus, ut fermentum nisl luctus. Curabitur et leo vel justo vulputate cursus. Integer ut luctus dui. Sed at tortor vitae odio placerat imperdiet. Fusce non lacus ac nunc interdum efficitur. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nunc auctor, eros in bibendum tristique, sem sapien lacinia justo, vel interdum libero orci eu metus. Sed euismod tellus in justo dapibus, sit amet sodales nunc tristique. Nulla facilisi. Integer tristique justo eget enim tincidunt, vel imperdiet orci fermentum. Curabitur pharetra ligula id urna volutpat, eget commodo odio blandit. In hac habitasse platea dictumst.\r\n\r\n\r\n\r\n\r\n\r\n";
+
+            // Act
+            var result = pageModel.OnPost(pageModel.pawOne, pageModel.pawTwo, pageModel.meetupDate, pageModel.meetupLocation, pageModel.message);
+
+            // Assert
+            Assert.IsInstanceOf<PageResult>(result);
+            Assert.IsFalse(pageModel.ModelState.IsValid);
+            Assert.IsTrue(pageModel.ModelState.ContainsKey("message"));
 
             //Reset 
             TestHelper.PawService.SavePawsDataToJsonFile(InitialPaws);
